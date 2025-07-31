@@ -108,23 +108,36 @@ document.addEventListener("DOMContentLoaded", () => {
       const div = document.createElement("div");
       div.className = "jugador";
       
-      // Verificar si el próximo partido es hoy
+      // Verificar si el próximo partido es realmente futuro
       const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
       const hoy = new Date();
-      const esHoy = fechaPartido > 0 && new Date(fechaPartido).toDateString() === hoy.toDateString();
-      const esFuturo = fechaPartido > hoy.getTime();
+      hoy.setHours(0, 0, 0, 0); // Inicio del día actual
+      const esHoy = fechaPartido > 0 && new Date(fechaPartido).toDateString() === new Date().toDateString();
+      const esFuturo = fechaPartido >= hoy.getTime();
+      const tieneRival = j["Próximo Rival"] && j["Próximo Rival"] !== "-" && j["Próximo Rival"].trim() !== "";
       
-      // Generar el HTML de próximo partido con mejor formato
+      // Generar el HTML de próximo partido SOLO si es futuro y tiene rival
       let proximoPartidoHtml = '';
-      if (j["Próximo Rival"] && j["Próximo Rival"] !== "-" && esFuturo) {
+      if (tieneRival && esFuturo) {
         proximoPartidoHtml = `
           <div class="proximo-partido-info">
             <p class="proximo-partido-titulo"><strong>⚽ Próximo Partido</strong></p>
             <p class="proximo-rival">
-              <span class="vs-icon">VS</span> ${verificarProximoRival(j["Próximo Rival"], j["Próximo Partido"])}
+              <span class="vs-icon">VS</span> ${j["Próximo Rival"]}
               ${esHoy ? '<span class="badge-hoy">HOY</span>' : ''}
             </p>
             <p class="proximo-fecha"><span class="fecha-icon">📆</span> ${convertirFechaProximoPartido(j["Próximo Partido"])}</p>
+          </div>
+        `;
+      } else if (tieneRival && !esFuturo) {
+        // Si tiene rival pero la fecha ya pasó, no mostrar nada (partido ya jugado)
+        proximoPartidoHtml = `
+          <div class="proximo-partido-info" style="background: #f5f5f5; border-color: #ccc;">
+            <p class="proximo-partido-titulo" style="color: #888 !important;"><strong>📋 Último Partido</strong></p>
+            <p class="proximo-rival" style="color: #666;">
+              <span class="vs-icon" style="background: #888;">VS</span> ${j["Próximo Rival"]} (ya jugado)
+            </p>
+            <p class="proximo-fecha" style="color: #888 !important;"><span class="fecha-icon">�</span> ${convertirFechaProximoPartido(j["Próximo Partido"])}</p>
           </div>
         `;
       }
@@ -321,15 +334,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Función para generar resumen de próximos partidos
   function generarResumenProximos() {
     const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0); // Inicio del día actual
+    
     const proximosPartidos = jugadores.filter(j => {
       const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
-      const tieneRival = j["Próximo Rival"] && j["Próximo Rival"] !== "-";
-      return fechaPartido >= hoy.setHours(0,0,0,0) && tieneRival;
+      const tieneRival = j["Próximo Rival"] && j["Próximo Rival"] !== "-" && j["Próximo Rival"].trim() !== "";
+      // SOLO partidos futuros con rival definido
+      return fechaPartido >= hoy.getTime() && tieneRival;
     });
 
     const partidosHoy = proximosPartidos.filter(j => {
       const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
-      return new Date(fechaPartido).toDateString() === hoy.toDateString();
+      return new Date(fechaPartido).toDateString() === new Date().toDateString();
     });
 
     const partidosEstaSemana = proximosPartidos.filter(j => {
@@ -372,7 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="resumen-stats">
           <div class="stat-item">
             <span class="stat-numero">0</span>
-            <span class="stat-texto">Próximos partidos programados</span>
+            <span class="stat-texto">Sin próximos partidos confirmados</span>
           </div>
         </div>
       `;

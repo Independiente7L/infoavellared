@@ -15,7 +15,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Colón",
-    "Próximo Partido":1753574400000,
+    "Próximo Partido":1754697600000,
     "Escudo":"ca_gimnasia_y_esgrima_mendoza.png"
   },
   {
@@ -34,7 +34,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Deportivo Morón",
-    "Próximo Partido":1753488000000,
+    "Próximo Partido":1754784000000,
     "Escudo":"ca_chacarita_juniors.png"
   },
   {
@@ -53,7 +53,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Tristán Suárez",
-    "Próximo Partido":1753488000000,
+    "Próximo Partido":1755302400000,
     "Escudo":"ca_los_andes.png"
   },
   {
@@ -72,7 +72,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Lommel",
-    "Próximo Partido":1753574400000,
+    "Próximo Partido":1754697600000,
     "Escudo":"volos_nps.png"
   },
   {
@@ -110,7 +110,7 @@
     "Goles en Contra":0,
     "Imbatido":2,
     "Próximo Rival":"Cerrito",
-    "Próximo Partido":1753574400000,
+    "Próximo Partido":1754697600000,
     "Escudo":"club_deportivo_maldonado.png"
   },
   {
@@ -129,7 +129,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Union",
-    "Próximo Partido":1753401600000,
+    "Próximo Partido":1755302400000,
     "Escudo":"ca_tigre.png"
   },
   {
@@ -148,7 +148,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Santamarina",
-    "Próximo Partido":1753574400000,
+    "Próximo Partido":1754697600000,
     "Escudo":"círculo_deportivo.png"
   },
   {
@@ -167,7 +167,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Argentinos Jrs.",
-    "Próximo Partido":1753488000000,
+    "Próximo Partido":1754784000000,
     "Escudo":"ca_platense.png"
   },
   {
@@ -186,7 +186,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"San Miguel",
-    "Próximo Partido":1753574400000,
+    "Próximo Partido":1754697600000,
     "Escudo":"arsenal_fc.png"
   },
   {
@@ -205,7 +205,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Estudiantes de RC",
-    "Próximo Partido":1753574400000,
+    "Próximo Partido":1754697600000,
     "Escudo":"ca_nueva_chicago.png"
   },
   {
@@ -224,7 +224,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Argentino de Merlo",
-    "Próximo Partido":1753488000000,
+    "Próximo Partido":1754784000000,
     "Escudo":"real_pilar_fc.png"
   },
   {
@@ -243,7 +243,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Rosario Central",
-    "Próximo Partido":1753488000000,
+    "Próximo Partido":1754784000000,
     "Escudo":"ca_san_martín_san_juan.png"
   },
   {
@@ -262,7 +262,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Los Andes",
-    "Próximo Partido":1753488000000,
+    "Próximo Partido":1754784000000,
     "Escudo":"csd_tristán_suárez.png"
   },
   {
@@ -281,7 +281,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Banfield",
-    "Próximo Partido":1753660800000,
+    "Próximo Partido":1755561600000,
     "Escudo":"ca_barracas_central.png"
   },
   {
@@ -319,7 +319,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Villa Dálmine",
-    "Próximo Partido":1753488000000,
+    "Próximo Partido":1754784000000,
     "Escudo":"cs_dock_sud.png"
   },
   {
@@ -338,7 +338,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Deportivo Riestra",
-    "Próximo Partido":1753660800000,
+    "Próximo Partido":1755561600000,
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -357,14 +357,14 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Santos",
-    "Próximo Partido":1753401600000,
+    "Próximo Partido":1755302400000,
     "Escudo":"club_puebla.png"
   },
   {
     "Jugador":"Lucas Román",
     "Posición":"Extremo derecho",
     "Club Actual":"Club Atlético Tucumán",
-    "Desde":1753401600000,
+    "Desde":1755302400000,
     "Hasta":1798675200000,
     "Cargo":"NO",
     "Opción de Compra":"1.500.000 x el 80%",
@@ -376,14 +376,14 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Deportivo Riestra",
-    "Próximo Partido":1753660800000,
+    "Próximo Partido":1755561600000,
     "Escudo":"club_atlético_tucumán.png"
   },
   {
     "Jugador":"Manuel Tasso",
     "Posición":"Portero",
     "Club Actual":"CA Independiente",
-    "Desde":1753401600000,
+    "Desde":1755302400000,
     "Hasta":1782777600000,
     "Cargo":"NO",
     "Opción de Compra":"NO",
@@ -395,7 +395,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Medellín",
-    "Próximo Partido":1753574400000,
+    "Próximo Partido":1754697600000,
     "Escudo":"ca_independiente.png"
   },
   {
@@ -433,7 +433,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"San Martín (SJ)",
-    "Próximo Partido":1753488000000,
+    "Próximo Partido":1754784000000,
     "Escudo":"ca_rosario_central.png"
   },
   {
@@ -452,7 +452,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Rosario Central",
-    "Próximo Partido":1753488000000,
+    "Próximo Partido":1754784000000,
     "Escudo":"ca_san_martín_san_juan.png"
   }
 ]

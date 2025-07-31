@@ -41,13 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch('data.json')
     .then(response => response.json())
     .then(jugadores => {
-      // Filtra solo los partidos que aún no se jugaron
+      // Filtrar SOLO partidos futuros con rival definido
       const hoy = new Date();
+      hoy.setHours(0, 0, 0, 0); // Inicio del día actual
+      
       const jugadoresFuturos = jugadores.filter(j => {
         const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
-        const tieneRival = j["Próximo Rival"] && j["Próximo Rival"] !== "-";
-        // Solo muestra partidos desde hoy en adelante y que tengan rival definido
-        return fechaPartido >= hoy.setHours(0,0,0,0) && tieneRival;
+        const tieneRival = j["Próximo Rival"] && j["Próximo Rival"] !== "-" && j["Próximo Rival"].trim() !== "";
+        // SOLO partidos desde hoy en adelante CON rival definido
+        return fechaPartido >= hoy.getTime() && tieneRival;
       });
 
       // Ordena por fecha más próxima
@@ -57,16 +59,20 @@ document.addEventListener("DOMContentLoaded", () => {
       
       if (jugadoresFuturos.length === 0) {
         contenedor.innerHTML = `
-          <h2 class="proximos-titulo">📅 Próximos partidos</h2>
-          <div style="text-align: center; padding: 40px; color: #666;">
-            <p style="font-size: 18px;">📭 No hay próximos partidos programados</p>
+          <h2 class="proximos-titulo">📅 Próximos Partidos</h2>
+          <div style="text-align: center; padding: 40px; color: #666; background: rgba(255,255,255,0.9); border-radius: 15px; margin: 20px 0;">
+            <h3 style="color: #b30000; margin-bottom: 15px;">📭 No hay próximos partidos confirmados</h3>
+            <p style="font-size: 16px; line-height: 1.5;">
+              ⏰ Las fechas se actualizarán cuando se confirmen nuevos partidos<br>
+              🔄 Algunos partidos pueden haber sido jugados recientemente
+            </p>
           </div>
         `;
         return;
       }
 
       contenedor.innerHTML = `
-        <h2 class="proximos-titulo">📅 Próximos partidos (${jugadoresFuturos.length})</h2>
+        <h2 class="proximos-titulo">📅 Próximos Partidos (${jugadoresFuturos.length})</h2>
         <div class="proximos-grid">
           ${jugadoresFuturos.map((j, idx) => {
             const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
