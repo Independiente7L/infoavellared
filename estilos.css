@@ -11,23 +11,24 @@
   z-index: 1000;
   height: 70px;
   box-sizing: border-box;
+  gap: 18px;
 }
 
 .logo-club {
   height: 48px;
   width: auto;
+  flex-shrink: 0;
 }
 
 .header-titulo-botones {
   display: flex;
   align-items: center;
-  gap: 32px;
   flex: 1;
   min-width: 0;
   justify-content: space-between;
 }
 
-/* Para escritorio: logo y título a la izquierda, menú a la derecha */
+/* Para escritorio: logo a la izquierda, título centrado, menú a la derecha */
 .logo-titulo-container {
   display: flex;
   align-items: center;
@@ -39,22 +40,7 @@
 .nav-menu {
   margin-left: auto;
   position: relative;
-}
-
-/* Dropdown por defecto a la derecha (escritorio) */
-.menu-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  z-index: 1001;
-  min-width: 200px;
+  flex-shrink: 0;
 }
 
 #barra-superior h1 {
@@ -382,38 +368,19 @@ h1 {
 
 /* --- OPTIMIZACIÓN MOBILE MEJORADA --- */
 @media (max-width: 768px) {
-  /* Header más compacto y reorganizado */
+  /* Header más compacto */
   #barra-superior {
     padding: 8px 12px;
     height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  /* Reorganizar orden: Menu - Logo/Título - (espacio) */
-  .header-titulo-botones {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-    gap: 10px;
-    order: 0;
-  }
-
-  /* Menú hamburguesa a la izquierda */
-  .nav-menu {
-    order: -1;
-    margin-right: 12px;
-  }
-
-  /* Logo y título centrados */
-  .logo-titulo-container {
-    display: flex;
-    align-items: center;
     gap: 8px;
-    flex: 1;
-    justify-content: center;
+  }
+
+  .logo-club {
+    height: 32px;
+  }
+
+  .header-titulo-botones {
+    justify-content: space-between;
   }
   
   #barra-superior h1 {
@@ -421,11 +388,7 @@ h1 {
     margin: 0;
     line-height: 1.2;
     text-align: center;
-  }
-  
-  .logo-club {
-    height: 32px;
-    margin-right: 8px;
+    flex: 1;
   }
 
   /* Contenido principal con mejor spacing */
@@ -533,12 +496,13 @@ h1 {
     background: white;
   }
 
-  /* En móvil: menú se abre a la izquierda */
+  /* En móvil: menú se mantiene a la derecha pero ajustado */
   .menu-dropdown {
-    left: 0;
-    right: auto;
+    right: 10px !important;
+    left: auto !important;
     top: 45px;
-    min-width: 180px;
+    min-width: 160px;
+    max-width: calc(100vw - 20px);
     padding: 8px 0;
   }
 
@@ -684,6 +648,7 @@ h1 {
   #barra-superior {
     padding: 6px 8px;
     height: 50px;
+    gap: 6px;
   }
   
   #barra-superior h1 {
@@ -692,10 +657,6 @@ h1 {
   
   .logo-club {
     height: 28px;
-  }
-
-  .logo-titulo-container {
-    gap: 6px;
   }
   
   #contenido-principal {
@@ -756,11 +717,12 @@ h1 {
     padding: 5px;
   }
 
-  /* En móvil pequeño: menú también a la izquierda */
+  /* En móvil pequeño: menú también a la derecha ajustado */
   .menu-dropdown {
-    left: 0;
-    right: auto;
-    min-width: 160px;
+    right: 5px !important;
+    left: auto !important;
+    min-width: 150px;
+    max-width: calc(100vw - 10px);
     top: 40px;
   }
 
@@ -869,7 +831,8 @@ h1 {
 .menu-dropdown {
   position: absolute;
   top: 100%;
-  right: 0;
+  right: 0 !important;
+  left: auto !important;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   border-radius: 15px;
@@ -931,8 +894,10 @@ h1 {
 /* Responsive para el menú */
 @media (max-width: 768px) {
   .menu-dropdown {
-    right: 0;
-    min-width: 200px;
+    right: 10px !important;
+    left: auto !important;
+    min-width: 180px;
+    max-width: calc(100vw - 20px);
   }
   
   .menu-item {
