@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>Info AvellaRED - Préstamos</title>
   <link rel="stylesheet" href="estilos.css" />
+  <link rel="stylesheet" href="optimizaciones.css" />
+  
+  <!-- Preload de recursos críticos -->
+  <link rel="preload" href="data.json" as="fetch" crossorigin="anonymous">
+  <link rel="preload" href="img/ca_independiente.png" as="image">
+  
+  <!-- Meta tags para optimización -->
+  <meta name="description" content="Información completa sobre préstamos de jugadores de Club Atlético Independiente">
+  <meta name="keywords" content="Independiente, préstamos, jugadores, fútbol argentino">
+  
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4224083206623509"
      crossorigin="anonymous"></script>
@@ -86,6 +96,62 @@
           menuToggle.classList.remove('active');
         }
       });
+    });
+  </script>
+
+  <!-- Indicador de carga -->
+  <div id="loading-indicator" class="loading-indicator">
+    <div class="loading-spinner"></div>
+    <div>Cargando optimizaciones...</div>
+  </div>
+
+  <!-- Scripts de optimización -->
+  <script src="optimizaciones.js"></script>
+  <script src="feedback-system.js"></script>
+  
+  <script>
+    // Integración con optimizaciones
+    document.addEventListener('DOMContentLoaded', function() {
+      // Registrar Service Worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('✅ Service Worker registrado:', registration);
+            
+            // Notificar al usuario sobre cache offline
+            if (window.notifications) {
+              window.notifications.info('🔄 Cache offline activado - La aplicación funcionará sin conexión');
+            }
+          })
+          .catch(error => {
+            console.error('❌ Error registrando Service Worker:', error);
+          });
+        
+        // Escuchar mensajes del Service Worker
+        navigator.serviceWorker.addEventListener('message', event => {
+          const { type, message } = event.data;
+          if (type === 'DATA_UPDATED' && window.notifications) {
+            window.notifications.success('📊 Datos actualizados automáticamente');
+          }
+        });
+      }
+      
+      // Trackear carga de página
+      if (window.analytics) {
+        window.analytics.trackEvent('page_view', {
+          page: 'index',
+          timestamp: Date.now(),
+          serviceWorkerSupported: 'serviceWorker' in navigator
+        });
+      }
+      
+      // Mostrar tips contextuales después de un tiempo
+      setTimeout(() => {
+        if (window.help && !localStorage.getItem('tips_shown')) {
+          window.help.showTip('buscador');
+          localStorage.setItem('tips_shown', 'true');
+        }
+      }, 3000);
     });
   </script>
 </body>
