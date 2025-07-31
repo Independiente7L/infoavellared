@@ -397,7 +397,7 @@ h1 {
   }
   
   body {
-    padding-top: 75px; /* Aumentado para evitar que tape el buscador */
+    padding-top: 85px; /* Aumentado aún más para evitar que tape el buscador */
   }
 
   /* Filtros optimizados para móvil */
@@ -664,7 +664,7 @@ h1 {
   }
   
   body {
-    padding-top: 70px; /* Aumentado para pantallas muy pequeñas */
+    padding-top: 80px; /* Aumentado para pantallas muy pequeñas */
   }
   
   .jugador {
