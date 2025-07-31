@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Seguimiento Jugadores a Préstamo - Independiente</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4224083206623509"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Ejemplo de header alineado -->
+  <header id="barra-superior">
+    <img src="img/ca_independiente.png" alt="Logo Independiente" class="logo-club" />
+    <div class="header-titulo-botones">
+      <h1>Seguimiento Jugadores a Préstamo - Independiente</h1>
+      <nav class="nav-botones">
+        <a href="proximos.html" class="btn-nav">
+          <span class="btn-icon">📅</span> Próximos partidos
+        </a>
+        <a href="tops.html" class="btn-nav">
+          <span class="btn-icon">🏆</span> Tops
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido-principal">
+    <div id="filtros" style="margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 15px;">
+      <input type="text" id="buscador" placeholder="Buscar jugador..." style="padding: 8px; font-size: 14px; flex: 1;" />
+      
+      <select id="filtro-posicion" style="padding: 8px; font-size: 14px;">
+        <option value="">Todas las posiciones</option>
+      </select>
+
+      <select id="orden" style="padding: 8px; font-size: 14px;">
+        <option value="az">Orden A-Z</option>
+        <option value="za">Orden Z-A</option>
+      </select>
+    </div>
+
+    <!-- Agrega esto arriba de #contenedor-jugadores en tu HTML -->
+    <div id="resumen-estadisticas" class="resumen">
+      <!-- El JS llenará esto -->
+    </div>
+
+    <div id="contenedor-jugadores"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
