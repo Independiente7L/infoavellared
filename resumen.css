@@ -419,34 +419,216 @@
   margin-bottom: 0;
 }
 
-/* Responsive */
+/* Responsive mejorado para móviles */
 @media (max-width: 768px) {
+  /* Secciones más compactas en móvil */
+  .resumen-seccion {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  .seccion-titulo {
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+  }
+
+  /* Timeline móvil simplificado */
+  .timeline-container {
+    padding: 15px 0;
+  }
+  
   .timeline-item:nth-child(odd) .timeline-content,
   .timeline-item:nth-child(even) .timeline-content {
-    margin-left: 30px;
+    margin-left: 25px;
     margin-right: 0;
-    max-width: calc(100% - 60px);
+    max-width: calc(100% - 50px);
   }
 
   .timeline-line {
-    left: 15px;
+    left: 12px;
+    width: 3px;
   }
 
   .timeline-fecha {
-    left: 15px;
+    left: 12px;
     transform: none;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  
+  .timeline-content {
+    padding: 12px;
+    max-width: calc(100% - 45px);
   }
 
+  /* Stats grid más compacto */
   .stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .stat-card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+  
+  .stat-icon {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  
+  .stat-number {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  
+  .stat-label {
+    font-size: 12px;
   }
 
+  /* Todas las grids a una columna en móvil */
   .posiciones-container,
   .rendimientos-grid,
   .vencimientos-container,
   .compras-container,
   .paises-container {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  /* Cards más compactas */
+  .posicion-card,
+  .rendimiento-categoria,
+  .vencimiento-card,
+  .compra-card,
+  .pais-card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+  
+  .posicion-titulo,
+  .categoria-titulo,
+  .compra-titulo {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  /* Chips de jugadores más pequeños */
+  .jugador-chip {
+    padding: 4px 8px;
+    font-size: 11px;
+    gap: 3px;
+  }
+  
+  .jugador-escudo {
+    width: 14px;
+    height: 14px;
+  }
+  
+  /* Top jugadores más compactos */
+  .top-jugador {
+    padding: 8px;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  
+  .top-numero {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+  
+  .top-escudo {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .top-nombre {
+    font-size: 14px;
+  }
+  
+  .top-club {
+    font-size: 11px;
+  }
+  
+  .top-valor {
+    padding: 3px 6px;
+    font-size: 12px;
+  }
+  
+  /* Timeline jugadores más compactos */
+  .timeline-jugador {
+    padding: 6px;
+    gap: 8px;
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+  
+  /* Países más compactos */
+  .pais-bandera {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .pais-nombre {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .pais-contador {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  
+  .pais-jugador {
+    padding: 4px;
+    font-size: 12px;
+    gap: 6px;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .resumen-seccion {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .seccion-titulo {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .stat-card {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .timeline-content {
+    padding: 10px;
+    max-width: calc(100% - 35px);
+  }
+  
+  .timeline-item:nth-child(odd) .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 20px;
+  }
+  
+  .timeline-line {
+    left: 8px;
+  }
+  
+  .timeline-fecha {
+    left: 8px;
+    font-size: 11px;
+    padding: 4px 8px;
   }
 }
 

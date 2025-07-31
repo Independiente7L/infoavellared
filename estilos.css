@@ -342,7 +342,234 @@ h1 {
   margin-right: 4px;
 }
 
-/* --- OPTIMIZACIÓN MOBILE --- */
+/* --- OPTIMIZACIÓN MOBILE MEJORADA --- */
+@media (max-width: 768px) {
+  /* Header más compacto */
+  #barra-superior {
+    padding: 8px 15px;
+    height: 60px;
+  }
+  
+  #barra-superior h1 {
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .logo-club {
+    height: 35px;
+    margin-right: 12px;
+  }
+
+  /* Contenido principal con mejor spacing */
+  #contenido-principal {
+    padding: 15px 12px;
+  }
+  
+  body {
+    padding-top: 70px;
+  }
+
+  /* Grid de jugadores optimizado para móvil */
+  #contenedor-jugadores {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  /* Cards de jugadores más compactas */
+  .jugador {
+    padding: 15px;
+    margin: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .jugador h3 {
+    font-size: 18px;
+    margin: 8px 0 12px 0;
+    text-align: center;
+  }
+  
+  .jugador p {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 8px 0;
+  }
+  
+  .escudo-club {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 12px auto;
+    display: block;
+  }
+
+  /* Filtros más compactos y user-friendly */
+  #filtros {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    gap: 12px;
+  }
+  
+  #buscador {
+    min-width: 100%;
+    order: -1;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 20px;
+  }
+  
+  select {
+    padding: 10px 35px 10px 15px;
+    font-size: 14px;
+    border-radius: 12px;
+    min-width: calc(50% - 6px);
+  }
+  
+  #orden {
+    order: 1;
+  }
+  
+  #filtro-posicion {
+    order: 2;
+  }
+  
+  #jugadores-por-pagina {
+    order: 3;
+    min-width: 100%;
+    margin-top: 8px;
+  }
+
+  /* Info de resultados más visible */
+  #info-resultados {
+    padding: 10px 15px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+
+  /* Paginación optimizada para móvil */
+  .paginacion {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+    justify-content: center;
+  }
+  
+  .btn-paginacion {
+    padding: 10px 12px;
+    font-size: 13px;
+    min-width: 40px;
+    border-radius: 10px;
+  }
+  
+  /* Botones anterior/siguiente más grandes en móvil */
+  .btn-paginacion:first-child,
+  .btn-paginacion:last-child {
+    padding: 10px 16px;
+    font-weight: 600;
+  }
+
+  /* Menu hamburguesa mejorado */
+  .menu-hamburger {
+    width: 35px;
+    height: 35px;
+    padding: 8px;
+  }
+  
+  .hamburger-line {
+    height: 2px;
+    margin: 3px 0;
+  }
+  
+  .menu-dropdown {
+    right: 10px;
+    left: auto;
+    width: 200px;
+    border-radius: 12px;
+  }
+  
+  .menu-item {
+    padding: 15px 20px;
+    font-size: 15px;
+  }
+  
+  .menu-icon {
+    font-size: 18px;
+  }
+
+  /* Próximos partidos móvil */
+  .proximos-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0 5px;
+  }
+  
+  .jugador-proximo {
+    margin: 0;
+    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  .proximos-titulo {
+    font-size: 1.5rem;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border-radius: 12px;
+  }
+
+  /* Títulos más pequeños en móvil */
+  h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .vs-icon {
+    font-size: 0.9rem;
+    padding: 1px 6px;
+  }
+}
+
+/* Estilos específicos para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  #barra-superior {
+    padding: 6px 10px;
+    height: 55px;
+  }
+  
+  #barra-superior h1 {
+    font-size: 14px;
+  }
+  
+  .logo-club {
+    height: 30px;
+    margin-right: 8px;
+  }
+  
+  #contenido-principal {
+    padding: 12px 8px;
+  }
+  
+  .jugador {
+    padding: 12px;
+  }
+  
+  #filtros {
+    padding: 12px;
+  }
+  
+  select {
+    min-width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  #orden, #filtro-posicion {
+    order: initial;
+  }
+}
+
 @media (max-width: 900px) {
   .proximos-grid {
     grid-template-columns: 1fr;
