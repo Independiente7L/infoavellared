@@ -75,5 +75,5 @@ document.addEventListener("DOMContentLoaded", () => {
           }).join("")}
         </div>
       `;
+        });
     });
-});
