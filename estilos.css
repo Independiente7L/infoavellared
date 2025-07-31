@@ -10,12 +10,12 @@
   width: 100%;
   z-index: 1000;
   height: 70px;
+  box-sizing: border-box;
 }
 
 .logo-club {
   height: 48px;
   width: auto;
-  margin-right: 18px;
 }
 
 .header-titulo-botones {
@@ -24,6 +24,37 @@
   gap: 32px;
   flex: 1;
   min-width: 0;
+  justify-content: space-between;
+}
+
+/* Para escritorio: logo y título a la izquierda, menú a la derecha */
+.logo-titulo-container {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: 1;
+}
+
+/* Menú a la derecha en escritorio */
+.nav-menu {
+  margin-left: auto;
+  position: relative;
+}
+
+/* Dropdown por defecto a la derecha (escritorio) */
+.menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+  min-width: 200px;
 }
 
 #barra-superior h1 {
@@ -351,21 +382,50 @@ h1 {
 
 /* --- OPTIMIZACIÓN MOBILE MEJORADA --- */
 @media (max-width: 768px) {
-  /* Header más compacto */
+  /* Header más compacto y reorganizado */
   #barra-superior {
-    padding: 8px 15px;
+    padding: 8px 12px;
     height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Reorganizar orden: Menu - Logo/Título - (espacio) */
+  .header-titulo-botones {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    order: 0;
+  }
+
+  /* Menú hamburguesa a la izquierda */
+  .nav-menu {
+    order: -1;
+    margin-right: 12px;
+  }
+
+  /* Logo y título centrados */
+  .logo-titulo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    justify-content: center;
   }
   
   #barra-superior h1 {
     font-size: 15px;
     margin: 0;
     line-height: 1.2;
+    text-align: center;
   }
   
   .logo-club {
     height: 32px;
-    margin-right: 10px;
+    margin-right: 8px;
   }
 
   /* Contenido principal con mejor spacing */
@@ -383,6 +443,7 @@ h1 {
     gap: 8px;
     border-radius: 10px;
     flex-direction: column;
+    margin-top: 5px;
   }
 
   #buscador {
@@ -457,23 +518,25 @@ h1 {
   }
 
   /* Navegación hamburguesa optimizada */
-  .nav-menu {
-    position: relative;
-  }
-
   .menu-hamburger {
     width: 35px;
     height: 35px;
     padding: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
   }
 
   .hamburger-line {
     height: 2px;
     margin: 4px 0;
+    background: white;
   }
 
+  /* En móvil: menú se abre a la izquierda */
   .menu-dropdown {
-    right: 0;
+    left: 0;
+    right: auto;
     top: 45px;
     min-width: 180px;
     padding: 8px 0;
@@ -629,7 +692,10 @@ h1 {
   
   .logo-club {
     height: 28px;
-    margin-right: 6px;
+  }
+
+  .logo-titulo-container {
+    gap: 6px;
   }
   
   #contenido-principal {
@@ -690,7 +756,10 @@ h1 {
     padding: 5px;
   }
 
+  /* En móvil pequeño: menú también a la izquierda */
   .menu-dropdown {
+    left: 0;
+    right: auto;
     min-width: 160px;
     top: 40px;
   }
