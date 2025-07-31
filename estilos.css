@@ -402,7 +402,7 @@ h1 {
 
   /* Filtros optimizados para móvil */
   #filtros {
-    padding: 12px;
+    padding: 32px;
     gap: 8px;
     border-radius: 10px;
     flex-direction: column;
