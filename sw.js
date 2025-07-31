@@ -229,7 +229,7 @@ async function doBackgroundSync() {
       await cache.put('/data.json', response.clone());
       console.log('✅ Background sync: Datos actualizados');
       
-      // Notificar a los clientes
+      // Notificar a los clientes (silenciosamente)
       const clients = await self.clients.matchAll();
       clients.forEach(client => {
         client.postMessage({

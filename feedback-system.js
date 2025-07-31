@@ -509,12 +509,10 @@ function addNotificationStyles() {
 document.addEventListener('DOMContentLoaded', () => {
   addNotificationStyles();
   
-  // Mostrar notificación de bienvenida
-  setTimeout(() => {
-    window.notifications.success('¡Sistema de optimizaciones cargado! 🚀');
-  }, 1000);
+  // Sistema cargado silenciosamente
+  console.log('🚀 Sistema de optimizaciones cargado correctamente');
   
-  // Mostrar tour de ayuda para nuevos usuarios
+  // Mostrar tour de ayuda para nuevos usuarios (sin notificación inicial)
   if (!localStorage.getItem('tour_shown')) {
     setTimeout(() => {
       window.help.showWelcomeTour();

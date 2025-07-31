@@ -112,26 +112,23 @@
   <script>
     // Integración con optimizaciones
     document.addEventListener('DOMContentLoaded', function() {
-      // Registrar Service Worker
+      // Registrar Service Worker (silencioso)
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js')
           .then(registration => {
             console.log('✅ Service Worker registrado:', registration);
-            
-            // Notificar al usuario sobre cache offline
-            if (window.notifications) {
-              window.notifications.info('🔄 Cache offline activado - La aplicación funcionará sin conexión');
-            }
+            // Cache offline activado silenciosamente
           })
           .catch(error => {
             console.error('❌ Error registrando Service Worker:', error);
           });
         
-        // Escuchar mensajes del Service Worker
+        // Escuchar mensajes del Service Worker (sin mostrar notificaciones)
         navigator.serviceWorker.addEventListener('message', event => {
           const { type, message } = event.data;
-          if (type === 'DATA_UPDATED' && window.notifications) {
-            window.notifications.success('📊 Datos actualizados automáticamente');
+          if (type === 'DATA_UPDATED') {
+            console.log('📊 Datos actualizados automáticamente');
+            // Actualizar datos silenciosamente
           }
         });
       }
