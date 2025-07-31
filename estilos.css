@@ -55,7 +55,7 @@
 }
 
 body {
-  padding-top: 90px; /* Ajustado para dar espacio al header fijo */
+  padding-top: 80px; /* Ajustado para dar espacio al header fijo */
   font-family: 'Arial', sans-serif;
   background: linear-gradient(to bottom, #b30000, #8a0000);
   color: #222;
@@ -664,7 +664,7 @@ h1 {
   }
   
   body {
-    padding-top: 85px; /* Ajustado para pantallas muy pequeñas */
+    padding-top: 105px; /* Ajustado para pantallas muy pequeñas */
   }
   
   .jugador {
