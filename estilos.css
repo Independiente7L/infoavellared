@@ -397,12 +397,12 @@ h1 {
   }
   
   body {
-    padding-top: 105px; /* Aumentado aún más para evitar que tape el buscador */
+    padding-top: 155px; /* Aumentado aún más para evitar que tape el buscador */
   }
 
   /* Filtros optimizados para móvil */
   #filtros {
-    padding: 32px;
+    padding: 12px;
     gap: 8px;
     border-radius: 10px;
     flex-direction: column;
