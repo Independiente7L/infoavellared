@@ -43,6 +43,13 @@ body {
   background: linear-gradient(to bottom, #b30000, #8a0000);
   color: #222;
   margin: 0;
+  /* Mejor experiencia táctil en móvil */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   /* QUITAMOS padding: 20px; de acá */
 }
 
@@ -347,61 +354,138 @@ h1 {
   /* Header más compacto */
   #barra-superior {
     padding: 8px 15px;
-    height: 60px;
+    height: 55px;
   }
   
   #barra-superior h1 {
-    font-size: 16px;
+    font-size: 15px;
     margin: 0;
     line-height: 1.2;
   }
   
   .logo-club {
-    height: 35px;
-    margin-right: 12px;
+    height: 32px;
+    margin-right: 10px;
   }
 
   /* Contenido principal con mejor spacing */
   #contenido-principal {
-    padding: 15px 12px;
+    padding: 12px 10px;
   }
   
   body {
-    padding-top: 70px;
+    padding-top: 65px;
+  }
+
+  /* Filtros optimizados para móvil */
+  #filtros {
+    padding: 12px;
+    gap: 8px;
+    border-radius: 10px;
+    flex-direction: column;
+  }
+
+  #buscador {
+    font-size: 16px; /* Evita zoom en iOS */
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  select {
+    font-size: 16px; /* Evita zoom en iOS */
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: auto;
   }
 
   /* Grid de jugadores optimizado para móvil */
   #contenedor-jugadores {
     grid-template-columns: 1fr;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 12px;
+    margin-top: 15px;
   }
 
   /* Cards de jugadores más compactas */
   .jugador {
-    padding: 15px;
+    padding: 12px;
     margin: 0;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   }
   
   .jugador h3 {
-    font-size: 18px;
-    margin: 8px 0 12px 0;
+    font-size: 16px;
+    margin: 6px 0 10px 0;
     text-align: center;
   }
   
   .jugador p {
-    font-size: 14px;
-    line-height: 1.4;
-    margin: 8px 0;
+    font-size: 13px;
+    line-height: 1.3;
+    margin: 6px 0;
   }
   
   .escudo-club {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 12px auto;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 8px auto;
     display: block;
+  }
+
+  /* Paginación móvil */
+  .paginacion {
+    padding: 15px 5px;
+    justify-content: center;
+  }
+
+  .btn-paginacion {
+    padding: 8px 12px;
+    font-size: 14px;
+    margin: 0 2px;
+    min-width: 40px;
+  }
+
+  /* Info resultados */
+  #info-resultados {
+    font-size: 13px;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  /* Navegación hamburguesa optimizada */
+  .nav-menu {
+    position: relative;
+  }
+
+  .menu-hamburger {
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+  }
+
+  .hamburger-line {
+    height: 2px;
+    margin: 4px 0;
+  }
+
+  .menu-dropdown {
+    right: 0;
+    top: 45px;
+    min-width: 180px;
+    padding: 8px 0;
+  }
+
+  .menu-item {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .menu-icon {
+    font-size: 16px;
   }
 
   /* Filtros más compactos y user-friendly */
@@ -535,38 +619,85 @@ h1 {
 /* Estilos específicos para pantallas muy pequeñas */
 @media (max-width: 480px) {
   #barra-superior {
-    padding: 6px 10px;
-    height: 55px;
+    padding: 6px 8px;
+    height: 50px;
   }
   
   #barra-superior h1 {
-    font-size: 14px;
+    font-size: 13px;
   }
   
   .logo-club {
-    height: 30px;
-    margin-right: 8px;
+    height: 28px;
+    margin-right: 6px;
   }
   
   #contenido-principal {
-    padding: 12px 8px;
+    padding: 10px 6px;
+  }
+  
+  body {
+    padding-top: 60px;
   }
   
   .jugador {
-    padding: 12px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .jugador h3 {
+    font-size: 15px;
+    margin: 5px 0 8px 0;
+  }
+  
+  .jugador p {
+    font-size: 12px;
+    margin: 5px 0;
+  }
+  
+  .escudo-club {
+    width: 35px;
+    height: 35px;
+    margin: 0 auto 6px auto;
   }
   
   #filtros {
-    padding: 12px;
+    padding: 10px;
+    gap: 6px;
+  }
+  
+  #buscador {
+    font-size: 16px;
+    padding: 10px 12px;
   }
   
   select {
-    min-width: 100%;
-    margin-bottom: 8px;
+    font-size: 16px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
   }
-  
-  #orden, #filtro-posicion {
-    order: initial;
+
+  .btn-paginacion {
+    padding: 6px 8px;
+    font-size: 12px;
+    margin: 0 1px;
+    min-width: 35px;
+  }
+
+  .menu-hamburger {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+  }
+
+  .menu-dropdown {
+    min-width: 160px;
+    top: 40px;
+  }
+
+  .menu-item {
+    padding: 10px 12px;
+    font-size: 13px;
   }
 }
 

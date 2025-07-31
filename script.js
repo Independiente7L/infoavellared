@@ -29,6 +29,58 @@ document.addEventListener("DOMContentLoaded", () => {
     return valor;
   }
 
+  function convertirFechaProximoPartido(valor) {
+    const numero = Number(valor);
+    const fechaActual = new Date();
+    let fechaPartido;
+
+    // Convertir el valor a fecha
+    if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
+      fechaPartido = new Date(valor);
+    } else if (!isNaN(numero) && numero > 1_500_000_000_000) {
+      fechaPartido = new Date(numero);
+    } else if (!isNaN(numero) && numero > 30000 && numero < 60000) {
+      fechaPartido = new Date((numero - 25569) * 86400 * 1000);
+    } else {
+      return valor;
+    }
+
+    // Si la fecha ya pasó, mostrar "A definir"
+    if (fechaPartido < fechaActual) {
+      return "A definir";
+    }
+
+    // Si la fecha es futura, mostrar la fecha formateada
+    return fechaPartido.toLocaleDateString("es-AR", {
+      day: "2-digit", month: "long", year: "numeric"
+    });
+  }
+
+  function verificarProximoRival(rival, fechaPartido) {
+    const numero = Number(fechaPartido);
+    const fechaActual = new Date();
+    let fechaPartidoDate;
+
+    // Convertir el valor a fecha
+    if (typeof fechaPartido === "string" && /^\d{4}-\d{2}-\d{2}$/.test(fechaPartido)) {
+      fechaPartidoDate = new Date(fechaPartido);
+    } else if (!isNaN(numero) && numero > 1_500_000_000_000) {
+      fechaPartidoDate = new Date(numero);
+    } else if (!isNaN(numero) && numero > 30000 && numero < 60000) {
+      fechaPartidoDate = new Date((numero - 25569) * 86400 * 1000);
+    } else {
+      return rival;
+    }
+
+    // Si la fecha ya pasó, mostrar "A definir"
+    if (fechaPartidoDate < fechaActual) {
+      return "A definir";
+    }
+
+    // Si la fecha es futura, mostrar el rival normal
+    return rival;
+  }
+
   function renderizar(jugadoresPaginados) {
     const contenedor = document.getElementById("contenedor-jugadores");
     contenedor.innerHTML = "";
@@ -58,8 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
           GEC: ${j["Goles en Contra"]} |
           Imbatido: ${j["Imbatido"]}
         </p>
-        <p><strong>Próximo Rival:</strong> ${j["Próximo Rival"]}</p>
-        <p><strong>Próximo Partido:</strong> ${convertirFecha(j["Próximo Partido"])}</p>
+        <p><strong>Próximo Rival:</strong> ${verificarProximoRival(j["Próximo Rival"], j["Próximo Partido"])}</p>
+        <p><strong>Próximo Partido:</strong> ${convertirFechaProximoPartido(j["Próximo Partido"])}</p>
       `;
 
       contenedor.appendChild(div);
