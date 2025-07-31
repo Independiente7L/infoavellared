@@ -97,27 +97,29 @@ h1 {
 
 #contenedor-jugadores {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
 }
 
 .jugador {
   background: #f9f9f9;
   border-left: 6px solid #b30000;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   transition: transform 0.2s;
   position: relative;
 }
 
 .jugador:hover {
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .jugador h3 {
   margin-top: 0;
   color: #b30000;
+  font-size: 18px;
   font-size: 22px;
   padding-right: 60px;
 }
@@ -380,4 +382,423 @@ h1 {
   .btn-icon {
     font-size: 1.2em;
   }
+}
+
+/* ============================================
+   ESTILOS PARA MENÚ HAMBURGUESA
+   ============================================ */
+
+.nav-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.menu-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.menu-hamburger:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.hamburger-line {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Animación del menú hamburguesa cuando está activo */
+.menu-hamburger.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-hamburger.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Estilos del menú desplegable */
+.menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(179, 0, 0, 0.2);
+  min-width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+  margin-top: 10px;
+}
+
+.menu-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #b30000;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-radius: 12px;
+  margin: 5px;
+}
+
+.menu-item:hover {
+  background: linear-gradient(135deg, #b30000, #d32f2f);
+  color: white;
+  transform: translateX(5px);
+}
+
+.menu-item:first-child {
+  margin-top: 10px;
+}
+
+.menu-item:last-child {
+  margin-bottom: 10px;
+}
+
+.menu-icon {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
+.menu-text {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Responsive para el menú */
+@media (max-width: 768px) {
+  .menu-dropdown {
+    right: 0;
+    min-width: 200px;
+  }
+  
+  .menu-item {
+    padding: 12px 16px;
+  }
+  
+  .menu-text {
+    font-size: 15px;
+  }
+}
+
+/* Animación de entrada para los elementos del menú */
+.menu-dropdown.active .menu-item {
+  animation: slideInMenu 0.3s ease forwards;
+}
+
+.menu-dropdown.active .menu-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.menu-dropdown.active .menu-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+@keyframes slideInMenu {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Estilos para paginación */
+.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.btn-paginacion {
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border: 2px solid #b30000;
+  color: #b30000;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 45px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(179, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-paginacion::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s;
+}
+
+.btn-paginacion:hover::before {
+  left: 100%;
+}
+
+.btn-paginacion:hover {
+  background: linear-gradient(135deg, #b30000, #d32f2f);
+  color: white;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(179, 0, 0, 0.3);
+}
+
+.btn-paginacion.activo {
+  background: linear-gradient(135deg, #b30000, #8a0000);
+  color: white;
+  cursor: default;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(179, 0, 0, 0.4);
+}
+
+.btn-paginacion:disabled {
+  background: linear-gradient(135deg, #f5f5f5, #e9ecef);
+  border-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-paginacion:disabled:hover {
+  background: linear-gradient(135deg, #f5f5f5, #e9ecef);
+  color: #999;
+  transform: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos modernos para filtros */
+#filtros {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(179, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Estilo moderno para input de búsqueda */
+#buscador {
+  flex: 1;
+  min-width: 250px;
+  padding: 14px 20px;
+  font-size: 15px;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  color: #333;
+  font-weight: 500;
+}
+
+#buscador::placeholder {
+  color: #999;
+  font-weight: 400;
+}
+
+#buscador:focus {
+  border-color: #b30000;
+  box-shadow: 0 6px 20px rgba(179, 0, 0, 0.2);
+  transform: translateY(-1px);
+  background: #ffffff;
+}
+
+/* Estilos modernos para selects */
+select {
+  padding: 14px 18px;
+  font-size: 14px;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  background-image: 
+    linear-gradient(135deg, #ffffff, #f8f9fa),
+    url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b30000'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center, center;
+  background-size: auto, 20px;
+  padding-right: 45px;
+}
+
+select:hover {
+  border-color: #b30000;
+  box-shadow: 0 6px 20px rgba(179, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+select:focus {
+  border-color: #b30000;
+  box-shadow: 0 6px 20px rgba(179, 0, 0, 0.2);
+  transform: translateY(-1px);
+  background: #ffffff;
+}
+
+/* Información de resultados moderna */
+#info-resultados {
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: #666;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #b30000;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+}
+
+/* Animación de carga para filtros */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Responsive para filtros */
+@media (max-width: 768px) {
+  #filtros {
+    padding: 20px;
+    gap: 12px;
+  }
+  
+  #buscador {
+    min-width: 100%;
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+  
+  select {
+    min-width: 120px;
+    font-size: 14px;
+  }
+  
+  .paginacion {
+    gap: 8px;
+  }
+  
+  .btn-paginacion {
+    padding: 10px 12px;
+    font-size: 13px;
+    min-width: 40px;
+  }
+}
+
+/* Efectos hover adicionales */
+#filtros:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para cuando hay resultados filtrados */
+.has-filters #info-resultados {
+  border-left-color: #4caf50;
+  background: rgba(232, 245, 233, 0.9);
+}
+
+.pagina-btn {
+  padding: 8px 12px;
+  background: #fff;
+  border: 2px solid #b30000;
+  color: #b30000;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.2s;
+  min-width: 40px;
+  text-align: center;
+}
+
+.pagina-btn:hover {
+  background: #b30000;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.pagina-btn.active {
+  background: #b30000;
+  color: white;
+  cursor: default;
+}
+
+.pagina-btn.disabled {
+  background: #f5f5f5;
+  border-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.pagina-btn.disabled:hover {
+  background: #f5f5f5;
+  color: #999;
+  transform: none;
+}
+
+.pagina-info {
+  margin: 0 15px;
+  color: #666;
+  font-size: 14px;
+  white-space: nowrap;
 }

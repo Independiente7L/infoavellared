@@ -14,13 +14,22 @@
     <img src="img/ca_independiente.png" alt="Logo Independiente" class="logo-club" />
     <div class="header-titulo-botones">
       <h1>Seguimiento Jugadores a Préstamo - Independiente</h1>
-      <nav class="nav-botones">
-        <a href="Index.html" class="btn-nav">
-          <span class="btn-icon">🏠</span> Inicio
-        </a>
-        <a href="resumen.html" class="btn-nav">
-          <span class="btn-icon">📊</span> Resumen
-        </a>
+      <nav class="nav-menu">
+        <button id="menu-toggle" class="menu-hamburger">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <div id="menu-dropdown" class="menu-dropdown">
+          <a href="Index.html" class="menu-item">
+            <span class="menu-icon">🏠</span>
+            <span class="menu-text">Inicio</span>
+          </a>
+          <a href="resumen.html" class="menu-item">
+            <span class="menu-icon">📊</span>
+            <span class="menu-text">Resumen</span>
+          </a>
+        </div>
       </nav>
     </div>
   </header>
@@ -28,5 +37,27 @@
     <div id="lista-proximos"></div>
   </main>
   <script src="proximos.js"></script>
+  <script>
+    // JavaScript para el menú hamburguesa
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const menuDropdown = document.getElementById('menu-dropdown');
+      
+      if (menuToggle && menuDropdown) {
+        menuToggle.addEventListener('click', function() {
+          menuDropdown.classList.toggle('active');
+          menuToggle.classList.toggle('active');
+        });
+        
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(event) {
+          if (!menuToggle.contains(event.target) && !menuDropdown.contains(event.target)) {
+            menuDropdown.classList.remove('active');
+            menuToggle.classList.remove('active');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

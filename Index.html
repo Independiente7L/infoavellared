@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Seguimiento Jugadores a Préstamo - Independiente</title>
+  <title>Info AvellaRED - Préstamos</title>
   <link rel="stylesheet" href="estilos.css" />
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4224083206623509"
@@ -13,34 +13,79 @@
   <header id="barra-superior">
     <img src="img/ca_independiente.png" alt="Logo Independiente" class="logo-club" />
     <div class="header-titulo-botones">
-      <h1>Seguimiento Jugadores a Préstamo - Independiente</h1>
-      <nav class="nav-botones">
-        <a href="resumen.html" class="btn-nav">
-          <span class="btn-icon">📊</span> Resumen
-        </a>
-        <a href="proximos.html" class="btn-nav">
-          <span class="btn-icon">📅</span> Próximos partidos
-        </a>
+      <h1>Info AvellaRED - Préstamos</h1>
+      <nav class="nav-menu">
+        <button id="menu-toggle" class="menu-hamburger">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <div id="menu-dropdown" class="menu-dropdown">
+          <a href="resumen.html" class="menu-item">
+            <span class="menu-icon">📊</span>
+            <span class="menu-text">Resumen</span>
+          </a>
+          <a href="proximos.html" class="menu-item">
+            <span class="menu-icon">📅</span>
+            <span class="menu-text">Próximos Partidos</span>
+          </a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="contenido-principal">
-    <div id="filtros" style="margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 15px;">
-      <input type="text" id="buscador" placeholder="Buscar jugador..." style="padding: 8px; font-size: 14px; flex: 1;" />
+    <div id="filtros">
+      <input type="text" id="buscador" placeholder="🔍 Buscar jugador..." />
       
-      <select id="filtro-posicion" style="padding: 8px; font-size: 14px;">
-        <option value="">Todas las posiciones</option>
+      <select id="filtro-posicion">
+        <option value="">📍 Todas las posiciones</option>
       </select>
 
-      <select id="orden" style="padding: 8px; font-size: 14px;">
-        <option value="az">Orden A-Z</option>
-        <option value="za">Orden Z-A</option>
+      <select id="orden">
+        <option value="az">🔤 Orden A-Z</option>
+        <option value="za">🔠 Orden Z-A</option>
+      </select>
+
+      <select id="jugadores-por-pagina">
+        <option value="6">📄 6 por página</option>
+        <option value="9">📄 9 por página</option>
+        <option value="12" selected>📄 12 por página</option>
+        <option value="18">📄 18 por página</option>
+        <option value="all">📋 Todos</option>
       </select>
     </div>
 
+    <!-- Información de resultados -->
+    <div id="info-resultados"></div>
+
     <div id="contenedor-jugadores"></div>
+    
+    <!-- Paginación -->
+    <div id="paginacion" class="paginacion">
+      <!-- Se llena con JavaScript -->
+    </div>
   </main>
   <script src="script.js"></script>
+  <script>
+    // JavaScript para el menú hamburguesa
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const menuDropdown = document.getElementById('menu-dropdown');
+      
+      menuToggle.addEventListener('click', function() {
+        menuDropdown.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+      });
+      
+      // Cerrar menú al hacer clic fuera
+      document.addEventListener('click', function(event) {
+        if (!menuToggle.contains(event.target) && !menuDropdown.contains(event.target)) {
+          menuDropdown.classList.remove('active');
+          menuToggle.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
