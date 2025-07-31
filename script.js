@@ -29,6 +29,20 @@ document.addEventListener("DOMContentLoaded", () => {
     return valor;
   }
 
+  function obtenerTimestamp(valor) {
+    const numero = Number(valor);
+    if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
+      return new Date(valor).getTime();
+    }
+    if (!isNaN(numero) && numero > 1_500_000_000_000) {
+      return numero;
+    }
+    if (!isNaN(numero) && numero > 30000 && numero < 60000) {
+      return (numero - 25569) * 86400 * 1000;
+    }
+    return 0;
+  }
+
   function convertirFechaProximoPartido(valor) {
     const numero = Number(valor);
     const fechaActual = new Date();
@@ -93,6 +107,28 @@ document.addEventListener("DOMContentLoaded", () => {
     jugadoresPaginados.forEach(j => {
       const div = document.createElement("div");
       div.className = "jugador";
+      
+      // Verificar si el próximo partido es hoy
+      const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
+      const hoy = new Date();
+      const esHoy = fechaPartido > 0 && new Date(fechaPartido).toDateString() === hoy.toDateString();
+      const esFuturo = fechaPartido > hoy.getTime();
+      
+      // Generar el HTML de próximo partido con mejor formato
+      let proximoPartidoHtml = '';
+      if (j["Próximo Rival"] && j["Próximo Rival"] !== "-" && esFuturo) {
+        proximoPartidoHtml = `
+          <div class="proximo-partido-info">
+            <p class="proximo-partido-titulo"><strong>⚽ Próximo Partido</strong></p>
+            <p class="proximo-rival">
+              <span class="vs-icon">VS</span> ${verificarProximoRival(j["Próximo Rival"], j["Próximo Partido"])}
+              ${esHoy ? '<span class="badge-hoy">HOY</span>' : ''}
+            </p>
+            <p class="proximo-fecha"><span class="fecha-icon">📆</span> ${convertirFechaProximoPartido(j["Próximo Partido"])}</p>
+          </div>
+        `;
+      }
+      
       div.innerHTML = `
         <img src="img/${j["Escudo"]}" alt="Escudo ${j["Club Actual"]}" class="escudo-club" />
         <h3>${j["Jugador"]}</h3>
@@ -110,8 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
           GEC: ${j["Goles en Contra"]} |
           Imbatido: ${j["Imbatido"]}
         </p>
-        <p><strong>Próximo Rival:</strong> ${verificarProximoRival(j["Próximo Rival"], j["Próximo Partido"])}</p>
-        <p><strong>Próximo Partido:</strong> ${convertirFechaProximoPartido(j["Próximo Partido"])}</p>
+        ${proximoPartidoHtml}
       `;
 
       contenedor.appendChild(div);
@@ -230,6 +265,9 @@ document.addEventListener("DOMContentLoaded", () => {
       jugadores = data;
       jugadoresFiltrados = [...jugadores];
 
+      // Generar resumen de próximos partidos
+      generarResumenProximos();
+
       const posicionesUnicas = [...new Set(data.map(j => j["Posición"]))].sort();
       const filtroPosicion = document.getElementById("filtro-posicion");
       posicionesUnicas.forEach(pos => {
@@ -276,5 +314,68 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => {
       console.error("Error al cargar data.json:", err);
+      document.getElementById("contenedor-jugadores").innerHTML = 
+        '<p style="text-align: center; color: #ff6b6b; grid-column: 1 / -1;">❌ Error al cargar los datos</p>';
     });
+
+  // Función para generar resumen de próximos partidos
+  function generarResumenProximos() {
+    const hoy = new Date();
+    const proximosPartidos = jugadores.filter(j => {
+      const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
+      const tieneRival = j["Próximo Rival"] && j["Próximo Rival"] !== "-";
+      return fechaPartido >= hoy.setHours(0,0,0,0) && tieneRival;
+    });
+
+    const partidosHoy = proximosPartidos.filter(j => {
+      const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
+      return new Date(fechaPartido).toDateString() === hoy.toDateString();
+    });
+
+    const partidosEstaSemana = proximosPartidos.filter(j => {
+      const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
+      const diasHasta = Math.ceil((fechaPartido - hoy.getTime()) / (1000 * 60 * 60 * 24));
+      return diasHasta <= 7;
+    });
+
+    // Crear div de resumen si no existe
+    let resumenDiv = document.getElementById("resumen-proximos");
+    if (!resumenDiv) {
+      resumenDiv = document.createElement("div");
+      resumenDiv.id = "resumen-proximos";
+      resumenDiv.className = "resumen-proximos";
+      
+      const contenidoPrincipal = document.getElementById("contenido-principal");
+      const filtros = document.getElementById("filtros");
+      contenidoPrincipal.insertBefore(resumenDiv, filtros);
+    }
+
+    if (proximosPartidos.length > 0) {
+      resumenDiv.innerHTML = `
+        <div class="resumen-stats">
+          <div class="stat-item">
+            <span class="stat-numero">${proximosPartidos.length}</span>
+            <span class="stat-texto">Próximos partidos</span>
+          </div>
+          <div class="stat-item destacado">
+            <span class="stat-numero">${partidosHoy.length}</span>
+            <span class="stat-texto">Hoy</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-numero">${partidosEstaSemana.length}</span>
+            <span class="stat-texto">Esta semana</span>
+          </div>
+        </div>
+      `;
+    } else {
+      resumenDiv.innerHTML = `
+        <div class="resumen-stats">
+          <div class="stat-item">
+            <span class="stat-numero">0</span>
+            <span class="stat-texto">Próximos partidos programados</span>
+          </div>
+        </div>
+      `;
+    }
+  }
 });
