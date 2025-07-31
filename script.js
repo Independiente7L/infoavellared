@@ -75,18 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     renderizar(filtrados);
-    mostrarResumen(filtrados);
-  }
-
-  function mostrarResumen(jugadores) {
-    const totalGoles = jugadores.reduce((sum, j) => sum + Number(j["Goles"] || 0), 0);
-    const totalPartidos = jugadores.reduce((sum, j) => sum + Number(j["Partidos Jugados"] || 0), 0);
-    const totalAsistencias = jugadores.reduce((sum, j) => sum + Number(j["Asistencias"] || 0), 0);
-    document.getElementById("resumen-estadisticas").innerHTML = `
-      <span class="stat"><span class="stat-icon">⚽</span>Partidos: ${totalPartidos}</span>
-      <span class="stat"><span class="stat-icon">🥅</span>Goles: ${totalGoles}</span>
-      <span class="stat"><span class="stat-icon">🅰️</span>Asistencias: ${totalAsistencias}</span>
-    `;
   }
 
   fetch('data.json')
@@ -104,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       renderizar(jugadores);
-      mostrarResumen(jugadores);
 
       document.getElementById("buscador").addEventListener("input", aplicarFiltros);
       filtroPosicion.addEventListener("change", aplicarFiltros);
