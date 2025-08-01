@@ -39,7 +39,11 @@ function obtenerTimestamp(valor) {
 
 function obtenerDiasHastaPartido(fechaPartido) {
   const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0); // Normalizar a medianoche
+  
   const fecha = new Date(obtenerTimestamp(fechaPartido));
+  fecha.setHours(0, 0, 0, 0); // Normalizar a medianoche
+  
   const diferencia = fecha.getTime() - hoy.getTime();
   return Math.ceil(diferencia / (1000 * 3600 * 24));
 }
@@ -114,7 +118,7 @@ let partidosFiltrados = [];
 document.addEventListener("DOMContentLoaded", () => {
   mostrarLoading(true);
   
-  fetch('data.json?v=20250801v3')
+  fetch('data.json?v=20250801v4')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

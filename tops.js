@@ -32,7 +32,7 @@ function crearTabla(titulo, datos, campo, icono = "") {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch('data.json?v=20250801v3')
+  fetch('data.json?v=20250801v4')
     .then(response => response.json())
     .then(jugadores => {
       // Top 10 por cada estadística
