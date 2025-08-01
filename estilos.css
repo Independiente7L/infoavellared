@@ -503,19 +503,6 @@ h1 {
     padding: 12px 15px;
     font-size: 14px;
   }
-}
-    right: 10px !important;
-    left: auto !important;
-    top: 45px;
-    min-width: 160px;
-    max-width: calc(100vw - 20px);
-    padding: 8px 0;
-  }
-
-  .menu-item {
-    padding: 12px 15px;
-    font-size: 14px;
-  }
 
   .menu-icon {
     font-size: 16px;
@@ -647,7 +634,6 @@ h1 {
     font-size: 0.9rem;
     padding: 1px 6px;
   }
-}
 
 /* Estilos específicos para pantallas muy pequeñas */
 @media (max-width: 480px) {
@@ -764,8 +750,7 @@ h1 {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-}
-  }
+  
   .btn-icon {
     font-size: 1.2em;
   }
@@ -1259,4 +1244,5 @@ html, body {
   border-radius: 20px !important;
   margin: 15px auto !important;
   max-width: fit-content !important;
+}
 }
