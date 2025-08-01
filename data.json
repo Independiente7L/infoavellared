@@ -62,7 +62,7 @@
     "Club Actual":"Volos NPS",
     "Desde":1754006400000,
     "Hasta":1782777600000,
-    "Cargo":"$ 60.000",
+    "Cargo":"60000",
     "Opción de Compra":"$ 1.200.000 x el 70%",
     "Repesca":"NO",
     "Partidos Jugados":0,
@@ -423,7 +423,7 @@
     "Club Actual":"CA Rosario Central",
     "Desde":1738281600000,
     "Hasta":1767139200000,
-    "Cargo":"$ 150.000",
+    "Cargo":"150000",
     "Opción de Compra":"$ 2.500.000 x el 50%",
     "Repesca":"NO",
     "Partidos Jugados":13,
@@ -433,7 +433,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"San Martín (SJ)",
-    "Próximo Partido":1754708400000,
+    "Próximo Partido":1753488000000,
     "Escudo":"ca_rosario_central.png"
   },
   {
@@ -452,7 +452,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Rosario Central",
-    "Próximo Partido":1754708400000,
+    "Próximo Partido":1753488000000,
     "Escudo":"ca_san_martín_san_juan.png"
-    }
-  ]
+  }
+]
