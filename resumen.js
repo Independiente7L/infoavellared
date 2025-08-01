@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function convertirFecha(valor) {
     const numero = Number(valor);
 
+    // Formato DD/MM/YYYY como string
+    if (typeof valor === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
+      const partes = valor.split('/');
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10) - 1; // Restar 1 porque los meses en JavaScript van de 0 a 11
+      const año = parseInt(partes[2], 10);
+      return new Date(año, mes, dia);
+    }
+
     if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
       return new Date(valor);
     }

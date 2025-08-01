@@ -7,18 +7,30 @@ document.addEventListener("DOMContentLoaded", () => {
   function convertirFecha(valor) {
     const numero = Number(valor);
 
+    // Formato DD/MM/YYYY (nuevo formato)
+    if (typeof valor === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
+      const [dia, mes, año] = valor.split('/');
+      const fecha = new Date(parseInt(año), parseInt(mes) - 1, parseInt(dia));
+      return fecha.toLocaleDateString("es-AR", {
+        day: "2-digit", month: "long", year: "numeric"
+      });
+    }
+
+    // Formato YYYY-MM-DD
     if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
       return new Date(valor).toLocaleDateString("es-AR", {
         day: "2-digit", month: "long", year: "numeric"
       });
     }
 
+    // Timestamp numérico
     if (!isNaN(numero) && numero > 1_500_000_000_000) {
       return new Date(numero).toLocaleDateString("es-AR", {
         day: "2-digit", month: "long", year: "numeric"
       });
     }
 
+    // Número de serie de Excel
     if (!isNaN(numero) && numero > 30000 && numero < 60000) {
       const fecha = new Date((numero - 25569) * 86400 * 1000);
       return fecha.toLocaleDateString("es-AR", {
@@ -35,7 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let fechaPartido;
 
     // Convertir el valor a fecha
-    if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
+    if (typeof valor === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
+      // Formato DD/MM/YYYY
+      const partes = valor.split('/');
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10) - 1; // Restar 1 porque los meses en JavaScript van de 0 a 11
+      const año = parseInt(partes[2], 10);
+      fechaPartido = new Date(año, mes, dia);
+    } else if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
       fechaPartido = new Date(valor);
     } else if (!isNaN(numero) && numero > 1_500_000_000_000) {
       fechaPartido = new Date(numero);
