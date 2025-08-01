@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
     aplicarPaginacion();
   }
 
-  fetch('data.json?v=2025-08-01-mobile')
+  fetch('data.json?v=20250801v3')
     .then(response => response.json())
     .then(data => {
       jugadores = data;

@@ -114,7 +114,7 @@ let partidosFiltrados = [];
 document.addEventListener("DOMContentLoaded", () => {
   mostrarLoading(true);
   
-  fetch('data.json?v=2025-08-01-mobile')
+  fetch('data.json?v=20250801v3')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
