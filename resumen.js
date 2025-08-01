@@ -445,46 +445,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Cargar datos y generar todas las secciones
-  console.log("Iniciando carga de datos...");
-  
   fetch('data.json')
     .then(response => {
-      console.log("Respuesta recibida:", response.status);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
     .then(data => {
-      console.log("Datos cargados:", data.length, "jugadores");
       jugadores = data;
       
-      console.log("Generando estadísticas generales...");
       generarEstadisticasGenerales();
-      
-      console.log("Generando jugadores por posición...");
       generarJugadoresPorPosicion();
-      
-      console.log("Generando mejores rendimientos...");
       generarMejoresRendimientos();
-      
-      console.log("Generando cronología...");
       generarCronologia();
-      
-      console.log("Generando próximos vencimientos...");
       generarProximosVencimientos();
-      
-      console.log("Generando opciones de compra...");
       generarOpcionesCompra();
-      
-      console.log("Generando mapa de países...");
       generarMapaPaises();
-      
-      console.log("Todas las secciones generadas correctamente");
     })
     .catch(err => {
-      console.error("Error al cargar data.json:", err);
-      
       // Mostrar mensaje de error en la página
       document.getElementById("stats-grid").innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: #ffebee; border-radius: 10px; color: #c62828;">
