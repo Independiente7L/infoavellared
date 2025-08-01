@@ -1741,6 +1741,44 @@ html, body {
   }
 }
 
+/* Optimización para tablets (pantallas medianas) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .filtros-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  #buscador-proximos {
+    grid-column: 1 / -1;
+  }
+
+  .partidos-container,
+  #lista-proximos {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 15px !important;
+  }
+
+  .filtros-container .seccion-titulo {
+    font-size: 24px;
+  }
+
+  #barra-superior h1 {
+    font-size: 18px;
+  }
+
+  #contenido-principal {
+    padding: 15px 10px;
+  }
+
+  .contador-info {
+    padding: 12px 25px;
+  }
+
+  .contador-numero {
+    font-size: 28px;
+  }
+}
+
 @media (max-width: 480px) {
   .filtros-section {
     margin: 15px 0;
@@ -1761,5 +1799,102 @@ html, body {
     width: 40px;
     height: 40px;
     font-size: 16px;
+  }
+
+  /* Mejoras adicionales para móvil */
+  .filtros-container .seccion-titulo {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  #buscador-proximos,
+  #filtro-dias,
+  #orden-fecha {
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 15px;
+  }
+
+  .contador-section {
+    margin: 20px 0;
+    padding: 15px;
+  }
+
+  .contador-info {
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .contador-numero {
+    font-size: 24px;
+  }
+
+  .contador-texto {
+    font-size: 14px;
+  }
+
+  .partidos-container,
+  #lista-proximos {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    padding: 10px 0 !important;
+  }
+
+  .partido-card {
+    padding: 15px;
+    border-radius: 12px;
+    margin: 0 5px;
+  }
+
+  /* Arreglar el header en móvil */
+  #barra-superior {
+    padding: 8px 12px;
+    height: auto;
+    min-height: 60px;
+  }
+
+  #barra-superior h1 {
+    font-size: 16px;
+    margin: 0;
+    white-space: normal;
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  .header-titulo-botones {
+    gap: 15px;
+  }
+
+  .menu-hamburger {
+    width: 35px;
+    height: 35px;
+    padding: 8px;
+  }
+
+  .hamburger-line {
+    height: 2px;
+    margin: 4px 0;
+  }
+
+  /* Mejorar el contenido principal */
+  #contenido-principal {
+    padding: 10px 8px;
+    margin-top: 70px;
+  }
+
+  /* Estados vacíos y loading */
+  .loading-container,
+  .empty-state {
+    padding: 30px 15px;
+    text-align: center;
+  }
+
+  .loading-spinner {
+    font-size: 30px;
+  }
+
+  .empty-icon {
+    font-size: 40px;
   }
 }

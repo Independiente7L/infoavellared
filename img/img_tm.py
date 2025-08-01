@@ -4,6 +4,17 @@ import re
 import requests
 from ddgs import DDGS
 
+# Diccionario de correcciones de búsqueda para clubes con nombres "especiales"
+correcciones_busqueda = {
+    # Ejemplo de correcciones, agrega o modifica según tus necesidades:
+    "Círculo Deportivo": "Círculo Deportivo de Nicanor Otamendi escudo png",
+    "Arsenal FC": "Arsenal de Sarandí escudo png",
+    "Barcelona SC Guayaquil": "Barcelona Sporting Club escudo png",
+    "Real Pilar FC": "Real Pilar Club escudo png",
+    "Csd Tristán Suárez": "Tristán Suárez escudo png",
+    # Puedes agregar más correcciones aquí si lo necesitas
+}
+
 # Rutas
 excel_path = r"C:\Users\chuqui\Documents\Escritorio\CAT\TC\WEB_ROJO\tm_completo.xlsx"
 sheet_name = "Resu_Jugadores"
