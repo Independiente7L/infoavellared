@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       'uruguay': ['Boston River', 'Liverpool FC Montevideo', 'Club Deportivo Maldonado'],
       'ecuador': ['Barcelona SC Guayaquil'],
       'mexico': ['Club Puebla'],
+      'colombia': ['AD Union Magdalena', 'AD Unión Magdalena'],
       'grecia': ['Volos NPS']
     };
 
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       'uruguay': '🇺🇾',
       'ecuador': '🇪🇨',
       'mexico': '🇲🇽',
+      'colombia': '🇨🇴',
       'grecia': '🇬🇷'
     };
     return banderas[pais] || '🏴';
@@ -59,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       'uruguay': 'Uruguay',
       'ecuador': 'Ecuador',
       'mexico': 'México',
+      'colombia': 'Colombia',
       'grecia': 'Grecia'
     };
     return nombres[pais] || 'Desconocido';
