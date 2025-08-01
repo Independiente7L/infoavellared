@@ -126,17 +126,37 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.json();
     })
     .then(jugadores => {
+      console.log('📊 Total jugadores cargados:', jugadores.length);
+      
       // Filtra solo los partidos que aún no se jugaron
       const hoy = new Date();
       hoy.setHours(0, 0, 0, 0);
+      console.log('📅 Fecha de hoy normalizada:', hoy.toLocaleDateString());
+      
+      let jugadoresSinRival = 0;
+      let partidosPasados = 0;
       
       todosLosPartidos = jugadores.filter(j => {
         const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
         const tieneRival = j["Próximo Rival"] && j["Próximo Rival"].trim() !== '';
         const esFuturo = fechaPartido >= hoy.getTime();
         
+        if (!tieneRival) {
+          console.log('❌ Sin rival:', j["Jugador"], '- Rival:', j["Próximo Rival"]);
+          jugadoresSinRival++;
+        }
+        
+        if (tieneRival && !esFuturo) {
+          console.log('⏰ Partido pasado:', j["Jugador"], 'vs', j["Próximo Rival"], '- Fecha:', new Date(fechaPartido).toLocaleDateString());
+          partidosPasados++;
+        }
+        
         return esFuturo && tieneRival;
       });
+
+      console.log('🚫 Jugadores sin rival:', jugadoresSinRival);
+      console.log('⏰ Partidos pasados:', partidosPasados);
+      console.log('✅ Partidos futuros válidos:', todosLosPartidos.length);
 
       // Aplica filtros iniciales
       aplicarFiltrosJS();
