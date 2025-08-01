@@ -2,18 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Próximos partidos de jugadores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Próximos Partidos - Info AvellaRED</title>
   <link rel="stylesheet" href="estilos.css" />
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4224083206623509"
      crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Ejemplo para Index.html -->
+  <!-- Header moderno y elegante -->
   <header id="barra-superior">
     <img src="img/ca_independiente.png" alt="Logo Independiente" class="logo-club" />
     <div class="header-titulo-botones">
-      <h1>Seguimiento Jugadores a Préstamo - Independiente</h1>
+      <h1>⚽ Próximos Partidos - Info AvellaRED</h1>
       <nav class="nav-menu">
         <button id="menu-toggle" class="menu-hamburger">
           <span class="hamburger-line"></span>
@@ -33,13 +34,64 @@
       </nav>
     </div>
   </header>
-  <main id="contenido-principal" style="padding: 24px;">
-    <div id="lista-proximos"></div>
+
+  <main id="contenido-principal">
+    <!-- Sección de filtros modernos -->
+    <section id="filtros-proximos" class="filtros-section">
+      <div class="filtros-container">
+        <h2 class="seccion-titulo">🗓️ Calendario de Partidos</h2>
+        
+        <div id="filtros" class="filtros-grid">
+          <input type="text" id="buscador-proximos" placeholder="🔍 Buscar jugador o equipo..." />
+          
+          <select id="filtro-dias">
+            <option value="">📅 Todos los días</option>
+            <option value="7">📆 Próximos 7 días</option>
+            <option value="15">📆 Próximos 15 días</option>
+            <option value="30">📆 Próximo mes</option>
+          </select>
+
+          <select id="orden-fecha">
+            <option value="asc">📈 Fecha ascendente</option>
+            <option value="desc">📉 Fecha descendente</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contador de partidos -->
+    <section id="contador-partidos" class="contador-section">
+      <div class="contador-info">
+        <span id="total-partidos" class="contador-numero">0</span>
+        <span class="contador-texto">partidos programados</span>
+      </div>
+    </section>
+
+    <!-- Lista de próximos partidos -->
+    <section id="proximos-section" class="partidos-section">
+      <div id="lista-proximos" class="partidos-container">
+        <!-- Se llena dinámicamente con JavaScript -->
+      </div>
+    </section>
+
+    <!-- Loading y estados vacíos -->
+    <div id="loading-proximos" class="loading-container" style="display: none;">
+      <div class="loading-spinner">⚽</div>
+      <p>Cargando próximos partidos...</p>
+    </div>
+
+    <div id="no-partidos" class="empty-state" style="display: none;">
+      <div class="empty-icon">📅</div>
+      <h3>No hay partidos programados</h3>
+      <p>No se encontraron partidos que coincidan con los filtros seleccionados.</p>
+    </div>
   </main>
+  <!-- Scripts -->
   <script src="proximos.js"></script>
   <script>
-    // JavaScript para el menú hamburguesa
+    // JavaScript mejorado para el menú hamburguesa y funcionalidad
     document.addEventListener('DOMContentLoaded', function() {
+      // Menú hamburguesa
       const menuToggle = document.getElementById('menu-toggle');
       const menuDropdown = document.getElementById('menu-dropdown');
       
@@ -57,7 +109,60 @@
           }
         });
       }
+
+      // Funcionalidad de filtros
+      const buscador = document.getElementById('buscador-proximos');
+      const filtroDias = document.getElementById('filtro-dias');
+      const ordenFecha = document.getElementById('orden-fecha');
+
+      // Event listeners para filtros
+      if (buscador) {
+        buscador.addEventListener('input', function() {
+          if (typeof window.aplicarFiltrosJS === 'function') {
+            window.aplicarFiltrosJS();
+          }
+        });
+      }
+      if (filtroDias) {
+        filtroDias.addEventListener('change', function() {
+          if (typeof window.aplicarFiltrosJS === 'function') {
+            window.aplicarFiltrosJS();
+          }
+        });
+      }
+      if (ordenFecha) {
+        ordenFecha.addEventListener('change', function() {
+          if (typeof window.aplicarFiltrosJS === 'function') {
+            window.aplicarFiltrosJS();
+          }
+        });
+      }
     });
+
+    // Función para aplicar todos los filtros
+    function aplicarFiltros() {
+      // NO llamar a filtrarPartidos para evitar recursión
+      console.log('aplicarFiltros llamada desde HTML');
+    }
+
+    // Función para mostrar loading
+    function mostrarLoading(mostrar = true) {
+      const loading = document.getElementById('loading-proximos');
+      const contenido = document.getElementById('lista-proximos');
+      
+      if (loading && contenido) {
+        loading.style.display = mostrar ? 'flex' : 'none';
+        contenido.style.display = mostrar ? 'none' : 'block';
+      }
+    }
+
+    // Función para actualizar contador
+    function actualizarContador(cantidad) {
+      const contador = document.getElementById('total-partidos');
+      if (contador) {
+        contador.textContent = cantidad;
+      }
+    }
   </script>
 </body>
 </html>

@@ -37,43 +37,183 @@ function obtenerTimestamp(valor) {
   return 0;
 }
 
+function obtenerDiasHastaPartido(fechaPartido) {
+  const hoy = new Date();
+  const fecha = new Date(obtenerTimestamp(fechaPartido));
+  const diferencia = fecha.getTime() - hoy.getTime();
+  return Math.ceil(diferencia / (1000 * 3600 * 24));
+}
+
+function generarIniciales(nombre) {
+  return nombre.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+}
+
+function crearTarjetaPartido(jugador, index) {
+  const fechaPartido = obtenerTimestamp(jugador["Próximo Partido"]);
+  const diasHasta = obtenerDiasHastaPartido(jugador["Próximo Partido"]);
+  const esHoy = diasHasta === 0;
+  const esProximo = index === 0;
+  
+  let etiquetaTiempo = '';
+  if (diasHasta < 0) {
+    etiquetaTiempo = '⏰ PASADO';
+  } else if (esHoy) {
+    etiquetaTiempo = '🔥 HOY';
+  } else if (diasHasta === 1) {
+    etiquetaTiempo = '⚡ MAÑANA';
+  } else if (diasHasta <= 7) {
+    etiquetaTiempo = `📅 En ${diasHasta} días`;
+  } else {
+    etiquetaTiempo = `📆 ${convertirFecha(jugador["Próximo Partido"])}`;
+  }
+
+  const iniciales = generarIniciales(jugador["Jugador"]);
+  const clubActual = jugador["Club Actual"] || 'Club Desconocido';
+  const proximoRival = jugador["Próximo Rival"] || 'Rival por definir';
+  const posicion = jugador["Posición"] || 'Posición';
+
+  return `
+    <div class="partido-card ${esProximo ? 'partido-destacado' : ''}" data-dias="${diasHasta}">
+      <div class="partido-header">
+        <div class="jugador-avatar">${iniciales}</div>
+        <div class="jugador-info">
+          <h3>${jugador["Jugador"]}</h3>
+          <div class="jugador-posicion">${posicion}</div>
+        </div>
+      </div>
+      
+      <div class="partido-info">
+        <div class="fecha-partido">
+          ${etiquetaTiempo}
+        </div>
+        
+        <div class="equipos-container">
+          <div class="equipo-info">
+            <div class="equipo-nombre">${clubActual}</div>
+            <div class="equipo-logo">
+              <img src="img/${jugador["Escudo"]}" alt="Escudo ${clubActual}" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+          
+          <div class="vs-separator">VS</div>
+          
+          <div class="equipo-info">
+            <div class="equipo-nombre">${proximoRival}</div>
+            <div class="equipo-logo">⚽</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Variables globales
+let todosLosPartidos = [];
+let partidosFiltrados = [];
+
 document.addEventListener("DOMContentLoaded", () => {
+  mostrarLoading(true);
+  
   fetch('data.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(jugadores => {
       // Filtra solo los partidos que aún no se jugaron
       const hoy = new Date();
-      const jugadoresFuturos = jugadores.filter(j => {
+      hoy.setHours(0, 0, 0, 0);
+      
+      todosLosPartidos = jugadores.filter(j => {
         const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
-        // Solo muestra partidos desde hoy en adelante
-        return fechaPartido >= hoy.setHours(0,0,0,0);
+        const tieneRival = j["Próximo Rival"] && j["Próximo Rival"].trim() !== '';
+        const esFuturo = fechaPartido >= hoy.getTime();
+        
+        return esFuturo && tieneRival;
       });
 
-      // Ordena por fecha más próxima
-      jugadoresFuturos.sort((a, b) => obtenerTimestamp(a["Próximo Partido"]) - obtenerTimestamp(b["Próximo Partido"]));
-
-      const contenedor = document.getElementById("lista-proximos");
-      contenedor.innerHTML = `
-        <h2 class="proximos-titulo">Próximos partidos</h2>
-        <div class="proximos-grid">
-          ${jugadoresFuturos.map((j, idx) => {
-            const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
-            const esHoy = new Date(fechaPartido).toDateString() === hoy.toDateString();
-            return `
-              <div class="jugador-proximo${idx === 0 ? ' partido-proximo' : ''}">
-                <div class="jugador-proximo-info">
-                  <strong>${j["Jugador"]}</strong>
-                  <div>
-                    <span class="vs-icon">VS</span> <b>${j["Próximo Rival"]}</b>
-                    ${esHoy ? '<span class="badge-hoy">HOY</span>' : ''}
-                  </div>
-                  <div><span class="fecha-icon">📆</span> ${convertirFecha(j["Próximo Partido"])}</div>
-                </div>
-                <img src="img/${j["Escudo"]}" alt="Escudo ${j["Club Actual"]}" class="escudo-club">
-              </div>
-            `;
-          }).join("")}
-        </div>
-      `;
-        });
+      // Aplica filtros iniciales
+      aplicarFiltrosJS();
+      
+      mostrarLoading(false);
+    })
+    .catch(error => {
+      console.error('Error al cargar los datos:', error);
+      mostrarError(`Error al cargar los partidos: ${error.message}`);
+      mostrarLoading(false);
     });
+});
+
+function aplicarFiltrosJS() {
+  const buscador = document.getElementById('buscador-proximos')?.value.toLowerCase() || '';
+  const filtroDias = document.getElementById('filtro-dias')?.value || '';
+  const ordenFecha = document.getElementById('orden-fecha')?.value || 'asc';
+  
+  partidosFiltrados = todosLosPartidos.filter(jugador => {
+    // Filtro de búsqueda
+    const cumpleBusqueda = !buscador || 
+      jugador["Jugador"].toLowerCase().includes(buscador) ||
+      jugador["Club Actual"]?.toLowerCase().includes(buscador) ||
+      jugador["Próximo Rival"]?.toLowerCase().includes(buscador);
+    
+    // Filtro de días
+    let cumpleDias = true;
+    if (filtroDias) {
+      const diasHasta = obtenerDiasHastaPartido(jugador["Próximo Partido"]);
+      cumpleDias = diasHasta <= parseInt(filtroDias);
+    }
+    
+    return cumpleBusqueda && cumpleDias;
+  });
+  
+  // Ordenamiento
+  partidosFiltrados.sort((a, b) => {
+    const fechaA = obtenerTimestamp(a["Próximo Partido"]);
+    const fechaB = obtenerTimestamp(b["Próximo Partido"]);
+    return ordenFecha === 'asc' ? fechaA - fechaB : fechaB - fechaA;
+  });
+  
+  mostrarPartidos();
+  actualizarContador(partidosFiltrados.length);
+}
+
+// Hacer la función disponible globalmente
+window.aplicarFiltrosJS = aplicarFiltrosJS;
+
+function mostrarPartidos() {
+  const contenedor = document.getElementById("lista-proximos");
+  const noPartidos = document.getElementById("no-partidos");
+  
+  if (!contenedor) return;
+  
+  if (partidosFiltrados.length === 0) {
+    contenedor.style.display = 'none';
+    if (noPartidos) noPartidos.style.display = 'flex';
+    return;
+  }
+  
+  if (noPartidos) noPartidos.style.display = 'none';
+  contenedor.style.display = 'grid';
+  
+  contenedor.innerHTML = partidosFiltrados
+    .map((jugador, index) => crearTarjetaPartido(jugador, index))
+    .join('');
+}
+
+function mostrarError(mensaje) {
+  const contenedor = document.getElementById("lista-proximos");
+  if (contenedor) {
+    contenedor.innerHTML = `
+      <div class="error-container">
+        <div class="error-icon">⚠️</div>
+        <h3>Error al cargar</h3>
+        <p>${mensaje}</p>
+      </div>
+    `;
+  }
+}
+
+// Hacer la función disponible globalmente
+window.aplicarFiltrosJS = aplicarFiltrosJS;
