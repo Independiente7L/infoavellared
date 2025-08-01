@@ -432,8 +432,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Atl. Tucuman",
-    "Próximo Partido":1754708400000,
+    "Próximo Rival":"San Martín (SJ)",
+    "Próximo Partido":1753488000000,
     "Escudo":"ca_rosario_central.png"
   },
   {
@@ -451,8 +451,8 @@
     "Asistencias":1,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"",
-    "Próximo Partido": null,
+    "Próximo Rival":"Rosario Central",
+    "Próximo Partido":1753488000000,
     "Escudo":"ca_san_martín_san_juan.png"
   }
 ]
