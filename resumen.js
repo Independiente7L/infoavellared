@@ -448,7 +448,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Cargar datos y generar todas las secciones
-  fetch('data.json?v=20250801v4')
+  fetch('data.json?v=20250801v5')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
