@@ -484,9 +484,14 @@ h1 {
   }
 
   .hamburger-line {
-    height: 2px;
-    margin: 4px 0;
-    background: white;
+    height: 4px !important;
+    margin: 2px 0 !important;
+    background: white !important;
+    display: block !important;
+    width: 100% !important;
+    border-radius: 2px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   /* En móvil: menú se mantiene a la derecha pero ajustado */
@@ -583,8 +588,14 @@ h1 {
   }
   
   .hamburger-line {
-    height: 2px;
-    margin: 3px 0;
+    height: 4px !important;
+    margin: 2px 0 !important;
+    background: white !important;
+    display: block !important;
+    width: 100% !important;
+    border-radius: 2px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   
   .menu-dropdown {
@@ -768,18 +779,19 @@ h1 {
 }
 
 .menu-hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  cursor: pointer;
-  padding: 8px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-around !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  padding: 8px !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
 }
 
 .menu-hamburger:hover {
@@ -789,12 +801,16 @@ h1 {
 }
 
 .hamburger-line {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: white;
-  border-radius: 3px;
-  transition: all 0.3s ease;
+  display: block !important;
+  height: 4px !important;
+  width: 100% !important;
+  background: white !important;
+  border-radius: 2px !important;
+  transition: all 0.3s ease !important;
+  margin: 2px 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
 }
 
 /* Animación del menú hamburguesa cuando está activo */
@@ -1873,8 +1889,14 @@ html, body {
   }
 
   .hamburger-line {
-    height: 2px;
-    margin: 4px 0;
+    height: 4px !important;
+    margin: 2px 0 !important;
+    background: white !important;
+    display: block !important;
+    width: 100% !important;
+    border-radius: 2px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   /* Mejorar el contenido principal */
