@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function convertirFecha(valor) {
     const numero = Number(valor);
 
+    // Formato DD/MM/YYYY como string
+    if (typeof valor === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
+      const partes = valor.split('/');
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10) - 1; // Restar 1 porque los meses en JavaScript van de 0 a 11
+      const año = parseInt(partes[2], 10);
+      return new Date(año, mes, dia);
+    }
+
     if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
       return new Date(valor);
     }
@@ -31,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       'uruguay': ['Boston River', 'Liverpool FC Montevideo', 'Club Deportivo Maldonado'],
       'ecuador': ['Barcelona SC Guayaquil'],
       'mexico': ['Club Puebla'],
+      'colombia': ['AD Union Magdalena', 'AD Unión Magdalena'],
       'grecia': ['Volos NPS']
     };
 
@@ -48,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       'uruguay': '🇺🇾',
       'ecuador': '🇪🇨',
       'mexico': '🇲🇽',
+      'colombia': '🇨🇴',
       'grecia': '🇬🇷'
     };
     return banderas[pais] || '🏴';
@@ -59,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
       'uruguay': 'Uruguay',
       'ecuador': 'Ecuador',
       'mexico': 'México',
+      'colombia': 'Colombia',
       'grecia': 'Grecia'
     };
     return nombres[pais] || 'Desconocido';
@@ -445,7 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Cargar datos y generar todas las secciones
-  fetch('data.json')
+  fetch('data.json?v=20250801v5')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

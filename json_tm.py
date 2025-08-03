@@ -8,8 +8,22 @@ sheet_name = "Resu_Jugadores"
 json_path = r"C:\Users\chuqui\Documents\Escritorio\CAT\TC\WEB_ROJO 2.0\data.json"
 img_dir = r"C:\Users\chuqui\Documents\Escritorio\CAT\TC\WEB_ROJO 2.0\img"
 
-# Leer Excel
-df = pd.read_excel(excel_path, sheet_name=sheet_name)
+# Leer Excel sin convertir fechas automáticamente
+df = pd.read_excel(excel_path, sheet_name=sheet_name, date_parser=None)
+
+# Convertir columnas de fecha a string legible (formato DD/MM/YYYY)
+columnas_fecha = ['Desde', 'Hasta', 'Próximo Partido']  # Ajusta según tus columnas
+for col in columnas_fecha:
+    if col in df.columns:
+        # Si pandas las leyó como fechas, convertir a formato legible
+        if pd.api.types.is_datetime64_any_dtype(df[col]):
+            df[col] = df[col].dt.strftime('%d/%m/%Y')
+        # Si están como timestamp (números grandes), convertir también
+        elif pd.api.types.is_numeric_dtype(df[col]):
+            # Verificar si son timestamps (números > 1000000000 probablemente sean timestamps)
+            if df[col].max() > 1000000000:
+                # Convertir de timestamp a fecha legible
+                df[col] = pd.to_datetime(df[col], unit='ms', errors='coerce').dt.strftime('%d/%m/%Y')
 
 # Función para convertir nombre de club a nombre de archivo válido
 def club_a_archivo(club):
@@ -33,3 +47,4 @@ df["Escudo"] = df["Club Actual"].map(escudos_por_club)
 df.to_json(json_path, orient="records", force_ascii=False, indent=2)
 
 print(f"✅ JSON exportado correctamente a: {json_path}")
+print("🔄 Las fechas ahora aparecerán en formato DD/MM/YYYY")

@@ -1,18 +1,30 @@
 function convertirFecha(valor) {
   const numero = Number(valor);
 
+  // Formato DD/MM/YYYY (nuevo formato) - ya está en formato legible
+  if (typeof valor === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
+    const [dia, mes, año] = valor.split('/');
+    const fecha = new Date(parseInt(año), parseInt(mes) - 1, parseInt(dia));
+    return fecha.toLocaleDateString("es-AR", {
+      day: "2-digit", month: "long", year: "numeric"
+    });
+  }
+
+  // Formato YYYY-MM-DD
   if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
     return new Date(valor).toLocaleDateString("es-AR", {
       day: "2-digit", month: "long", year: "numeric"
     });
   }
 
+  // Timestamp numérico
   if (!isNaN(numero) && numero > 1_500_000_000_000) {
     return new Date(numero).toLocaleDateString("es-AR", {
       day: "2-digit", month: "long", year: "numeric"
     });
   }
 
+  // Número de serie de Excel
   if (!isNaN(numero) && numero > 30000 && numero < 60000) {
     const fecha = new Date((numero - 25569) * 86400 * 1000);
     return fecha.toLocaleDateString("es-AR", {
@@ -25,21 +37,38 @@ function convertirFecha(valor) {
 
 function obtenerTimestamp(valor) {
   const numero = Number(valor);
+  
+  // Formato DD/MM/YYYY (nuevo formato)
+  if (typeof valor === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
+    const [dia, mes, año] = valor.split('/');
+    return new Date(parseInt(año), parseInt(mes) - 1, parseInt(dia)).getTime();
+  }
+  
+  // Formato YYYY-MM-DD
   if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
     return new Date(valor).getTime();
   }
+  
+  // Timestamp numérico
   if (!isNaN(numero) && numero > 1_500_000_000_000) {
     return numero;
   }
+  
+  // Número de serie de Excel
   if (!isNaN(numero) && numero > 30000 && numero < 60000) {
     return (numero - 25569) * 86400 * 1000;
   }
+  
   return 0;
 }
 
 function obtenerDiasHastaPartido(fechaPartido) {
   const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0); // Normalizar a medianoche
+  
   const fecha = new Date(obtenerTimestamp(fechaPartido));
+  fecha.setHours(0, 0, 0, 0); // Normalizar a medianoche
+  
   const diferencia = fecha.getTime() - hoy.getTime();
   return Math.ceil(diferencia / (1000 * 3600 * 24));
 }
@@ -114,7 +143,7 @@ let partidosFiltrados = [];
 document.addEventListener("DOMContentLoaded", () => {
   mostrarLoading(true);
   
-  fetch('data.json')
+  fetch('data.json?v=20250801v5')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
