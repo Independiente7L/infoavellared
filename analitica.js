@@ -209,15 +209,15 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!clubesMap[club]) {
         clubesMap[club] = {
           nombre: club,
-          jugadores: 0,
+          jugadores: [],
           escudo: jugador["Escudo"] || 'logo-escudo.png'
         };
       }
-      clubesMap[club].jugadores++;
+      clubesMap[club].jugadores.push(jugador);
     });
 
     const clubes = Object.values(clubesMap)
-      .sort((a, b) => b.jugadores - a.jugadores);
+      .sort((a, b) => b.jugadores.length - a.jugadores.length);
 
     const container = document.getElementById('distribucion-clubes');
     container.innerHTML = '';
@@ -232,8 +232,11 @@ document.addEventListener('DOMContentLoaded', function() {
           <img src="img/${club.escudo}" alt="${club.nombre}" style="width: 50px; height: 50px; border-radius: 50%;" />
         </div>
         <div class="club-nombre">${club.nombre}</div>
-        <div class="club-jugadores">${club.jugadores} jugador${club.jugadores !== 1 ? 'es' : ''}</div>
+        <div class="club-jugadores">${club.jugadores.length} jugador${club.jugadores.length !== 1 ? 'es' : ''}</div>
       `;
+      
+      // Agregar evento de clic para abrir modal
+      item.addEventListener('click', () => abrirModalClub(club));
       
       container.appendChild(item);
     });
@@ -397,6 +400,135 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     `;
   }
+
+  // Funciones para el modal de club
+  function abrirModalClub(club) {
+    const modal = document.getElementById('modal-club');
+    const titulo = document.getElementById('modal-club-titulo');
+    const clubInfo = document.getElementById('club-info');
+    const jugadoresContainer = document.getElementById('jugadores-club');
+    
+    // Configurar título
+    titulo.textContent = `Jugadores en ${club.nombre}`;
+    
+    // Calcular estadísticas del club
+    const totalPartidos = club.jugadores.reduce((sum, j) => sum + Number(j["Partidos Jugados"] || 0), 0);
+    const totalMinutos = club.jugadores.reduce((sum, j) => sum + Number(j["Minutos Jugados"] || 0), 0);
+    const totalGoles = club.jugadores.reduce((sum, j) => sum + Number(j["Goles"] || 0), 0);
+    const totalAsistencias = club.jugadores.reduce((sum, j) => sum + Number(j["Asistencias"] || 0), 0);
+    
+    // Configurar info del club
+    clubInfo.innerHTML = `
+      <img src="img/${club.escudo}" alt="${club.nombre}" class="club-escudo-grande" />
+      <div class="club-detalles">
+        <h4>${club.nombre}</h4>
+        <p><strong>${club.jugadores.length}</strong> jugador${club.jugadores.length !== 1 ? 'es' : ''} en plantilla</p>
+        <div class="club-estadisticas">
+          <div class="stat-mini">
+            <div class="stat-mini-numero">${totalPartidos}</div>
+            <div class="stat-mini-label">Partidos</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-mini-numero">${Number(totalMinutos).toLocaleString('es-ES')}'</div>
+            <div class="stat-mini-label">Minutos</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-mini-numero">${totalGoles}</div>
+            <div class="stat-mini-label">Goles</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-mini-numero">${totalAsistencias}</div>
+            <div class="stat-mini-label">Asistencias</div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    // Configurar lista de jugadores
+    jugadoresContainer.innerHTML = club.jugadores.map(jugador => `
+      <div class="jugador-card">
+        <div class="jugador-header">
+          <div>
+            <h5 class="jugador-nombre">${jugador["Jugador"]}</h5>
+            <span class="jugador-posicion">${jugador["Posición"]}</span>
+          </div>
+        </div>
+        <div class="jugador-stats">
+          <div class="stat-jugador">
+            <div class="stat-jugador-numero">${jugador["Partidos Jugados"] || 0}</div>
+            <div class="stat-jugador-label">Partidos</div>
+          </div>
+          <div class="stat-jugador">
+            <div class="stat-jugador-numero">${Number(jugador["Minutos Jugados"] || 0).toLocaleString('es-ES')}'</div>
+            <div class="stat-jugador-label">Minutos</div>
+          </div>
+          <div class="stat-jugador">
+            <div class="stat-jugador-numero">${jugador["Goles"] || 0}</div>
+            <div class="stat-jugador-label">Goles</div>
+          </div>
+          <div class="stat-jugador">
+            <div class="stat-jugador-numero">${jugador["Asistencias"] || 0}</div>
+            <div class="stat-jugador-label">Asistencias</div>
+          </div>
+          <div class="stat-jugador">
+            <div class="stat-jugador-numero">${jugador["Goles en Contra"] || 0}</div>
+            <div class="stat-jugador-label">Autogoles</div>
+          </div>
+          <div class="stat-jugador">
+            <div class="stat-jugador-numero">${jugador["Imbatido"] || 0}</div>
+            <div class="stat-jugador-label">Imbatido</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    
+    // Mostrar modal
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    // Configurar event listeners cada vez que se abre el modal
+    setTimeout(() => {
+      const cerrarBtn = document.getElementById('cerrar-modal');
+      console.log('Configurando botón cerrar:', cerrarBtn); // Debug
+      
+      if (cerrarBtn) {
+        // Remover event listeners previos
+        cerrarBtn.onclick = null;
+        // Agregar nuevo event listener
+        cerrarBtn.onclick = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Botón cerrar clickeado'); // Debug
+          cerrarModalClub();
+        };
+      }
+      
+      // Cerrar al hacer clic fuera del modal
+      modal.onclick = function(e) {
+        if (e.target === modal) {
+          console.log('Clic fuera del modal'); // Debug
+          cerrarModalClub();
+        }
+      };
+    }, 100); // Pequeño delay para asegurar que el DOM esté listo
+  }
+  
+  function cerrarModalClub() {
+    console.log('Cerrando modal'); // Debug
+    const modal = document.getElementById('modal-club');
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  }
+  
+  // Event listener global para tecla ESC
+  document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('modal-club');
+    if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+      cerrarModalClub();
+    }
+  });
 
   // Función para manejar el clic en elementos interactivos
   document.addEventListener('click', function(e) {
