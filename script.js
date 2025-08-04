@@ -76,19 +76,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function verificarProximoRival(rival, fechaPartido) {
+    // Primero verificar si convertirFechaProximoPartido retorna "A definir"
+    const fechaConvertida = convertirFechaProximoPartido(fechaPartido);
+    if (fechaConvertida === "A definir") {
+      return "A definir";
+    }
+
     const numero = Number(fechaPartido);
     const fechaActual = new Date();
     let fechaPartidoDate;
 
     // Convertir el valor a fecha
-    if (typeof fechaPartido === "string" && /^\d{4}-\d{2}-\d{2}$/.test(fechaPartido)) {
+    if (typeof fechaPartido === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(fechaPartido)) {
+      // Formato DD/MM/YYYY
+      const partes = fechaPartido.split('/');
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10) - 1; // Restar 1 porque los meses en JavaScript van de 0 a 11
+      const año = parseInt(partes[2], 10);
+      fechaPartidoDate = new Date(año, mes, dia);
+    } else if (typeof fechaPartido === "string" && /^\d{4}-\d{2}-\d{2}$/.test(fechaPartido)) {
       fechaPartidoDate = new Date(fechaPartido);
     } else if (!isNaN(numero) && numero > 1_500_000_000_000) {
       fechaPartidoDate = new Date(numero);
     } else if (!isNaN(numero) && numero > 30000 && numero < 60000) {
       fechaPartidoDate = new Date((numero - 25569) * 86400 * 1000);
     } else {
-      return rival;
+      return "A definir";
     }
 
     // Si la fecha ya pasó, mostrar "A definir"
