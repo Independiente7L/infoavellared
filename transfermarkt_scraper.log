@@ -1,0 +1,129 @@
+2025-08-04 15:27:13,815 - INFO - Iniciando scraping de partidos en Transfermarkt
+2025-08-04 15:27:15,949 - INFO - Procesando: Arsenal de Sarandí
+2025-08-04 15:27:26,140 - INFO - Cookies aceptadas
+2025-08-04 15:27:42,663 - INFO - Éxito: Arsenal vs Ferro - sábado, 09/08/2025 - 15:00
+2025-08-04 15:27:52,741 - INFO - Procesando: Gimnasia y Esgrima Mendoza
+2025-08-04 15:28:28,863 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:28:36,765 - INFO - Éxito: Dep. Morón vs Gimnasia (M) - domingo, 29/06/2025 - 14:00
+2025-08-04 15:28:36,766 - INFO - Procesando: Club Puebla
+2025-08-04 15:29:03,396 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:29:18,404 - WARNING - No se encontraron partidos
+2025-08-04 15:29:18,405 - ERROR - Error en intento 1 para Club Puebla: not enough values to unpack (expected 4, got 3)
+2025-08-04 15:29:31,411 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:29:38,824 - WARNING - No se encontraron partidos
+2025-08-04 15:29:38,825 - ERROR - Error en intento 2 para Club Puebla: not enough values to unpack (expected 4, got 3)
+2025-08-04 15:31:17,411 - INFO - Iniciando scraping de partidos en Transfermarkt
+2025-08-04 15:31:19,202 - INFO - Procesando: Arsenal de Sarandí
+2025-08-04 15:31:33,370 - INFO - Iniciando scraping de partidos en Transfermarkt
+2025-08-04 15:31:35,083 - INFO - Procesando: Arsenal de Sarandí
+2025-08-04 15:31:43,569 - INFO - Cookies aceptadas
+2025-08-04 15:31:55,486 - WARNING - No se encontraron partidos
+2025-08-04 15:31:55,487 - ERROR - Error en intento 1 para Arsenal de Sarandí: not enough values to unpack (expected 4, got 3)
+2025-08-04 15:32:32,365 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:32:40,554 - WARNING - No se encontraron partidos
+2025-08-04 15:32:40,555 - ERROR - Error en intento 2 para Arsenal de Sarandí: not enough values to unpack (expected 4, got 3)
+2025-08-04 15:32:57,195 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:33:04,534 - WARNING - No se encontraron partidos
+2025-08-04 15:33:04,534 - ERROR - Error en intento 3 para Arsenal de Sarandí: not enough values to unpack (expected 4, got 3)
+2025-08-04 15:33:07,551 - INFO - Resultados guardados en proximos_partidos_20250804_153307.csv
+2025-08-04 15:33:10,031 - INFO - Proceso finalizado
+2025-08-04 15:35:28,500 - INFO - Iniciando scraping de partidos en Transfermarkt - Fecha: 2025-08-04 15:35:28
+2025-08-04 15:35:30,196 - INFO - Procesando: Arsenal de Sarandí (1/1)
+2025-08-04 15:35:41,963 - INFO - Cookies aceptadas
+2025-08-04 15:35:51,818 - INFO - Éxito: Arsenal vs Ferro - sábado, 09/08/2025 - 15:00
+2025-08-04 15:35:53,908 - INFO - Resultados guardados en proximos_partidos_20250804_153553.csv
+2025-08-04 15:35:56,596 - INFO - Proceso finalizado
+2025-08-04 15:39:00,138 - INFO - Iniciando scraping de partidos en Transfermarkt - Fecha: 2025-08-04 15:39:00
+2025-08-04 15:39:01,863 - INFO - Procesando: Arsenal de Sarandí (1/21)
+2025-08-04 15:39:10,628 - INFO - Cookies aceptadas
+2025-08-04 15:39:21,754 - WARNING - No se encontraron partidos para Arsenal de Sarandí
+2025-08-04 15:39:45,684 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:39:53,183 - INFO - Éxito: Arsenal vs Ferro - sábado, 09/08/2025 - 15:00
+2025-08-04 15:39:56,320 - INFO - Procesando: Gimnasia y Esgrima Mendoza (2/21)
+2025-08-04 15:40:13,257 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:40:20,603 - WARNING - No se encontraron partidos para Gimnasia y Esgrima Mendoza
+2025-08-04 15:40:30,867 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:40:38,344 - WARNING - No se encontraron partidos para Gimnasia y Esgrima Mendoza
+2025-08-04 15:40:50,606 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:40:58,099 - INFO - Éxito: Dep. Morón vs Gimnasia (M) - domingo, 29/06/2025 - 14:00
+2025-08-04 15:41:01,371 - INFO - Procesando: Club Puebla (3/21)
+2025-08-04 15:41:10,948 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:41:18,581 - INFO - Éxito: Montréal vs Club Puebla - martes, 05/08/2025 - 21:00
+2025-08-04 15:41:22,266 - INFO - Procesando: Club atletico Tigre (4/21)
+2025-08-04 15:41:34,127 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:41:41,606 - INFO - Éxito: Tigre vs Huracán - viernes, 08/08/2025 - 19:00
+2025-08-04 15:41:45,293 - INFO - Procesando: CA Chacarita Juniors (5/21)
+2025-08-04 15:41:56,191 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:42:03,765 - WARNING - No se encontraron partidos para CA Chacarita Juniors
+2025-08-04 15:42:14,425 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:42:22,068 - INFO - Éxito: CADU (Zárate) vs Chacarita Jrs. - sábado, 09/08/2025 - 15:30
+2025-08-04 15:42:25,087 - INFO - Procesando: CA Los Andes (6/21)
+2025-08-04 15:42:36,620 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:42:44,195 - WARNING - No se encontraron partidos para CA Los Andes
+2025-08-04 15:42:55,233 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:43:02,505 - WARNING - No se encontraron partidos para CA Los Andes
+2025-08-04 15:43:12,972 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:43:20,240 - WARNING - No se encontraron partidos para CA Los Andes
+2025-08-04 15:43:24,964 - INFO - Procesando: Volos NPS (7/21)
+2025-08-04 15:43:35,259 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:43:42,711 - INFO - Éxito: PAS Giannina vs Volos NPS - domingo, 17/08/2025 - 19:00
+2025-08-04 15:43:46,019 - INFO - Procesando: CA Boston River (8/21)
+2025-08-04 15:43:55,889 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:44:03,170 - WARNING - No se encontraron partidos para CA Boston River
+2025-08-04 15:44:14,636 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:44:22,302 - INFO - Éxito: CSyD Paso vs Boston River - martes, 05/08/2025 - 19:00
+2025-08-04 15:44:25,182 - INFO - Procesando: Club Deportivo Maldonado (9/21)
+2025-08-04 15:44:37,740 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:44:45,074 - WARNING - No se encontraron partidos para Club Deportivo Maldonado
+2025-08-04 15:44:56,118 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:45:03,722 - INFO - Éxito: Porongos vs CD Maldonado - martes, 05/08/2025 - 19:00
+2025-08-04 15:45:06,050 - INFO - Procesando: Círculo Deportivo (10/21)
+2025-08-04 15:45:17,058 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:45:24,620 - INFO - Éxito: Circulo Dep. vs Guillermo Brown - domingo, 10/08/2025 - 11:00
+2025-08-04 15:45:26,930 - INFO - Procesando: CA Platense (11/21)
+2025-08-04 15:45:43,029 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:45:50,891 - INFO - Éxito: Instituto ACC vs Platense - domingo, 10/08/2025 - 17:00
+2025-08-04 15:45:54,152 - INFO - Procesando: CA Nueva Chicago (12/21)
+2025-08-04 15:46:05,671 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:46:13,225 - WARNING - No se encontraron partidos para CA Nueva Chicago
+2025-08-04 15:46:24,662 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:46:31,930 - WARNING - No se encontraron partidos para CA Nueva Chicago
+2025-08-04 15:46:42,989 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:46:50,261 - WARNING - No se encontraron partidos para CA Nueva Chicago
+2025-08-04 15:46:55,348 - INFO - Procesando: Real Pilar FC (13/21)
+2025-08-04 15:47:04,594 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:47:12,281 - WARNING - No se encontraron partidos para Real Pilar FC
+2025-08-04 15:47:22,962 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:47:30,187 - WARNING - No se encontraron partidos para Real Pilar FC
+2025-08-04 15:47:41,065 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:47:48,480 - INFO - Éxito: Acassuso vs Real Pilar - sábado, 16/08/2025 - 11:00
+2025-08-04 15:47:50,494 - INFO - Procesando: CSD Tristán Suárez (14/21)
+2025-08-04 15:48:05,276 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:48:12,748 - INFO - Éxito: Dep. Maipú vs Tristán Suárez - sábado, 09/08/2025 - 15:00
+2025-08-04 15:48:16,437 - INFO - Procesando: CA Barracas Central (15/21)
+2025-08-04 15:48:25,887 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:48:33,402 - WARNING - No se encontraron partidos para CA Barracas Central
+2025-08-04 15:48:45,034 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:48:52,298 - WARNING - No se encontraron partidos para CA Barracas Central
+2025-08-04 15:49:04,223 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:49:11,718 - INFO - Éxito: Barracas vs Aldosivi - domingo, 10/08/2025 - 15:00
+2025-08-04 15:49:15,384 - INFO - Procesando: Barcelona SC Guayaquil (16/21)
+2025-08-04 15:49:26,361 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:49:33,831 - INFO - Éxito: CD El Nacional vs Barcelona SC - domingo, 10/08/2025 - 20:00
+2025-08-04 15:49:37,378 - INFO - Procesando: CS Dock Sud (17/21)
+2025-08-04 15:49:47,935 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:49:55,331 - INFO - Éxito: Arg. de Merlo vs Dock Sud - sábado, 16/08/2025 - 11:00
+2025-08-04 15:49:58,836 - INFO - Procesando: Club Atlético Tucumán (18/21)
+2025-08-04 15:50:09,093 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:50:16,620 - INFO - Éxito: Atl. Tucumán vs Rosario Central - sábado, 09/08/2025 - 20:45
+2025-08-04 15:50:19,039 - INFO - Procesando: Liverpool FC Montevideo (19/21)
+2025-08-04 15:50:30,454 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:50:37,834 - INFO - Éxito: AA Durazno FC vs Liverpool FC - martes, 05/08/2025 - 19:00
+2025-08-04 15:50:41,839 - INFO - Procesando: CA Rosario Central (20/21)
+2025-08-04 15:50:53,935 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:51:01,393 - INFO - Éxito: Atl. Tucumán vs Rosario Central - sábado, 09/08/2025 - 20:45
+2025-08-04 15:51:04,524 - INFO - Procesando: Club atletico San Martín San Juan (21/21)
+2025-08-04 15:51:14,708 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-04 15:51:22,190 - INFO - Éxito: San Martín (SJ) vs Sarmiento - sábado, 09/08/2025 - 14:30
+2025-08-04 15:51:26,158 - INFO - Resultados guardados en proximos_partidos_20250804_155126.csv
+2025-08-04 15:51:29,132 - INFO - Proceso finalizado
