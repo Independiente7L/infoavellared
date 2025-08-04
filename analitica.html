@@ -32,14 +32,155 @@
             <span class="menu-icon">📅</span>
             <span class="menu-text">Próximos Partidos</span>
           </a>
+          <a href="analitica.html" class="menu-item">
+            <span class="menu-icon">📈</span>
+            <span class="menu-text">Analítica</span>
+          </a>
         </div>
       </nav>
     </div>
   </header>
 
   <main id="contenido-principal">
-    <h1>📈 Analítica de Jugadores</h1>
-    <p>Página en desarrollo...</p>
+    <!-- Título principal -->
+    <div class="titulo-seccion">
+      <h1>📈 Analítica de Jugadores</h1>
+      <p class="subtitulo">Estadísticas avanzadas y análisis de rendimiento</p>
+    </div>
+
+    <!-- Filtros de análisis -->
+    <section class="filtros-analitica">
+      <div class="filtros-container">
+        <select id="filtro-categoria">
+          <option value="todos">📊 Todas las estadísticas</option>
+          <option value="goles">⚽ Goles y asistencias</option>
+          <option value="rendimiento">🏃 Rendimiento físico</option>
+          <option value="clubes">🏟️ Por clubes</option>
+          <option value="posiciones">📍 Por posiciones</option>
+        </select>
+        
+        <select id="filtro-orden">
+          <option value="mejor">🔥 Mejor rendimiento</option>
+          <option value="alfabetico">🔤 Orden alfabético</option>
+          <option value="experiencia">⏱️ Más experiencia</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Estadísticas generales -->
+    <section class="estadisticas-generales">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">⚽</div>
+          <div class="stat-info">
+            <span class="stat-number" id="total-goles">0</span>
+            <span class="stat-label">Goles totales</span>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-info">
+            <span class="stat-number" id="total-asistencias">0</span>
+            <span class="stat-label">Asistencias</span>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">⏱️</div>
+          <div class="stat-info">
+            <span class="stat-number" id="total-minutos">0</span>
+            <span class="stat-label">Minutos jugados</span>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">🏟️</div>
+          <div class="stat-info">
+            <span class="stat-number" id="total-partidos">0</span>
+            <span class="stat-label">Partidos jugados</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Análisis por categorías -->
+    <section class="analisis-detallado">
+      <h2 class="seccion-titulo">🔍 Análisis Detallado</h2>
+      
+      <!-- Top Goleadores -->
+      <div class="analisis-categoria" id="categoria-goles">
+        <div class="categoria-header">
+          <h3>⚽ Top Goleadores</h3>
+          <span class="categoria-badge">Máximos anotadores</span>
+        </div>
+        <div class="categoria-content">
+          <div id="top-goleadores" class="ranking-container">
+            <!-- Se llena con JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Asistidores -->
+      <div class="analisis-categoria" id="categoria-asistencias">
+        <div class="categoria-header">
+          <h3>🎯 Top Asistidores</h3>
+          <span class="categoria-badge">Creadores de juego</span>
+        </div>
+        <div class="categoria-content">
+          <div id="top-asistencias" class="ranking-container">
+            <!-- Se llena con JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Rendimiento por minutos -->
+      <div class="analisis-categoria" id="categoria-rendimiento">
+        <div class="categoria-header">
+          <h3>🏃 Rendimiento por Minutos</h3>
+          <span class="categoria-badge">Eficiencia en campo</span>
+        </div>
+        <div class="categoria-content">
+          <div id="rendimiento-minutos" class="ranking-container">
+            <!-- Se llena con JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Distribución por clubes -->
+      <div class="analisis-categoria" id="categoria-clubes">
+        <div class="categoria-header">
+          <h3>🏟️ Distribución por Clubes</h3>
+          <span class="categoria-badge">Destinos de préstamo</span>
+        </div>
+        <div class="categoria-content">
+          <div id="distribucion-clubes" class="clubes-grid">
+            <!-- Se llena con JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Análisis por posiciones -->
+      <div class="analisis-categoria" id="categoria-posiciones">
+        <div class="categoria-header">
+          <h3>📍 Análisis por Posiciones</h3>
+          <span class="categoria-badge">Rendimiento posicional</span>
+        </div>
+        <div class="categoria-content">
+          <div id="analisis-posiciones" class="posiciones-grid">
+            <!-- Se llena con JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jugadores destacados -->
+    <section class="jugadores-destacados">
+      <h2 class="seccion-titulo">⭐ Jugadores Destacados del Mes</h2>
+      <div id="destacados-container" class="destacados-grid">
+        <!-- Se llena con JavaScript -->
+      </div>
+    </section>
   </main>
 
   <script src="analitica.js"></script>
