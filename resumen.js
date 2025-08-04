@@ -1,5 +1,95 @@
+// Variable global para los jugadores
+let jugadores = [];
+
+// Función global para mostrar jugadores en modal
+function mostrarJugadoresModal(tipo, titulo) {
+  let jugadoresFiltrados = [];
+  
+  switch(tipo) {
+    case 'todos':
+      jugadoresFiltrados = jugadores;
+      break;
+    case 'activos':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Partidos Jugados"]) > 0);
+      break;
+    case 'partidos':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Partidos Jugados"]) > 0);
+      break;
+    case 'goles':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Goles"]) > 0);
+      break;
+    case 'asistencias':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Asistencias"]) > 0);
+      break;
+    case 'minutos':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Minutos Jugados"]) > 0);
+      break;
+    case 'opcion':
+      jugadoresFiltrados = jugadores.filter(j => j["Opción de Compra"] && j["Opción de Compra"] !== "NO" && j["Opción de Compra"] !== "-");
+      break;
+    case 'repesca':
+      jugadoresFiltrados = jugadores.filter(j => j["Repesca"] === "SI");
+      break;
+    default:
+      jugadoresFiltrados = jugadores;
+  }
+
+  // Actualizar título del modal
+  document.getElementById("modal-title").textContent = `${titulo} (${jugadoresFiltrados.length})`;
+  
+  // Generar lista de jugadores
+  const lista = document.getElementById("modal-jugadores-lista");
+  lista.innerHTML = "";
+  
+  jugadoresFiltrados.forEach(jugador => {
+    const div = document.createElement("div");
+    div.className = "jugador-modal-item";
+    
+    // Calcular estadísticas específicas según el tipo
+    let statsText = "";
+    switch(tipo) {
+      case 'goles':
+        statsText = `${jugador["Goles"]} gol(es)`;
+        break;
+      case 'asistencias':
+        statsText = `${jugador["Asistencias"]} asist.`;
+        break;
+      case 'partidos':
+        statsText = `${jugador["Partidos Jugados"]} PJ`;
+        break;
+      case 'minutos':
+        statsText = `${jugador["Minutos Jugados"]} min`;
+        break;
+      case 'opcion':
+        statsText = jugador["Opción de Compra"];
+        break;
+      case 'repesca':
+        statsText = "En repesca";
+        break;
+      default:
+        statsText = `${jugador["Partidos Jugados"]} PJ | ${jugador["Goles"]} G | ${jugador["Asistencias"]} A`;
+    }
+    
+    div.innerHTML = `
+      <img src="img/${jugador["Escudo"]}" alt="${jugador["Club Actual"]}" class="jugador-modal-escudo">
+      <div class="jugador-modal-info">
+        <p class="jugador-modal-nombre">${jugador["Jugador"]}</p>
+        <p class="jugador-modal-club">${jugador["Club Actual"]}</p>
+        <p class="jugador-modal-posicion">${jugador["Posición"]}</p>
+      </div>
+      <div class="jugador-modal-stats">
+        ${statsText}
+      </div>
+    `;
+    
+    lista.appendChild(div);
+  });
+  
+  // Mostrar modal
+  document.getElementById("modal-jugadores").style.display = "block";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  let jugadores = [];
 
   function convertirFecha(valor) {
     const numero = Number(valor);
@@ -488,115 +578,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Función para mostrar jugadores en modal
-function mostrarJugadoresModal(tipo, titulo) {
-  let jugadoresFiltrados = [];
-  
-  switch(tipo) {
-    case 'todos':
-      jugadoresFiltrados = jugadores;
-      break;
-    case 'activos':
-      jugadoresFiltrados = jugadores.filter(j => Number(j["Partidos Jugados"]) > 0);
-      break;
-    case 'partidos':
-      jugadoresFiltrados = jugadores.filter(j => Number(j["Partidos Jugados"]) > 0);
-      break;
-    case 'goles':
-      jugadoresFiltrados = jugadores.filter(j => Number(j["Goles"]) > 0);
-      break;
-    case 'asistencias':
-      jugadoresFiltrados = jugadores.filter(j => Number(j["Asistencias"]) > 0);
-      break;
-    case 'minutos':
-      jugadoresFiltrados = jugadores.filter(j => Number(j["Minutos Jugados"]) > 0);
-      break;
-    case 'opcion':
-      jugadoresFiltrados = jugadores.filter(j => j["Opción de Compra"] && j["Opción de Compra"] !== "NO" && j["Opción de Compra"] !== "-");
-      break;
-    case 'repesca':
-      jugadoresFiltrados = jugadores.filter(j => j["Repesca"] === "SI");
-      break;
-    default:
-      jugadoresFiltrados = jugadores;
-  }
-
-  // Actualizar título del modal
-  document.getElementById("modal-title").textContent = `${titulo} (${jugadoresFiltrados.length})`;
-  
-  // Generar lista de jugadores
-  const lista = document.getElementById("modal-jugadores-lista");
-  lista.innerHTML = "";
-  
-  jugadoresFiltrados.forEach(jugador => {
-    const div = document.createElement("div");
-    div.className = "jugador-modal-item";
-    
-    // Calcular estadísticas específicas según el tipo
-    let statsText = "";
-    switch(tipo) {
-      case 'goles':
-        statsText = `${jugador["Goles"]} gol(es)`;
-        break;
-      case 'asistencias':
-        statsText = `${jugador["Asistencias"]} asist.`;
-        break;
-      case 'partidos':
-        statsText = `${jugador["Partidos Jugados"]} PJ`;
-        break;
-      case 'minutos':
-        statsText = `${jugador["Minutos Jugados"]} min`;
-        break;
-      case 'opcion':
-        statsText = jugador["Opción de Compra"];
-        break;
-      case 'repesca':
-        statsText = "En repesca";
-        break;
-      default:
-        statsText = `${jugador["Partidos Jugados"]} PJ | ${jugador["Goles"]} G | ${jugador["Asistencias"]} A`;
-    }
-    
-    div.innerHTML = `
-      <img src="img/${jugador["Escudo"]}" alt="${jugador["Club Actual"]}" class="jugador-modal-escudo">
-      <div class="jugador-modal-info">
-        <p class="jugador-modal-nombre">${jugador["Jugador"]}</p>
-        <p class="jugador-modal-club">${jugador["Club Actual"]}</p>
-        <p class="jugador-modal-posicion">${jugador["Posición"]}</p>
-      </div>
-      <div class="jugador-modal-stats">
-        ${statsText}
-      </div>
-    `;
-    
-    lista.appendChild(div);
-  });
-  
-  // Mostrar modal
-  document.getElementById("modal-jugadores").style.display = "block";
-}
-
-// Cerrar modal
+// Cerrar modal - Event listeners globales
 document.addEventListener('DOMContentLoaded', function() {
   const modal = document.getElementById("modal-jugadores");
   const closeBtn = document.getElementById("modal-close");
   
-  // Cerrar con X
-  closeBtn.addEventListener("click", function() {
-    modal.style.display = "none";
-  });
-  
-  // Cerrar haciendo clic fuera del modal
-  window.addEventListener("click", function(event) {
-    if (event.target === modal) {
+  if (modal && closeBtn) {
+    // Cerrar con X
+    closeBtn.addEventListener("click", function() {
       modal.style.display = "none";
-    }
-  });
-  
-  // Cerrar con tecla Escape
-  document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape" && modal.style.display === "block") {
-      modal.style.display = "none";
-    }
-  });
+    });
+    
+    // Cerrar haciendo clic fuera del modal
+    window.addEventListener("click", function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+    
+    // Cerrar con tecla Escape
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape" && modal.style.display === "block") {
+        modal.style.display = "none";
+      }
+    });
+  }
 });
