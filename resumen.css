@@ -655,3 +655,161 @@
 .resumen-seccion:nth-child(odd) {
   animation-delay: 0.2s;
 }
+
+/* Modal para mostrar jugadores específicos */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 0;
+  border: none;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #b30000, #d32f2f);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.modal-close {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.modal-close:hover {
+  opacity: 0.7;
+}
+
+.modal-body {
+  padding: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.jugadores-modal-lista {
+  display: grid;
+  gap: 15px;
+}
+
+.jugador-modal-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #b30000;
+  transition: all 0.3s ease;
+}
+
+.jugador-modal-item:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.jugador-modal-escudo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #b30000;
+}
+
+.jugador-modal-info {
+  flex: 1;
+}
+
+.jugador-modal-nombre {
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+}
+
+.jugador-modal-club {
+  color: #666;
+  margin: 0 0 5px 0;
+  font-size: 0.9rem;
+}
+
+.jugador-modal-posicion {
+  color: #b30000;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.jugador-modal-stats {
+  text-align: right;
+  color: #495057;
+  font-size: 0.85rem;
+}
+
+/* Hacer clickeables las stat-cards */
+.stat-card {
+  cursor: pointer;
+  user-select: none;
+}
+
+.stat-card:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive para modal */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+    max-height: 85vh;
+  }
+  
+  .jugador-modal-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .jugador-modal-stats {
+    text-align: center;
+  }
+}

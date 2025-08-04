@@ -104,42 +104,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const statsGrid = document.getElementById("stats-grid");
     statsGrid.innerHTML = `
-      <div class="stat-card">
+      <div class="stat-card" onclick="mostrarJugadoresModal('todos', 'Total Jugadores')">
         <span class="stat-icon">👥</span>
         <div class="stat-number">${totalJugadores}</div>
         <div class="stat-label">Total Jugadores</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" onclick="mostrarJugadoresModal('activos', 'Jugadores Activos')">
         <span class="stat-icon">🏃‍♂️</span>
         <div class="stat-number">${jugadoresActivos}</div>
         <div class="stat-label">Jugadores Activos</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" onclick="mostrarJugadoresModal('partidos', 'Jugadores con Partidos')">
         <span class="stat-icon">⚽</span>
         <div class="stat-number">${totalPartidos}</div>
         <div class="stat-label">Partidos Jugados</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" onclick="mostrarJugadoresModal('goles', 'Jugadores con Goles')">
         <span class="stat-icon">🥅</span>
         <div class="stat-number">${totalGoles}</div>
         <div class="stat-label">Goles</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" onclick="mostrarJugadoresModal('asistencias', 'Jugadores con Asistencias')">
         <span class="stat-icon">🅰️</span>
         <div class="stat-number">${totalAsistencias}</div>
         <div class="stat-label">Asistencias</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" onclick="mostrarJugadoresModal('minutos', 'Jugadores con Minutos')">
         <span class="stat-icon">⏱️</span>
         <div class="stat-number">${Math.round(totalMinutos / 60)}</div>
         <div class="stat-label">Horas Jugadas</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" onclick="mostrarJugadoresModal('opcion', 'Con Opción de Compra')">
         <span class="stat-icon">💰</span>
         <div class="stat-number">${conOpcionCompra}</div>
         <div class="stat-label">Con Opción de Compra</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" onclick="mostrarJugadoresModal('repesca', 'En Repesca')">
         <span class="stat-icon">🔄</span>
         <div class="stat-number">${enRepesca}</div>
         <div class="stat-label">En Repesca</div>
@@ -486,4 +486,117 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
     });
+});
+
+// Función para mostrar jugadores en modal
+function mostrarJugadoresModal(tipo, titulo) {
+  let jugadoresFiltrados = [];
+  
+  switch(tipo) {
+    case 'todos':
+      jugadoresFiltrados = jugadores;
+      break;
+    case 'activos':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Partidos Jugados"]) > 0);
+      break;
+    case 'partidos':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Partidos Jugados"]) > 0);
+      break;
+    case 'goles':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Goles"]) > 0);
+      break;
+    case 'asistencias':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Asistencias"]) > 0);
+      break;
+    case 'minutos':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Minutos Jugados"]) > 0);
+      break;
+    case 'opcion':
+      jugadoresFiltrados = jugadores.filter(j => j["Opción de Compra"] && j["Opción de Compra"] !== "NO" && j["Opción de Compra"] !== "-");
+      break;
+    case 'repesca':
+      jugadoresFiltrados = jugadores.filter(j => j["Repesca"] === "SI");
+      break;
+    default:
+      jugadoresFiltrados = jugadores;
+  }
+
+  // Actualizar título del modal
+  document.getElementById("modal-title").textContent = `${titulo} (${jugadoresFiltrados.length})`;
+  
+  // Generar lista de jugadores
+  const lista = document.getElementById("modal-jugadores-lista");
+  lista.innerHTML = "";
+  
+  jugadoresFiltrados.forEach(jugador => {
+    const div = document.createElement("div");
+    div.className = "jugador-modal-item";
+    
+    // Calcular estadísticas específicas según el tipo
+    let statsText = "";
+    switch(tipo) {
+      case 'goles':
+        statsText = `${jugador["Goles"]} gol(es)`;
+        break;
+      case 'asistencias':
+        statsText = `${jugador["Asistencias"]} asist.`;
+        break;
+      case 'partidos':
+        statsText = `${jugador["Partidos Jugados"]} PJ`;
+        break;
+      case 'minutos':
+        statsText = `${jugador["Minutos Jugados"]} min`;
+        break;
+      case 'opcion':
+        statsText = jugador["Opción de Compra"];
+        break;
+      case 'repesca':
+        statsText = "En repesca";
+        break;
+      default:
+        statsText = `${jugador["Partidos Jugados"]} PJ | ${jugador["Goles"]} G | ${jugador["Asistencias"]} A`;
+    }
+    
+    div.innerHTML = `
+      <img src="img/${jugador["Escudo"]}" alt="${jugador["Club Actual"]}" class="jugador-modal-escudo">
+      <div class="jugador-modal-info">
+        <p class="jugador-modal-nombre">${jugador["Jugador"]}</p>
+        <p class="jugador-modal-club">${jugador["Club Actual"]}</p>
+        <p class="jugador-modal-posicion">${jugador["Posición"]}</p>
+      </div>
+      <div class="jugador-modal-stats">
+        ${statsText}
+      </div>
+    `;
+    
+    lista.appendChild(div);
+  });
+  
+  // Mostrar modal
+  document.getElementById("modal-jugadores").style.display = "block";
+}
+
+// Cerrar modal
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById("modal-jugadores");
+  const closeBtn = document.getElementById("modal-close");
+  
+  // Cerrar con X
+  closeBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+  
+  // Cerrar haciendo clic fuera del modal
+  window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+  
+  // Cerrar con tecla Escape
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape" && modal.style.display === "block") {
+      modal.style.display = "none";
+    }
+  });
 });

@@ -99,7 +99,22 @@
     </section>
   </main>
 
-  <script src="resumen.js?v=2025-08-01-mobile"></script>
+  <!-- Modal para mostrar jugadores específicos -->
+  <div id="modal-jugadores" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Jugadores</h3>
+        <span class="modal-close" id="modal-close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div id="modal-jugadores-lista" class="jugadores-modal-lista">
+          <!-- Se llenará dinámicamente -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="resumen.js?v=6"></script>
   <script>
     // JavaScript para el menú hamburguesa
     document.addEventListener('DOMContentLoaded', function() {
