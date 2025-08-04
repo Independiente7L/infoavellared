@@ -254,49 +254,6 @@ h1 {
   margin-bottom: 40px;
 }
 
-.tops-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 32px;
-  margin-bottom: 40px;
-}
-
-.top-tabla {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  padding: 18px 24px;
-}
-
-.top-tabla h2 {
-  text-align: center;
-  color: #b30000;
-  margin-bottom: 12px;
-  font-size: 1.3rem;
-}
-
-.top-tabla table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.top-tabla th, .top-tabla td {
-  padding: 8px 10px;
-  text-align: center; /* Centra el texto y los escudos */
-  border-bottom: 1px solid #eee;
-  vertical-align: middle;
-}
-
-.top-tabla th {
-  background: #fbeaea;
-  color: #b30000;
-  font-weight: bold;
-}
-
-.top-tabla tr:last-child td {
-  border-bottom: none;
-}
-
 .badge-hoy {
   background: #e74c3c;
   color: #fff;
@@ -313,16 +270,6 @@ h1 {
 .partido-proximo {
   border-left: 8px solid #ff9800;
   box-shadow: 0 6px 18px rgba(255,152,0,0.13);
-}
-
-.escudo-top {
-  height: 32px;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  background: #fff;
-  padding: 2px;
-  display: inline-block;
-  vertical-align: middle;
 }
 
 .nav-botones {

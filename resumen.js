@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="top-nombre">${j["Jugador"]}</div>
               <div class="top-club">${j["Club Actual"]}</div>
             </div>
-            <div class="top-valor">${Math.round(j["Minutos Jugados"] / 90)}PJ</div>
+            <div class="top-valor">${Number(j["Minutos Jugados"]).toLocaleString('es-ES')}'</div>
           </div>
         `).join("")}
       </div>
