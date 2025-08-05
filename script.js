@@ -301,6 +301,9 @@ document.addEventListener("DOMContentLoaded", () => {
         filtroPosicion.appendChild(option);
       });
 
+      // Aplicar filtros iniciales (orden A-Z por defecto)
+      aplicarFiltros();
+
       // Configurar el selector de jugadores por página
       const selectorPagina = document.getElementById("jugadores-por-pagina");
       selectorPagina.addEventListener("change", (e) => {
@@ -317,8 +320,6 @@ document.addEventListener("DOMContentLoaded", () => {
           contenedor.classList.remove("loading");
         }, 200);
       });
-
-      aplicarPaginacion();
 
       // Agregar efectos visuales a los filtros
       const buscador = document.getElementById("buscador");
