@@ -1,2 +1,0 @@
-﻿URL,Error
-https://www.transfermarkt.com.ar/lucas-roman/leistungsdatenverein/spieler/990202,"No responde (requests): HTTPSConnectionPool(host='www.transfermarkt.com.ar', port=443): Max retries exceeded with url: /lucas-roman/leistungsdatenverein/spieler/990202 (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000020568B3ABA0>, 'Connection to www.transfermarkt.com.ar timed out. (connect timeout=20)'))"

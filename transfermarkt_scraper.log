@@ -388,3 +388,76 @@
 2025-08-05 12:12:33,342 - INFO - Histórico guardado en proximos_partidos_20250805_121233.csv
 2025-08-05 12:12:34,370 - INFO - Resultados guardados en proximos_partidos.xlsx
 2025-08-05 12:12:38,078 - INFO - Proceso finalizado
+2025-08-05 15:16:57,711 - INFO - Iniciando scraping de partidos en Transfermarkt - Fecha: 2025-08-05 15:16:57
+2025-08-05 15:17:00,372 - INFO - Procesando: Arsenal FC (1/22)
+2025-08-05 15:17:08,534 - INFO - Cookies aceptadas
+2025-08-05 15:17:38,142 - INFO - Éxito: Arsenal vs Ferro - sábado, 09/08/2025 - 15:00 (Rival: Ferro)
+2025-08-05 15:17:42,659 - INFO - Procesando: AD Union Magdalena (2/22)
+2025-08-05 15:17:59,217 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:18:10,416 - INFO - Éxito: Union Magdalena vs Deportivo Pasto - miércoles, 06/08/2025 - 20:00 (Rival: Deportivo Pasto)
+2025-08-05 15:18:12,572 - INFO - Procesando: CA Gimnasia y Esgrima (Mendoza) (3/22)
+2025-08-05 15:18:31,366 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:18:42,140 - INFO - Éxito: Dep. Morón vs Gimnasia (M) - domingo, 29/06/2025 - 14:00 (Rival: Dep. Morón)
+2025-08-05 15:18:46,550 - INFO - Procesando: Club Puebla (4/22)
+2025-08-05 15:18:56,361 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:19:07,308 - INFO - Éxito: Montréal vs Club Puebla - martes, 05/08/2025 - 21:00 (Rival: Montréal)
+2025-08-05 15:19:09,987 - INFO - Procesando: CA Tigre (5/22)
+2025-08-05 15:19:21,429 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:19:32,380 - INFO - Éxito: Tigre vs Huracán - viernes, 08/08/2025 - 19:00 (Rival: Huracán)
+2025-08-05 15:19:36,608 - INFO - Procesando: CA Chacarita Juniors (6/22)
+2025-08-05 15:19:47,987 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:19:58,918 - INFO - Éxito: CADU (Zárate) vs Chacarita Jrs. - sábado, 09/08/2025 - 15:30 (Rival: CADU (Zárate))
+2025-08-05 15:20:01,602 - INFO - Procesando: CA Los Andes (7/22)
+2025-08-05 15:20:13,266 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:20:24,957 - INFO - Éxito: Gimnasia y Tiro vs Los Andes - domingo, 10/08/2025 - 17:00 (Rival: Gimnasia y Tiro)
+2025-08-05 15:20:29,624 - INFO - Procesando: Volos NPS (8/22)
+2025-08-05 15:20:41,408 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:20:52,189 - INFO - Éxito: PAS Giannina vs Volos NPS - domingo, 17/08/2025 - 19:00 (Rival: PAS Giannina)
+2025-08-05 15:20:55,227 - INFO - Procesando: CA Boston River (9/22)
+2025-08-05 15:21:03,708 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:21:14,593 - INFO - Éxito: CSyD Paso vs Boston River - martes, 05/08/2025 - 19:00 (Rival: CSyD Paso)
+2025-08-05 15:21:17,655 - INFO - Procesando: Club Deportivo Maldonado (10/22)
+2025-08-05 15:21:28,051 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:21:38,734 - INFO - Éxito: Porongos vs CD Maldonado - martes, 05/08/2025 - 19:00 (Rival: Porongos)
+2025-08-05 15:21:41,223 - INFO - Procesando: Círculo Deportivo (11/22)
+2025-08-05 15:21:51,735 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:22:02,507 - INFO - Éxito: Circulo Dep. vs Guillermo Brown - domingo, 10/08/2025 - 11:00 (Rival: Guillermo Brown)
+2025-08-05 15:22:06,724 - INFO - Procesando: CA Platense (12/22)
+2025-08-05 15:22:21,586 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:22:32,351 - INFO - Éxito: Instituto ACC vs Platense - domingo, 10/08/2025 - 17:00 (Rival: Instituto ACC)
+2025-08-05 15:22:35,073 - INFO - Procesando: CA Nueva Chicago (13/22)
+2025-08-05 15:22:47,894 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:22:59,048 - INFO - Éxito: Talleres RE vs Nueva Chicago - sábado, 09/08/2025 - 15:30 (Rival: Talleres RE)
+2025-08-05 15:23:02,530 - INFO - Procesando: Real Pilar FC (14/22)
+2025-08-05 15:23:12,407 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:23:23,333 - INFO - Éxito: Acassuso vs Real Pilar - sábado, 16/08/2025 - 11:00 (Rival: Acassuso)
+2025-08-05 15:23:25,683 - INFO - Procesando: CSD Tristán Suárez (15/22)
+2025-08-05 15:23:37,327 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:23:47,946 - INFO - Éxito: Dep. Maipú vs Tristán Suárez - sábado, 09/08/2025 - 15:00 (Rival: Dep. Maipú)
+2025-08-05 15:23:50,867 - INFO - Procesando: CA Barracas Central (16/22)
+2025-08-05 15:24:02,102 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:24:13,454 - INFO - Éxito: Barracas vs Aldosivi - domingo, 10/08/2025 - 15:00 (Rival: Aldosivi)
+2025-08-05 15:24:15,764 - INFO - Procesando: Barcelona SC Guayaquil (17/22)
+2025-08-05 15:24:26,030 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:24:36,770 - INFO - Éxito: CD El Nacional vs Barcelona SC - domingo, 10/08/2025 - 20:00 (Rival: CD El Nacional)
+2025-08-05 15:24:40,123 - INFO - Procesando: CS Dock Sud (18/22)
+2025-08-05 15:24:50,224 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:25:00,835 - WARNING - No se encontraron partidos para CS Dock Sud
+2025-08-05 15:25:15,351 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:25:26,016 - INFO - Éxito: Arg. de Merlo vs Dock Sud - sábado, 16/08/2025 - 11:00 (Rival: Arg. de Merlo)
+2025-08-05 15:25:30,668 - INFO - Procesando: Club Atlético Tucumán (19/22)
+2025-08-05 15:25:40,640 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:25:51,248 - INFO - Éxito: Atl. Tucumán vs Rosario Central - sábado, 09/08/2025 - 20:45 (Rival: Rosario Central)
+2025-08-05 15:25:53,968 - INFO - Procesando: Liverpool FC Montevideo (20/22)
+2025-08-05 15:26:05,585 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:26:16,337 - INFO - Éxito: AA Durazno FC vs Liverpool FC - martes, 05/08/2025 - 19:00 (Rival: AA Durazno FC)
+2025-08-05 15:26:20,246 - INFO - Procesando: CA Rosario Central (21/22)
+2025-08-05 15:26:29,369 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:26:40,146 - INFO - Éxito: Atl. Tucumán vs Rosario Central - sábado, 09/08/2025 - 20:45 (Rival: Atl. Tucumán)
+2025-08-05 15:26:42,702 - INFO - Procesando: CA San Martín (San Juan) (22/22)
+2025-08-05 15:26:54,265 - INFO - No se encontró banner de cookies o ya fue aceptado
+2025-08-05 15:27:05,262 - INFO - Éxito: San Martín (SJ) vs Sarmiento - sábado, 09/08/2025 - 14:30 (Rival: Sarmiento)
+2025-08-05 15:27:09,118 - INFO - Histórico guardado en proximos_partidos_20250805_152709.csv
+2025-08-05 15:27:10,039 - INFO - Resultados guardados en proximos_partidos.xlsx
+2025-08-05 15:27:10,282 - ERROR - Error general: "['fecha_hora'] not in index"
+2025-08-05 15:27:15,251 - INFO - Proceso finalizado
