@@ -42,74 +42,102 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function convertirFechaProximoPartido(valor) {
-    const numero = Number(valor);
-    const fechaActual = new Date();
-    let fechaPartido;
-
-    // Convertir el valor a fecha
-    if (typeof valor === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
-      // Formato DD/MM/YYYY
-      const partes = valor.split('/');
-      const dia = parseInt(partes[0], 10);
-      const mes = parseInt(partes[1], 10) - 1; // Restar 1 porque los meses en JavaScript van de 0 a 11
-      const año = parseInt(partes[2], 10);
-      fechaPartido = new Date(año, mes, dia);
-    } else if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
-      fechaPartido = new Date(valor);
-    } else if (!isNaN(numero) && numero > 1_500_000_000_000) {
-      fechaPartido = new Date(numero);
-    } else if (!isNaN(numero) && numero > 30000 && numero < 60000) {
-      fechaPartido = new Date((numero - 25569) * 86400 * 1000);
-    } else {
-      return valor;
-    }
-
-    // Si la fecha ya pasó, mostrar "A definir"
-    if (fechaPartido < fechaActual) {
+    if (!valor || valor === "A definir") {
       return "A definir";
     }
 
-    // Si la fecha es futura, mostrar la fecha formateada
-    return fechaPartido.toLocaleDateString("es-AR", {
-      day: "2-digit", month: "long", year: "numeric"
-    });
+    const fechaActual = new Date();
+    let fechaPartido;
+
+    // Nuevo formato: "miércoles, 06/08/2025 - 20:00"
+    if (typeof valor === "string" && valor.includes(",") && valor.includes("-")) {
+      const match = valor.match(/(\d{2}\/\d{2}\/\d{4})/);
+      if (match) {
+        const fechaStr = match[1];
+        const partes = fechaStr.split('/');
+        const dia = parseInt(partes[0], 10);
+        const mes = parseInt(partes[1], 10) - 1;
+        const año = parseInt(partes[2], 10);
+        fechaPartido = new Date(año, mes, dia);
+      }
+    }
+    // Formato DD/MM/YYYY simple
+    else if (typeof valor === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
+      const partes = valor.split('/');
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10) - 1;
+      const año = parseInt(partes[2], 10);
+      fechaPartido = new Date(año, mes, dia);
+    }
+    // Formato YYYY-MM-DD
+    else if (typeof valor === "string" && /^\d{4}-\d{2}-\d{2}$/.test(valor)) {
+      fechaPartido = new Date(valor);
+    }
+    // Timestamp numérico
+    else if (!isNaN(Number(valor)) && Number(valor) > 1_500_000_000_000) {
+      fechaPartido = new Date(Number(valor));
+    }
+    // Número de serie de Excel
+    else if (!isNaN(Number(valor)) && Number(valor) > 30000 && Number(valor) < 60000) {
+      fechaPartido = new Date((Number(valor) - 25569) * 86400 * 1000);
+    }
+    else {
+      return valor;
+    }
+
+    if (!fechaPartido || isNaN(fechaPartido.getTime())) {
+      return "A definir";
+    }
+
+    // Calcular días hasta el partido
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    fechaPartido.setHours(0, 0, 0, 0);
+    const diferenciaDias = Math.ceil((fechaPartido.getTime() - hoy.getTime()) / (1000 * 3600 * 24));
+
+    // Si la fecha ya pasó
+    if (diferenciaDias < 0) {
+      return "A definir";
+    }
+
+    // Formato estético según cercanía
+    if (diferenciaDias === 0) {
+      return "🔥 HOY";
+    } else if (diferenciaDias === 1) {
+      return "⚡ MAÑANA";
+    } else if (diferenciaDias <= 7) {
+      return `📅 En ${diferenciaDias} días`;
+    } else {
+      return fechaPartido.toLocaleDateString("es-AR", {
+        day: "2-digit", 
+        month: "short", 
+        year: "numeric"
+      });
+    }
+  }
+
+  function extraerHoraPartido(valor) {
+    if (!valor || typeof valor !== "string") {
+      return "";
+    }
+
+    // Buscar patrón de hora HH:MM
+    const match = valor.match(/(\d{1,2}:\d{2})/);
+    return match ? match[1] : "";
   }
 
   function verificarProximoRival(rival, fechaPartido) {
-    // Primero verificar si convertirFechaProximoPartido retorna "A definir"
+    // Si no hay rival definido o es A definir
+    if (!rival || rival === "A definir" || rival === "") {
+      return "A definir";
+    }
+
+    // Verificar si la fecha ya pasó
     const fechaConvertida = convertirFechaProximoPartido(fechaPartido);
     if (fechaConvertida === "A definir") {
       return "A definir";
     }
 
-    const numero = Number(fechaPartido);
-    const fechaActual = new Date();
-    let fechaPartidoDate;
-
-    // Convertir el valor a fecha
-    if (typeof fechaPartido === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(fechaPartido)) {
-      // Formato DD/MM/YYYY
-      const partes = fechaPartido.split('/');
-      const dia = parseInt(partes[0], 10);
-      const mes = parseInt(partes[1], 10) - 1; // Restar 1 porque los meses en JavaScript van de 0 a 11
-      const año = parseInt(partes[2], 10);
-      fechaPartidoDate = new Date(año, mes, dia);
-    } else if (typeof fechaPartido === "string" && /^\d{4}-\d{2}-\d{2}$/.test(fechaPartido)) {
-      fechaPartidoDate = new Date(fechaPartido);
-    } else if (!isNaN(numero) && numero > 1_500_000_000_000) {
-      fechaPartidoDate = new Date(numero);
-    } else if (!isNaN(numero) && numero > 30000 && numero < 60000) {
-      fechaPartidoDate = new Date((numero - 25569) * 86400 * 1000);
-    } else {
-      return "A definir";
-    }
-
-    // Si la fecha ya pasó, mostrar "A definir"
-    if (fechaPartidoDate < fechaActual) {
-      return "A definir";
-    }
-
-    // Si la fecha es futura, mostrar el rival normal
     return rival;
   }
 
@@ -142,8 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
           GEC: ${j["Goles en Contra"]} |
           Imbatido: ${j["Imbatido"]}
         </p>
-        <p><strong>Próximo Rival:</strong> ${verificarProximoRival(j["Próximo Rival"], j["Próximo Partido"])}</p>
-        <p><strong>Próximo Partido:</strong> ${convertirFechaProximoPartido(j["Próximo Partido"])}</p>
+        <div style="border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px;">
+          <p><strong>⚔️ Próximo Rival:</strong> <span style="color: #e74c3c; font-weight: bold;">${verificarProximoRival(j["Próximo Rival"], j["Próximo Partido"])}</span></p>
+          <p><strong>📅 Próximo Partido:</strong> <span style="color: #3498db; font-weight: bold;">${convertirFechaProximoPartido(j["Próximo Partido"])}</span></p>
+        </div>
       `;
 
       contenedor.appendChild(div);

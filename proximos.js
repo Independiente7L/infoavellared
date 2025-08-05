@@ -35,8 +35,28 @@ function convertirFecha(valor) {
   return valor;
 }
 
+function extraerHoraPartido(valor) {
+  if (typeof valor === "string") {
+    const match = valor.match(/(\d{2}:\d{2})/);
+    return match ? match[1] : '';
+  }
+  return '';
+}
+
 function obtenerTimestamp(valor) {
   const numero = Number(valor);
+  
+  // Si es el nuevo formato "miércoles, 06/08/2025 - 20:00"
+  if (typeof valor === "string" && valor.includes(' - ')) {
+    const [fechaParte, horaParte] = valor.split(' - ');
+    // Extraer solo la fecha DD/MM/YYYY
+    const fechaMatch = fechaParte.match(/(\d{2}\/\d{2}\/\d{4})/);
+    if (fechaMatch) {
+      const soloFecha = fechaMatch[1];
+      const [dia, mes, año] = soloFecha.split('/');
+      return new Date(parseInt(año), parseInt(mes) - 1, parseInt(dia)).getTime();
+    }
+  }
   
   // Formato DD/MM/YYYY (nuevo formato)
   if (typeof valor === "string" && /^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
@@ -64,10 +84,25 @@ function obtenerTimestamp(valor) {
 
 function obtenerDiasHastaPartido(fechaPartido) {
   const hoy = new Date();
-  hoy.setHours(0, 0, 0, 0); // Normalizar a medianoche
+  hoy.setHours(0, 0, 0, 0);
   
-  const fecha = new Date(obtenerTimestamp(fechaPartido));
-  fecha.setHours(0, 0, 0, 0); // Normalizar a medianoche
+  let timestamp = 0;
+  
+  // Si es el nuevo formato "miércoles, 06/08/2025 - 20:00"
+  if (typeof fechaPartido === "string" && fechaPartido.includes(' - ')) {
+    const [fechaParte, horaParte] = fechaPartido.split(' - ');
+    const fechaMatch = fechaParte.match(/(\d{2}\/\d{2}\/\d{4})/);
+    if (fechaMatch) {
+      const soloFecha = fechaMatch[1];
+      const [dia, mes, año] = soloFecha.split('/');
+      timestamp = new Date(parseInt(año), parseInt(mes) - 1, parseInt(dia)).getTime();
+    }
+  } else {
+    timestamp = obtenerTimestamp(fechaPartido);
+  }
+  
+  const fecha = new Date(timestamp);
+  fecha.setHours(0, 0, 0, 0);
   
   const diferencia = fecha.getTime() - hoy.getTime();
   return Math.ceil(diferencia / (1000 * 3600 * 24));
@@ -77,23 +112,38 @@ function generarIniciales(nombre) {
   return nombre.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
 }
 
+function formatearFechaBonita(valor) {
+  if (typeof valor === "string" && valor.includes(' - ')) {
+    const [fechaParte, horaParte] = valor.split(' - ');
+    const fechaMatch = fechaParte.match(/(\d{2}\/\d{2}\/\d{4})/);
+    if (fechaMatch) {
+      const soloFecha = fechaMatch[1];
+      const [dia, mes, año] = soloFecha.split('/');
+      const fecha = new Date(parseInt(año), parseInt(mes) - 1, parseInt(dia));
+      const nombreMes = fecha.toLocaleDateString("es-AR", { month: "short" });
+      return `${dia} ${nombreMes}`;
+    }
+  }
+  return valor;
+}
+
 function crearTarjetaPartido(jugador, index) {
-  const fechaPartido = obtenerTimestamp(jugador["Próximo Partido"]);
-  const diasHasta = obtenerDiasHastaPartido(jugador["Próximo Partido"]);
-  const esHoy = diasHasta === 0;
+  const horaPartido = extraerHoraPartido(jugador["Próximo Partido"]);
   const esProximo = index === 0;
+  const diasHasta = obtenerDiasHastaPartido(jugador["Próximo Partido"]);
   
+  // Formato estético para la fecha
   let etiquetaTiempo = '';
-  if (diasHasta < 0) {
-    etiquetaTiempo = '⏰ PASADO';
-  } else if (esHoy) {
-    etiquetaTiempo = '🔥 HOY';
+  if (diasHasta === 0) {
+    etiquetaTiempo = `🔥 HOY${horaPartido ? ` - ${horaPartido}` : ''}`;
   } else if (diasHasta === 1) {
-    etiquetaTiempo = '⚡ MAÑANA';
+    etiquetaTiempo = `⚡ MAÑANA${horaPartido ? ` - ${horaPartido}` : ''}`;
   } else if (diasHasta <= 7) {
-    etiquetaTiempo = `📅 En ${diasHasta} días`;
+    etiquetaTiempo = `📅 En ${diasHasta} días${horaPartido ? ` - ${horaPartido}` : ''}`;
   } else {
-    etiquetaTiempo = `📆 ${convertirFecha(jugador["Próximo Partido"])}`;
+    // Para fechas más lejanas, mostrar fecha bonita
+    const fechaFormateada = formatearFechaBonita(jugador["Próximo Partido"]);
+    etiquetaTiempo = `📆 ${fechaFormateada}${horaPartido ? ` - ${horaPartido}` : ''}`;
   }
 
   const iniciales = generarIniciales(jugador["Jugador"]);
@@ -102,7 +152,7 @@ function crearTarjetaPartido(jugador, index) {
   const posicion = jugador["Posición"] || 'Posición';
 
   return `
-    <div class="partido-card ${esProximo ? 'partido-destacado' : ''}" data-dias="${diasHasta}">
+    <div class="partido-card ${esProximo ? 'partido-destacado' : ''}">
       <div class="partido-header">
         <div class="jugador-avatar">${iniciales}</div>
         <div class="jugador-info">
@@ -143,7 +193,7 @@ let partidosFiltrados = [];
 document.addEventListener("DOMContentLoaded", () => {
   mostrarLoading(true);
   
-  fetch('data.json?v=20250801v5')
+  fetch('data.json?v=20250805v1')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -151,17 +201,34 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.json();
     })
     .then(jugadores => {
-      // Filtra solo los partidos que aún no se jugaron
+      console.log('Datos cargados:', jugadores.length, 'jugadores');
+      
+      // Filtrar solo partidos futuros que tengan rival
       const hoy = new Date();
       hoy.setHours(0, 0, 0, 0);
       
       todosLosPartidos = jugadores.filter(j => {
-        const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
+        const tienePartido = j["Próximo Partido"] && j["Próximo Partido"].trim() !== '';
         const tieneRival = j["Próximo Rival"] && j["Próximo Rival"].trim() !== '';
+        
+        if (!tienePartido || !tieneRival) {
+          return false;
+        }
+        
+        // Verificar que sea futuro
+        const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
         const esFuturo = fechaPartido >= hoy.getTime();
         
-        return esFuturo && tieneRival;
+        if (esFuturo) {
+          console.log(`✅ ${j["Jugador"]}: ${j["Próximo Partido"]} vs ${j["Próximo Rival"]}`);
+          return true;
+        } else {
+          console.log(`❌ ${j["Jugador"]}: partido pasado - ${j["Próximo Partido"]}`);
+          return false;
+        }
       });
+      
+      console.log('Total partidos futuros:', todosLosPartidos.length);
 
       // Aplica filtros iniciales
       aplicarFiltrosJS();
@@ -244,5 +311,16 @@ function mostrarError(mensaje) {
   }
 }
 
-// Hacer la función disponible globalmente
-window.aplicarFiltrosJS = aplicarFiltrosJS;
+function mostrarLoading(mostrar) {
+  const loading = document.getElementById('loading');
+  if (loading) {
+    loading.style.display = mostrar ? 'flex' : 'none';
+  }
+}
+
+function actualizarContador(total) {
+  const contador = document.getElementById('contador-partidos');
+  if (contador) {
+    contador.textContent = `${total} partido${total !== 1 ? 's' : ''} encontrado${total !== 1 ? 's' : ''}`;
+  }
+}

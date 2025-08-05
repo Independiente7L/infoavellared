@@ -4,7 +4,7 @@ import re
 
 # Rutas - Ruta específica al directorio WEB_ROJO donde está el Excel
 current_dir = os.path.dirname(os.path.abspath(__file__))
-excel_directory = r"C:\Users\thiag\Documents\WEB_ROJO"  # Directorio específico del Excel
+excel_directory = r"C:\Users\chuqui\Documents\Escritorio\CAT\TC\WEB_ROJO 2.0"  # Directorio específico del Excel
 excel_path = os.path.join(excel_directory, "tm_completo.xlsx")  # Archivo correcto
 sheet_name = "Resu_Jugadores"  # Hoja correcta
 json_path = os.path.join(current_dir, "data.json")  # JSON se mantiene en el directorio actual
