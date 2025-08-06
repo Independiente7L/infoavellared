@@ -14,8 +14,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"miércoles, 06\/08\/2025 - 20:00",
-    "Próximo Rival":"Deportivo Pasto",
+    "Próximo Rival":"Pasto",
+    "Próximo Partido":"mañana, 8:00 p.m.",
     "Escudo":"ad_union_magdalena.png"
   },
   {
@@ -33,8 +33,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 09\/08\/2025 - 15:00",
     "Próximo Rival":"Ferro",
+    "Próximo Partido":"dom, 10\/8, 8:00 p.m.",
     "Escudo":"arsenal_fc.png"
   },
   {
@@ -52,8 +52,8 @@
     "Asistencias":1,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"domingo, 10\/08\/2025 - 20:00",
-    "Próximo Rival":"CD El Nacional",
+    "Próximo Rival":"El Nacional",
+    "Próximo Partido":"dom, 10\/8, 8:00 p.m.",
     "Escudo":"barcelona_sc_guayaquil.png"
   },
   {
@@ -71,8 +71,8 @@
     "Asistencias":4,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"domingo, 10\/08\/2025 - 15:00",
     "Próximo Rival":"Aldosivi",
+    "Próximo Partido":"dom, 10\/8, 3:00 p.m.",
     "Escudo":"ca_barracas_central.png"
   },
   {
@@ -90,8 +90,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"martes, 05\/08\/2025 - 19:00",
-    "Próximo Rival":"CSyD Paso",
+    "Próximo Rival":"Torque",
+    "Próximo Partido":"vie, 8\/8, 7:00 p.m.",
     "Escudo":"ca_boston_river.png"
   },
   {
@@ -109,8 +109,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 09\/08\/2025 - 15:30",
-    "Próximo Rival":"CADU (Zárate)",
+    "Próximo Rival":"Defensores Unidos",
+    "Próximo Partido":"sáb, 9\/8, 1:15 p.m.",
     "Escudo":"ca_chacarita_juniors.png"
   },
   {
@@ -128,8 +128,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"domingo, 10\/08\/2025 - 16:30",
     "Próximo Rival":"Chaco For Ever",
+    "Próximo Partido":"dom, 10\/8, 4:30 p.m.",
     "Escudo":"ca_gimnasia_y_esgrima_mendoza.png"
   },
   {
@@ -147,8 +147,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"domingo, 10\/08\/2025 - 17:00",
-    "Próximo Rival":"Gimnasia y Tiro",
+    "Próximo Rival":"Gimnasia y Tiro de Salta",
+    "Próximo Partido":"dom, 10\/8, 5:00 p.m.",
     "Escudo":"ca_los_andes.png"
   },
   {
@@ -166,8 +166,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 09\/08\/2025 - 15:30",
-    "Próximo Rival":"Talleres RE",
+    "Próximo Rival":"Talleres Remedios",
+    "Próximo Partido":"sáb, 9\/8, 3:30 p.m.",
     "Escudo":"ca_nueva_chicago.png"
   },
   {
@@ -185,8 +185,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"domingo, 10\/08\/2025 - 17:00",
-    "Próximo Rival":"Instituto ACC",
+    "Próximo Rival":"Instituto",
+    "Próximo Partido":"dom, 10\/8, 5:00 p.m.",
     "Escudo":"ca_platense.png"
   },
   {
@@ -204,8 +204,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 09\/08\/2025 - 20:45",
-    "Próximo Rival":"Atl. Tucumán",
+    "Próximo Rival":"Atlético Tucumán",
+    "Próximo Partido":"sáb, 9\/8, 8:45 p.m.",
     "Escudo":"ca_rosario_central.png"
   },
   {
@@ -223,8 +223,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 09\/08\/2025 - 14:30",
     "Próximo Rival":"Sarmiento",
+    "Próximo Partido":"sáb, 9\/8, 2:30 p.m.",
     "Escudo":"ca_san_martín_san_juan.png"
   },
   {
@@ -242,8 +242,8 @@
     "Asistencias":1,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 09\/08\/2025 - 14:30",
     "Próximo Rival":"Sarmiento",
+    "Próximo Partido":"sáb, 9\/8, 2:30 p.m.",
     "Escudo":"ca_san_martín_san_juan.png"
   },
   {
@@ -261,8 +261,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"viernes, 08\/08\/2025 - 19:00",
     "Próximo Rival":"Huracán",
+    "Próximo Partido":"vie, 8\/8, 7:00 p.m.",
     "Escudo":"ca_tigre.png"
   },
   {
@@ -274,14 +274,14 @@
     "Cargo":"NO",
     "Opción de Compra":"NO",
     "Repesca":"NO",
-    "Partidos Jugados":26,
-    "Minutos Jugados":1247,
+    "Partidos Jugados":27,
+    "Minutos Jugados":1277,
     "Goles":4,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 16\/08\/2025 - 11:00",
-    "Próximo Rival":"Arg. de Merlo",
+    "Próximo Rival":"Argentino de Merlo",
+    "Próximo Partido":"sáb, 16\/8, 11:00 a.m.",
     "Escudo":"cs_dock_sud.png"
   },
   {
@@ -299,8 +299,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 09\/08\/2025 - 15:00",
-    "Próximo Rival":"Dep. Maipú",
+    "Próximo Rival":"Deportivo Maipú",
+    "Próximo Partido":"sáb, 9\/8, 3:30 p.m.",
     "Escudo":"csd_tristán_suárez.png"
   },
   {
@@ -318,8 +318,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 09\/08\/2025 - 20:45",
     "Próximo Rival":"Rosario Central",
+    "Próximo Partido":"sáb, 9\/8, 8:45 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -337,8 +337,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 09\/08\/2025 - 20:45",
     "Próximo Rival":"Rosario Central",
+    "Próximo Partido":"sáb, 9\/8, 8:45 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -356,8 +356,8 @@
     "Asistencias":0,
     "Goles en Contra":1,
     "Imbatido":2,
-    "Próximo Partido":"martes, 05\/08\/2025 - 19:00",
     "Próximo Rival":"Porongos",
+    "Próximo Partido":"hoy, 8:30 p.m.",
     "Escudo":"club_deportivo_maldonado.png"
   },
   {
@@ -369,14 +369,14 @@
     "Cargo":"NO",
     "Opción de Compra":"$ 1.400.000 x el 100%",
     "Repesca":"NO",
-    "Partidos Jugados":16,
-    "Minutos Jugados":1257,
+    "Partidos Jugados":17,
+    "Minutos Jugados":1302,
     "Goles":1,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"martes, 05\/08\/2025 - 21:00",
-    "Próximo Rival":"Montréal",
+    "Próximo Rival":"Tigres",
+    "Próximo Partido":"sáb, 9\/8, 12:00 a.m.",
     "Escudo":"club_puebla.png"
   },
   {
@@ -394,8 +394,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"domingo, 10\/08\/2025 - 11:00",
     "Próximo Rival":"Guillermo Brown",
+    "Próximo Partido":"dom, 10\/8, 11:00 a.m.",
     "Escudo":"círculo_deportivo.png"
   },
   {
@@ -413,8 +413,8 @@
     "Asistencias":3,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"martes, 05\/08\/2025 - 19:00",
-    "Próximo Rival":"AA Durazno FC",
+    "Próximo Rival":"Durazno",
+    "Próximo Partido":"mañana, 3:00 p.m.",
     "Escudo":"liverpool_fc_montevideo.png"
   },
   {
@@ -426,14 +426,14 @@
     "Cargo":"-",
     "Opción de Compra":"-",
     "Repesca":"-",
-    "Partidos Jugados":22,
-    "Minutos Jugados":1561,
+    "Partidos Jugados":23,
+    "Minutos Jugados":1651,
     "Goles":2,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"sábado, 16\/08\/2025 - 11:00",
     "Próximo Rival":"Acassuso",
+    "Próximo Partido":"sáb, 16\/8, 11:00 a.m.",
     "Escudo":"real_pilar_fc.png"
   },
   {
@@ -451,8 +451,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Partido":"domingo, 17\/08\/2025 - 19:00",
-    "Próximo Rival":"PAS Giannina",
+    "Próximo Rival":"Aris",
+    "Próximo Partido":"23\/8, Por definirse",
     "Escudo":"volos_nps.png"
   }
 ]
