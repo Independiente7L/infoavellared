@@ -2,9 +2,6 @@ import subprocess
 import sys
 import os
 import time
-
-
-# 3. Actualizar datos en Excel (requiere Excel instalado)
 import win32com.client
 import pythoncom
 
@@ -12,21 +9,29 @@ excel_path = os.path.abspath("tm_completo.xlsx")
 excel = None
 try:
     pythoncom.CoInitialize()
-    excel = win32com.client.Dispatch("Excel.Application")
-    excel.Visible = False  # No mostrar ventana
-
+    excel = win32com.client.DispatchEx("Excel.Application")
+    # Hazlo visible si quieres depurar
+    try:
+        excel.Visible = True
+    except Exception:
+        pass
     wb = excel.Workbooks.Open(excel_path)
     wb.RefreshAll()
 
-    # Esperar a que termine la actualización
-    while excel.CalculationState != -1:  # -1 = xlDone
-        time.sleep(1)
+    # Opcional: Forzar recalculo completo
+    try:
+        excel.CalculateFullRebuild()
+        excel.CalculateUntilAsyncQueriesDone()
+    except Exception:
+        pass
+
+    # Espera fija para dar tiempo a que termine actualización
+    time.sleep(12)  # Puedes ajustar este tiempo
 
     wb.Save()
     wb.Close(SaveChanges=1)
     excel.Quit()
 finally:
-    # Forzar cierre del proceso Excel si sigue abierto
     if excel is not None:
         try:
             excel.Quit()
@@ -34,10 +39,10 @@ finally:
             pass
     del excel
 
-# 4. Ejecutar json_tm.py
+# Ejecutar json_tm.py
 subprocess.run([sys.executable, "json_tm.py"], check=True)
 
-# 5. Hacer git add, commit y push
+# Hacer git add, commit y push
 subprocess.run(["git", "add", "."], check=True)
 subprocess.run(["git", "commit", "-m", "actualizacion de rutina"], check=True)
 subprocess.run(["git", "push", "origin", "main"], check=True)
