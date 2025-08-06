@@ -37,15 +37,78 @@ function convertirFecha(valor) {
 
 function extraerHoraPartido(valor) {
   if (typeof valor === "string") {
-    const match = valor.match(/(\d{2}:\d{2})/);
-    return match ? match[1] : '';
+    // Verificar si la hora está por definirse
+    if (valor.toLowerCase().includes("por definirse") || valor.toLowerCase().includes("a definir")) {
+      return "por definir";
+    }
+
+    // Buscar patrones de hora con AM/PM
+    const matchAmPm = valor.match(/(\d{1,2}):(\d{2})\s*(a\.m\.|p\.m\.|am|pm)/i);
+    if (matchAmPm) {
+      let hora = parseInt(matchAmPm[1]);
+      const minutos = matchAmPm[2];
+      const espm = matchAmPm[3].toLowerCase().includes('p');
+      
+      if (espm && hora !== 12) {
+        hora += 12;
+      } else if (!espm && hora === 12) {
+        hora = 0;
+      }
+      
+      return `${hora.toString().padStart(2, '0')}:${minutos}`;
+    }
+
+    // Buscar patrón de hora simple HH:MM
+    const match24 = valor.match(/(\d{1,2}:\d{2})/);
+    return match24 ? match24[1] : "";
   }
   return '';
 }
 
 function obtenerTimestamp(valor) {
+  console.log(`obtenerTimestamp recibido: "${valor}"`);
   const numero = Number(valor);
   
+  // Formatos del data.json actual
+  // "mañana, 8:00 p.m." -> mañana
+  if (typeof valor === "string" && valor.toLowerCase().includes("mañana")) {
+    const mañana = new Date();
+    mañana.setDate(mañana.getDate() + 1);
+    mañana.setHours(0, 0, 0, 0);
+    console.log(`Detectado mañana: ${mañana.getTime()}`);
+    return mañana.getTime();
+  }
+
+  // "hoy, 8:30 p.m." -> hoy
+  if (typeof valor === "string" && valor.toLowerCase().includes("hoy")) {
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    console.log(`Detectado hoy: ${hoy.getTime()}`);
+    return hoy.getTime();
+  }
+
+  // "23/8, Por definirse" -> extraer fecha sin hora
+  const matchFechaSinHora = valor.match(/^(\d{1,2})\/(\d{1,2}),?\s*(por definirse|a definir)/i);
+  if (matchFechaSinHora) {
+    const [, dia, mes] = matchFechaSinHora;
+    const año = new Date().getFullYear(); // Asumir año actual
+    const fecha = new Date(año, parseInt(mes) - 1, parseInt(dia));
+    fecha.setHours(0, 0, 0, 0);
+    console.log(`Detectado fecha sin hora: ${dia}/${mes} -> ${fecha.getTime()}`);
+    return fecha.getTime();
+  }
+
+  // "dom, 10/8, 8:00 p.m." -> extraer fecha
+  const matchDiaFecha = valor.match(/(lun|mar|mié|jue|vie|sáb|dom),?\s*(\d{1,2})\/(\d{1,2}),?\s*(.*)/i);
+  if (matchDiaFecha) {
+    const [, diaAbrev, dia, mes] = matchDiaFecha;
+    const año = new Date().getFullYear(); // Asumir año actual
+    const fecha = new Date(año, parseInt(mes) - 1, parseInt(dia));
+    fecha.setHours(0, 0, 0, 0);
+    console.log(`Detectado formato día/fecha: ${diaAbrev} ${dia}/${mes} -> ${fecha.getTime()}`);
+    return fecha.getTime();
+  }
+
   // Si es el nuevo formato "miércoles, 06/08/2025 - 20:00"
   if (typeof valor === "string" && valor.includes(' - ')) {
     const [fechaParte, horaParte] = valor.split(' - ');
@@ -79,6 +142,7 @@ function obtenerTimestamp(valor) {
     return (numero - 25569) * 86400 * 1000;
   }
   
+  console.log(`No se pudo procesar el valor: "${valor}", retornando 0`);
   return 0;
 }
 
@@ -112,7 +176,52 @@ function generarIniciales(nombre) {
   return nombre.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
 }
 
+function formatearCargo(cargo) {
+  // Si es "NO" o string no numérico, retornar tal como está
+  if (!cargo || cargo === "NO" || isNaN(Number(cargo))) {
+    return cargo;
+  }
+
+  // Si es numérico, formatear como pesos argentinos
+  const numero = Number(cargo);
+  if (numero === 0) {
+    return "NO";
+  }
+
+  // Formatear con separador de miles
+  return `$ ${numero.toLocaleString('es-AR')}`;
+}
+
 function formatearFechaBonita(valor) {
+  // Formatos del data.json actual
+  // "mañana, 8:00 p.m." -> "Mañana"
+  if (typeof valor === "string" && valor.toLowerCase().includes("mañana")) {
+    return "Mañana";
+  }
+
+  // "hoy, 8:30 p.m." -> "Hoy"
+  if (typeof valor === "string" && valor.toLowerCase().includes("hoy")) {
+    return "Hoy";
+  }
+
+  // "23/8, Por definirse" -> "23 ago (hora por definir)"
+  const matchFechaSinHora = valor.match(/^(\d{1,2})\/(\d{1,2}),?\s*(por definirse|a definir)/i);
+  if (matchFechaSinHora) {
+    const [, dia, mes] = matchFechaSinHora;
+    const meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+    const mesAbrev = meses[parseInt(mes) - 1] || mes;
+    return `${parseInt(dia)} ${mesAbrev} (hora por definir)`;
+  }
+
+  // "dom, 10/8, 8:00 p.m." -> "Dom 10 ago"
+  const matchDiaFecha = valor.match(/(lun|mar|mié|jue|vie|sáb|dom),?\s*(\d{1,2})\/(\d{1,2}),?\s*(.*)/i);
+  if (matchDiaFecha) {
+    const [, diaAbrev, dia, mes] = matchDiaFecha;
+    const meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+    const mesAbrev = meses[parseInt(mes) - 1] || mes;
+    return `${diaAbrev.charAt(0).toUpperCase() + diaAbrev.slice(1)} ${parseInt(dia)} ${mesAbrev}`;
+  }
+
   if (typeof valor === "string" && valor.includes(' - ')) {
     const [fechaParte, horaParte] = valor.split(' - ');
     const fechaMatch = fechaParte.match(/(\d{2}\/\d{2}\/\d{4})/);
@@ -135,15 +244,31 @@ function crearTarjetaPartido(jugador, index) {
   // Formato estético para la fecha
   let etiquetaTiempo = '';
   if (diasHasta === 0) {
-    etiquetaTiempo = `🔥 HOY${horaPartido ? ` - ${horaPartido}` : ''}`;
+    if (horaPartido === "por definir") {
+      etiquetaTiempo = `🔥 HOY (hora por definir)`;
+    } else {
+      etiquetaTiempo = `🔥 HOY${horaPartido ? ` - ${horaPartido}` : ''}`;
+    }
   } else if (diasHasta === 1) {
-    etiquetaTiempo = `⚡ MAÑANA${horaPartido ? ` - ${horaPartido}` : ''}`;
+    if (horaPartido === "por definir") {
+      etiquetaTiempo = `⚡ MAÑANA (hora por definir)`;
+    } else {
+      etiquetaTiempo = `⚡ MAÑANA${horaPartido ? ` - ${horaPartido}` : ''}`;
+    }
   } else if (diasHasta <= 7) {
-    etiquetaTiempo = `📅 En ${diasHasta} días${horaPartido ? ` - ${horaPartido}` : ''}`;
+    if (horaPartido === "por definir") {
+      etiquetaTiempo = `📅 En ${diasHasta} días (hora por definir)`;
+    } else {
+      etiquetaTiempo = `📅 En ${diasHasta} días${horaPartido ? ` - ${horaPartido}` : ''}`;
+    }
   } else {
     // Para fechas más lejanas, mostrar fecha bonita
     const fechaFormateada = formatearFechaBonita(jugador["Próximo Partido"]);
-    etiquetaTiempo = `📆 ${fechaFormateada}${horaPartido ? ` - ${horaPartido}` : ''}`;
+    if (horaPartido === "por definir") {
+      etiquetaTiempo = `📆 ${fechaFormateada}`;
+    } else {
+      etiquetaTiempo = `📆 ${fechaFormateada}${horaPartido ? ` - ${horaPartido}` : ''}`;
+    }
   }
 
   const iniciales = generarIniciales(jugador["Jugador"]);
@@ -212,12 +337,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const tieneRival = j["Próximo Rival"] && j["Próximo Rival"].trim() !== '';
         
         if (!tienePartido || !tieneRival) {
+          console.log(`❌ ${j["Jugador"]}: sin partido (${j["Próximo Partido"]}) o rival (${j["Próximo Rival"]})`);
           return false;
         }
         
         // Verificar que sea futuro
         const fechaPartido = obtenerTimestamp(j["Próximo Partido"]);
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
         const esFuturo = fechaPartido >= hoy.getTime();
+        
+        console.log(`Procesando ${j["Jugador"]}: "${j["Próximo Partido"]}" -> timestamp: ${fechaPartido}, hoy: ${hoy.getTime()}, esFuturo: ${esFuturo}`);
         
         if (esFuturo) {
           console.log(`✅ ${j["Jugador"]}: ${j["Próximo Partido"]} vs ${j["Próximo Rival"]}`);

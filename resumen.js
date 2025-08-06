@@ -30,6 +30,12 @@ function mostrarJugadoresModal(tipo, titulo) {
     case 'repesca':
       jugadoresFiltrados = jugadores.filter(j => j["Repesca"] === "SI");
       break;
+    case 'cargo-con':
+      jugadoresFiltrados = jugadores.filter(j => j["Cargo"] && j["Cargo"] !== "NO" && !isNaN(Number(j["Cargo"])));
+      break;
+    case 'cargo-sin':
+      jugadoresFiltrados = jugadores.filter(j => !j["Cargo"] || j["Cargo"] === "NO");
+      break;
     default:
       jugadoresFiltrados = jugadores;
   }
@@ -65,6 +71,12 @@ function mostrarJugadoresModal(tipo, titulo) {
         break;
       case 'repesca':
         statsText = "En repesca";
+        break;
+      case 'cargo-con':
+        statsText = formatearCargo(jugador["Cargo"]);
+        break;
+      case 'cargo-sin':
+        statsText = "Sin cargo";
         break;
       default:
         statsText = `${jugador["Partidos Jugados"]} PJ | ${jugador["Goles"]} G | ${jugador["Asistencias"]} A`;
@@ -116,6 +128,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     return new Date(valor);
+  }
+
+  function formatearCargo(cargo) {
+    // Si es "NO" o string no numérico, retornar tal como está
+    if (!cargo || cargo === "NO" || isNaN(Number(cargo))) {
+      return cargo;
+    }
+
+    // Si es numérico, formatear como pesos argentinos
+    const numero = Number(cargo);
+    if (numero === 0) {
+      return "NO";
+    }
+
+    // Formatear con separador de miles
+    return `$ ${numero.toLocaleString('es-AR')}`;
   }
 
   function formatearFecha(fecha) {
@@ -507,6 +535,78 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function generarAnalisisFinanciero() {
+    const container = document.getElementById("financiero-grid");
+    container.innerHTML = "";
+
+    // Calcular estadísticas de cargos
+    const jugadoresConCargo = jugadores.filter(j => 
+      j["Cargo"] && j["Cargo"] !== "NO" && !isNaN(Number(j["Cargo"]))
+    );
+
+    const jugadoresSinCargo = jugadores.filter(j => 
+      !j["Cargo"] || j["Cargo"] === "NO"
+    );
+
+    const totalCargos = jugadoresConCargo.reduce((sum, j) => sum + Number(j["Cargo"]), 0);
+    const promedioCargoActivo = jugadoresConCargo.length > 0 ? totalCargos / jugadoresConCargo.length : 0;
+    
+    // Crear estadísticas cards
+    const stats = [
+      {
+        icono: "💰",
+        titulo: "Total en Cargos",
+        valor: `$ ${totalCargos.toLocaleString('es-AR')}`,
+        descripcion: "Suma de todos los cargos activos",
+        clase: "stat-highlight",
+        click: () => mostrarJugadoresModal('cargo-con', 'Jugadores con Cargo')
+      },
+      {
+        icono: "📊",
+        titulo: "Promedio de Cargo",
+        valor: `$ ${Math.round(promedioCargoActivo).toLocaleString('es-AR')}`,
+        descripcion: "Promedio entre jugadores con cargo",
+        clase: "stat-info"
+      },
+      {
+        icono: "✅",
+        titulo: "Con Cargo",
+        valor: jugadoresConCargo.length,
+        descripcion: "Jugadores que pagan cargo",
+        clase: "stat-success",
+        click: () => mostrarJugadoresModal('cargo-con', 'Jugadores con Cargo')
+      },
+      {
+        icono: "❌",
+        titulo: "Sin Cargo",
+        valor: jugadoresSinCargo.length,
+        descripcion: "Jugadores sin cargo",
+        clase: "stat-default",
+        click: () => mostrarJugadoresModal('cargo-sin', 'Jugadores sin Cargo')
+      }
+    ];
+
+    stats.forEach(stat => {
+      const div = document.createElement("div");
+      div.className = `stat-card ${stat.clase}`;
+      if (stat.click) {
+        div.style.cursor = "pointer";
+        div.addEventListener("click", stat.click);
+      }
+      
+      div.innerHTML = `
+        <div class="stat-icon">${stat.icono}</div>
+        <div class="stat-content">
+          <div class="stat-value">${stat.valor}</div>
+          <div class="stat-label">${stat.titulo}</div>
+          <div class="stat-description">${stat.descripcion}</div>
+        </div>
+      `;
+      
+      container.appendChild(div);
+    });
+  }
+
   function generarMapaPaises() {
     const porPais = {};
     
@@ -562,6 +662,7 @@ document.addEventListener("DOMContentLoaded", () => {
       generarMejoresRendimientos();
       generarCronologia();
       generarProximosVencimientos();
+      generarAnalisisFinanciero();
       generarOpcionesCompra();
       generarMapaPaises();
     })

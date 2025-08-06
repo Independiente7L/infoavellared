@@ -46,6 +46,44 @@ document.addEventListener("DOMContentLoaded", () => {
       return "A definir";
     }
 
+    // Formatos del data.json actual
+    // "mañana, 8:00 p.m." -> "Mañana a las 20:00"
+    if (valor.toLowerCase().includes("mañana")) {
+      const hora = extraerYConvertirHora(valor);
+      return `⚡ Mañana${hora ? ` a las ${hora}` : ''}`;
+    }
+
+    // "hoy, 8:30 p.m." -> "Hoy a las 20:30"
+    if (valor.toLowerCase().includes("hoy")) {
+      const hora = extraerYConvertirHora(valor);
+      return `🔥 Hoy${hora ? ` a las ${hora}` : ''}`;
+    }
+
+    // "23/8, Por definirse" -> "23 de agosto (hora por definir)"
+    const matchFechaSinHora = valor.match(/^(\d{1,2})\/(\d{1,2}),?\s*(por definirse|a definir)/i);
+    if (matchFechaSinHora) {
+      const [, dia, mes] = matchFechaSinHora;
+      const mesNombre = convertirMesNumero(parseInt(mes));
+      return `📅 ${parseInt(dia)} de ${mesNombre} (hora por definir)`;
+    }
+
+    // "dom, 10/8, 8:00 p.m." -> "Domingo 10 de agosto a las 20:00"
+    const matchDiaFecha = valor.match(/(lun|mar|mié|jue|vie|sáb|dom),?\s*(\d{1,2})\/(\d{1,2}),?\s*(.*)/i);
+    if (matchDiaFecha) {
+      const [, diaAbrev, dia, mes, horaParte] = matchDiaFecha;
+      const diaNombre = convertirDiaAbreviado(diaAbrev);
+      const mesNombre = convertirMesNumero(parseInt(mes));
+      const hora = extraerYConvertirHora(horaParte);
+      
+      return `📅 ${diaNombre} ${parseInt(dia)} de ${mesNombre}${hora ? ` a las ${hora}` : ''}`;
+    }
+
+    // Si contiene solo hora, asumir que es hoy
+    if (valor.match(/^\d{1,2}:\d{2}/)) {
+      const hora = extraerYConvertirHora(valor);
+      return `🔥 Hoy${hora ? ` a las ${hora}` : ''}`;
+    }
+
     const fechaActual = new Date();
     let fechaPartido;
 
@@ -126,6 +164,69 @@ document.addEventListener("DOMContentLoaded", () => {
     return match ? match[1] : "";
   }
 
+  function extraerYConvertirHora(valor) {
+    if (!valor || typeof valor !== "string") {
+      return "";
+    }
+
+    // Buscar patrones de hora con AM/PM
+    const matchAmPm = valor.match(/(\d{1,2}):(\d{2})\s*(a\.m\.|p\.m\.|am|pm)/i);
+    if (matchAmPm) {
+      let hora = parseInt(matchAmPm[1]);
+      const minutos = matchAmPm[2];
+      const espm = matchAmPm[3].toLowerCase().includes('p');
+      
+      if (espm && hora !== 12) {
+        hora += 12;
+      } else if (!espm && hora === 12) {
+        hora = 0;
+      }
+      
+      return `${hora.toString().padStart(2, '0')}:${minutos}`;
+    }
+
+    // Buscar patrón de hora simple HH:MM
+    const match24 = valor.match(/(\d{1,2}:\d{2})/);
+    return match24 ? match24[1] : "";
+  }
+
+  function convertirDiaAbreviado(diaAbrev) {
+    const dias = {
+      'lun': 'Lunes',
+      'mar': 'Martes', 
+      'mié': 'Miércoles',
+      'jue': 'Jueves',
+      'vie': 'Viernes',
+      'sáb': 'Sábado',
+      'dom': 'Domingo'
+    };
+    return dias[diaAbrev.toLowerCase()] || diaAbrev;
+  }
+
+  function convertirMesNumero(mes) {
+    const meses = [
+      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+    return meses[mes - 1] || mes;
+  }
+
+  function formatearCargo(cargo) {
+    // Si es "NO" o string no numérico, retornar tal como está
+    if (!cargo || cargo === "NO" || isNaN(Number(cargo))) {
+      return cargo;
+    }
+
+    // Si es numérico, formatear como pesos argentinos
+    const numero = Number(cargo);
+    if (numero === 0) {
+      return "NO";
+    }
+
+    // Formatear con separador de miles
+    return `$ ${numero.toLocaleString('es-AR')}`;
+  }
+
   function verificarProximoRival(rival, fechaPartido) {
     // Si no hay rival definido o es A definir
     if (!rival || rival === "A definir" || rival === "") {
@@ -159,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><strong>Posición:</strong> ${j["Posición"]}</p>
         <p><strong>Club Actual:</strong> ${j["Club Actual"]}</p>
         <p><strong>Desde:</strong> ${convertirFecha(j["Desde"])} | <strong>Hasta:</strong> ${convertirFecha(j["Hasta"])}</p>
-        <p><strong>Cargo:</strong> ${j["Cargo"]}</p>
+        <p><strong>Cargo:</strong> ${formatearCargo(j["Cargo"])}</p>
         <p><strong>Opción de Compra:</strong> ${j["Opción de Compra"]}</p>
         <p><strong>Repesca:</strong> ${j["Repesca"]}</p>
         <p><strong>Estadísticas:</strong><br>
