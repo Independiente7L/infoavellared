@@ -321,7 +321,7 @@ let partidosFiltrados = [];
 document.addEventListener("DOMContentLoaded", () => {
   mostrarLoading(true);
   
-  fetch('data.json?v=20250805v1')
+  fetch('data.json?v=20250807v2')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

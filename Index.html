@@ -3,12 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Información completa sobre los préstamos de jugadores de Independiente. Estadísticas, próximos partidos y análisis detallado." />
+  <meta name="keywords" content="Independiente, préstamos, jugadores, fútbol, estadísticas, Avellaneda" />
+  <meta name="author" content="Nacho Greco & Thiago Coria" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="INFO AVELLARED - Préstamos de Jugadores" />
+  <meta property="og:description" content="Portal de información sobre préstamos de jugadores de Independiente" />
+  <meta property="og:image" content="img/diablo_logo_pag.png" />
+  <meta property="og:type" content="website" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>INFO AVELLARED - Préstamos</title>
+  <title>INFO AVELLARED - Préstamos de Jugadores | Estadísticas e Información</title>
   <link rel="icon" type="image/png" href="img/diablo_logo_pag.png" />
-  <link rel="stylesheet" href="estilos.css?v=20250801v4" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#b30000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="InfoAvellaRED" />
+  <link rel="apple-touch-icon" href="img/diablo_logo_pag.png" />
+  <link rel="stylesheet" href="estilos.css?v=20250807v2" />
+  
+  <!-- CSS crítico inline para evitar FOUC (Flash of Unstyled Content) -->
+  <style>
+    body { 
+      margin: 0; 
+      font-family: Arial, sans-serif; 
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    body.loaded { 
+      opacity: 1; 
+    }
+  </style>
+  
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4224083206623509"
      crossorigin="anonymous"></script>
@@ -20,6 +48,11 @@
     <div class="header-titulo-botones">
       <h1>INFO AVELLARED - Préstamos</h1>
       <nav class="nav-menu">
+        <!-- Botón de tema -->
+        <button id="theme-toggle" class="theme-toggle" title="Cambiar tema">
+          <span class="theme-icon">🌙</span>
+        </button>
+        
         <button id="menu-toggle" class="menu-hamburger">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -39,39 +72,54 @@
     </div>
   </header>
 
-  <main id="contenido-principal">
-    <div id="filtros">
-      <input type="text" id="buscador" placeholder="🔍 Buscar jugador..." />
+  <main id="contenido-principal" role="main" aria-label="Contenido principal - Lista de jugadores">
+    <div id="filtros" role="search" aria-label="Filtros de búsqueda">
+      <input type="text" id="buscador" placeholder="🔍 Buscar jugador..." aria-label="Buscar jugador por nombre" />
       
-      <select id="filtro-posicion">
+      <select id="filtro-posicion" aria-label="Filtrar por posición">
         <option value="">📍 Todas las posiciones</option>
       </select>
 
-      <select id="orden">
+      <select id="orden" aria-label="Ordenar resultados">
         <option value="az" selected>🔤 Orden A-Z</option>
         <option value="za">🔠 Orden Z-A</option>
       </select>
 
-      <select id="jugadores-por-pagina">
+      <select id="jugadores-por-pagina" aria-label="Jugadores por página">
         <option value="6">📄 6 por página</option>
         <option value="9">📄 9 por página</option>
         <option value="12" selected>📄 12 por página</option>
         <option value="18">📄 18 por página</option>
         <option value="all">📋 Todos</option>
       </select>
+
+      <!-- Botón de favoritos -->
+      <button id="filtro-favoritos" class="btn-favoritos" title="Mostrar solo favoritos">
+        ⭐ Solo Favoritos (<span id="contador-favoritos">0</span>)
+      </button>
     </div>
 
     <!-- Información de resultados -->
-    <div id="info-resultados"></div>
+    <div id="info-resultados" aria-live="polite" aria-atomic="true"></div>
 
-    <div id="contenedor-jugadores"></div>
+    <div id="contenedor-jugadores" role="region" aria-label="Lista de jugadores" aria-live="polite"></div>
     
     <!-- Paginación -->
-    <div id="paginacion" class="paginacion">
+    <nav id="paginacion" class="paginacion" role="navigation" aria-label="Navegación de páginas">
       <!-- Se llena con JavaScript -->
-    </div>
+    </nav>
   </main>
-  <script src="script.js?v=20250801v3"></script>
+  <script src="script.js?v=20250807v4"></script>
+  <script src="force-reload.js"></script>
+  <script src="auto-update.js?v=20250807v2"></script>
+  
+  <!-- Script para mostrar la página cuando esté completamente cargada -->
+  <script>
+    window.addEventListener('load', function() {
+      document.body.classList.add('loaded');
+    });
+  </script>
+  
   <script>
     // JavaScript para el menú hamburguesa
     document.addEventListener('DOMContentLoaded', function() {
@@ -90,7 +138,47 @@
           menuToggle.classList.remove('active');
         }
       });
+
+      // Funcionalidad del botón de tema
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = document.querySelector('.theme-icon');
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      
+      // Aplicar tema guardado
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
+      }
+      
+      themeToggle.addEventListener('click', function() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        
+        if (isDark) {
+          document.documentElement.setAttribute('data-theme', 'light');
+          themeIcon.textContent = '🌙';
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeIcon.textContent = '☀️';
+          localStorage.setItem('theme', 'dark');
+        }
+      });
     });
+  </script>
+
+  <!-- Registro del Service Worker para PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('SW registrado: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registro falló: ', registrationError);
+          });
+      });
+    }
   </script>
 
   <!-- Footer con créditos -->

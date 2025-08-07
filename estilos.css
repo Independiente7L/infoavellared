@@ -1,3 +1,104 @@
+/* ============================================
+   VARIABLES Y TEMAS
+   ============================================ */
+:root {
+  --color-primary: #b30000;
+  --color-secondary: #d32f2f;
+  --color-background: #fff;
+  --color-text: #333;
+  --color-card-bg: #fff;
+  --color-border: #ddd;
+}
+
+[data-theme="dark"] {
+  --color-background: #1a1a1a;
+  --color-text: #fff;
+  --color-card-bg: #2d2d2d;
+  --color-border: #444;
+}
+
+/* Botón de tema */
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.theme-icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: rotate(180deg);
+}
+
+/* Botón de favoritos */
+.btn-favoritos {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+  margin-top: 10px;
+  width: 100%;
+}
+
+.btn-favoritos:hover {
+  background: linear-gradient(135deg, #f57c00, #ff9800);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 152, 0, 0.4);
+}
+
+.btn-favoritos.active {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* Botón de favorito en cada card */
+.btn-fav-card {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.btn-fav-card:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+.btn-fav-card.favorito {
+  background: rgba(255, 235, 59, 0.8);
+  color: #ff9800;
+}
+
 #barra-superior {
   display: flex;
   align-items: center;
@@ -57,15 +158,137 @@
 body {
   padding-top: 85px; /* Valor único para todas las resoluciones */
   font-family: 'Arial', sans-serif;
-  background: #b30000;
-  color: #222;
+  background: var(--color-primary);
+  color: var(--color-text);
   margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+/* Aplicar tema oscuro al contenido principal */
+[data-theme="dark"] #contenido-principal {
+  background: var(--color-background);
+}
+
+[data-theme="dark"] .jugador {
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .jugador h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .jugador p {
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .jugador strong {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] #filtros {
+  background: var(--color-card-bg);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] #buscador,
+[data-theme="dark"] select {
+  background: #3a3a3a;
+  color: #ffffff;
+  border-color: #555;
+}
+
+[data-theme="dark"] #buscador::placeholder {
+  color: #aaa;
+}
+
+[data-theme="dark"] #info-resultados {
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .btn-paginacion {
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .btn-paginacion:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+[data-theme="dark"] .btn-paginacion.activo {
+  background: var(--color-primary);
+  color: white;
+}
+
+[data-theme="dark"] .btn-favoritos {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+}
+
+[data-theme="dark"] .btn-favoritos.active {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+}
+
+[data-theme="dark"] .btn-fav-card {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .btn-fav-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .btn-fav-card.favorito {
+  background: rgba(255, 235, 59, 0.8);
+  color: #ff9800;
+}
+
+/* Estilos modo oscuro para próximos partidos */
+[data-theme="dark"] .partido-card,
+[data-theme="dark"] .match-card {
+  background: #3a3a3a;
+  color: #ffffff;
+  border-color: #555;
+}
+
+[data-theme="dark"] .match-header {
+  background: #2d2d2d;
+  color: #ffffff;
+  border-color: #555;
+}
+
+[data-theme="dark"] .filtros-section {
+  background: rgba(45, 45, 45, 0.95);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .contador-info {
+  background: #3a3a3a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .team-name {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .date-text {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .vs-text {
+  color: #ffffff;
 }
 
 #contenido-principal {

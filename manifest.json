@@ -1,0 +1,29 @@
+{
+  "name": "INFO AVELLARED - Portal de Jugadores",
+  "short_name": "InfoAvellaRED",
+  "description": "Información completa sobre los préstamos de jugadores de Independiente",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#b30000",
+  "theme_color": "#b30000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "img/diablo_logo_pag.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/diablo_logo_pag.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["sports", "lifestyle"],
+  "lang": "es",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}

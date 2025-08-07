@@ -3,10 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>INFO AVELLARED - Resumen de Jugadores</title>
+  <meta name="description" content="Resumen completo y estadísticas de los jugadores prestados de Independiente. Análisis financiero y rendimiento." />
+  <meta name="keywords" content="Independiente, resumen jugadores, estadísticas, análisis financiero, posiciones" />
+  <meta name="author" content="Nacho Greco & Thiago Coria" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="INFO AVELLARED - Resumen y Estadísticas" />
+  <meta property="og:description" content="Análisis completo de jugadores prestados de Independiente" />
+  <meta property="og:image" content="img/diablo_logo_pag.png" />
+  <meta property="og:type" content="website" />
+  <title>INFO AVELLARED - Resumen y Estadísticas de Jugadores</title>
   <link rel="icon" type="image/png" href="img/diablo_logo_pag.png" />
-  <link rel="stylesheet" href="estilos.css?v=20250801v4" />
-  <link rel="stylesheet" href="resumen.css?v=2025-08-01-mobile" />
+  <link rel="stylesheet" href="estilos.css?v=20250807v2" />
+  <link rel="stylesheet" href="resumen.css?v=20250807v2" />
+  
+  <!-- CSS crítico inline para evitar FOUC (Flash of Unstyled Content) -->
+  <style>
+    body { 
+      margin: 0; 
+      font-family: Arial, sans-serif; 
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    body.loaded { 
+      opacity: 1; 
+    }
+  </style>
+  
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4224083206623509"
      crossorigin="anonymous"></script>
@@ -18,6 +40,11 @@
     <div class="header-titulo-botones">
       <h1>INFO AVELLARED - Resumen de Jugadores</h1>
       <nav class="nav-menu">
+        <!-- Botón de tema -->
+        <button id="theme-toggle" class="theme-toggle" title="Cambiar tema">
+          <span class="theme-icon">🌙</span>
+        </button>
+        
         <button id="menu-toggle" class="menu-hamburger">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -118,7 +145,16 @@
     </div>
   </div>
 
-  <script src="resumen.js?v=6"></script>
+  <script src="resumen.js?v=20250807v2"></script>
+  <script src="auto-update.js?v=20250807v2"></script>
+  
+  <!-- Script para mostrar la página cuando esté completamente cargada -->
+  <script>
+    window.addEventListener('load', function() {
+      document.body.classList.add('loaded');
+    });
+  </script>
+  
   <script>
     // JavaScript para el menú hamburguesa
     document.addEventListener('DOMContentLoaded', function() {
@@ -139,6 +175,31 @@
           }
         });
       }
+
+      // Funcionalidad del botón de tema
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = document.querySelector('.theme-icon');
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      
+      // Aplicar tema guardado
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
+      }
+      
+      themeToggle.addEventListener('click', function() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        
+        if (isDark) {
+          document.documentElement.setAttribute('data-theme', 'light');
+          themeIcon.textContent = '🌙';
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeIcon.textContent = '☀️';
+          localStorage.setItem('theme', 'dark');
+        }
+      });
     });
   </script>
 

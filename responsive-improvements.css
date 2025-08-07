@@ -1,0 +1,103 @@
+/* ============================================
+   MEJORAS RESPONSIVE DESIGN
+   ============================================ */
+
+/* Breakpoints más específicos */
+@media screen and (max-width: 320px) {
+  /* Dispositivos muy pequeños */
+  .jugador {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .jugador h3 {
+    font-size: 14px;
+  }
+  
+  .escudo-club {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+  /* Móviles estándar */
+  #contenedor-jugadores {
+    padding: 0 5px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  /* Tablets pequeñas */
+  #contenedor-jugadores {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Tablets grandes */
+  #contenedor-jugadores {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* Desktop estándar */
+  #contenedor-jugadores {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  /* Pantallas grandes */
+  #contenedor-jugadores {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
+/* Optimización para orientación */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  /* Móviles en horizontal */
+  #barra-superior {
+    height: 50px;
+    padding: 5px 15px;
+  }
+  
+  #barra-superior h1 {
+    font-size: 14px;
+  }
+  
+  body {
+    padding-top: 60px;
+  }
+}
+
+/* Mejoras para touch devices */
+@media (pointer: coarse) {
+  /* Dispositivos touch */
+  .btn-paginacion,
+  .menu-item,
+  button,
+  select {
+    min-height: 44px; /* Tamaño mínimo táctil recomendado */
+  }
+  
+  .jugador {
+    cursor: default; /* No mostrar cursor pointer en touch */
+  }
+}
+
+/* Optimización para pantallas de alta densidad */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-resolution: 192dpi) {
+  /* Imágenes de mayor calidad para pantallas retina */
+  .escudo-club {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}

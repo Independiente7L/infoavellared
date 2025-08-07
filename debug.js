@@ -1,5 +1,5 @@
 // Script de debug para contar partidos
-fetch('data.json?v=20250801v4')
+fetch('data.json?v=20250807v2')
   .then(response => response.json())
   .then(jugadores => {
     console.log('Total jugadores:', jugadores.length);

@@ -3,6 +3,66 @@ document.addEventListener("DOMContentLoaded", () => {
   let jugadoresFiltrados = [];
   let paginaActual = 1;
   let jugadoresPorPagina = 12; // Sincronizado con la opción seleccionada por defecto
+  let favoritos = JSON.parse(localStorage.getItem('favoritos') || '[]');
+  let mostrandoSoloFavoritos = false;
+
+  // Actualizar contador de favoritos
+  function actualizarContadorFavoritos() {
+    const contadorElement = document.getElementById('contador-favoritos');
+    if (contadorElement) {
+      contadorElement.textContent = favoritos.length;
+    }
+  }
+
+  // Recargar favoritos desde localStorage
+  function recargarFavoritos() {
+    favoritos = JSON.parse(localStorage.getItem('favoritos') || '[]');
+  }
+
+  // Actualizar el texto del botón de favoritos
+  function actualizarBotonFavoritos() {
+    const btnFavoritos = document.getElementById("filtro-favoritos");
+    if (btnFavoritos) {
+      btnFavoritos.textContent = mostrandoSoloFavoritos 
+        ? `⭐ Todos los jugadores (${favoritos.length})` 
+        : `⭐ Solo Favoritos (${favoritos.length})`;
+    }
+  }
+
+  // Agregar/quitar de favoritos
+  function toggleFavorito(jugadorNombre) {
+    const index = favoritos.indexOf(jugadorNombre);
+    
+    if (index > -1) {
+      favoritos.splice(index, 1);
+    } else {
+      favoritos.push(jugadorNombre);
+    }
+    
+    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    actualizarContadorFavoritos();
+    
+    // Actualizar el texto del botón de favoritos
+    actualizarBotonFavoritos();
+    
+    // Si estamos mostrando solo favoritos y ya no hay favoritos, cambiar a todos
+    if (mostrandoSoloFavoritos && favoritos.length === 0) {
+      mostrandoSoloFavoritos = false;
+      const btnFavoritos = document.getElementById("filtro-favoritos");
+      if (btnFavoritos) {
+        btnFavoritos.classList.remove('active');
+        btnFavoritos.textContent = `⭐ Solo Favoritos (0)`;
+      }
+    }
+    
+    // Siempre re-renderizar para actualizar la interfaz inmediatamente
+    aplicarFiltros();
+    
+    // Forzar un segundo renderizado para asegurar que la UI se actualice
+    setTimeout(() => {
+      aplicarFiltros();
+    }, 10);
+  }
 
   function convertirFecha(valor) {
     const numero = Number(valor);
@@ -254,6 +314,22 @@ document.addEventListener("DOMContentLoaded", () => {
     jugadoresPaginados.forEach(j => {
       const div = document.createElement("div");
       div.className = "jugador";
+      div.style.position = "relative"; // Para posicionar el botón de favorito
+      
+      const esFavorito = favoritos.includes(j["Jugador"]);
+      
+      // Crear el botón de favorito
+      const btnFav = document.createElement("button");
+      btnFav.className = `btn-fav-card ${esFavorito ? 'favorito' : ''}`;
+      btnFav.title = esFavorito ? 'Quitar de favoritos' : 'Agregar a favoritos';
+      btnFav.textContent = esFavorito ? '⭐' : '☆';
+      
+      // Agregar event listener en lugar de onclick inline
+      btnFav.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleFavorito(j["Jugador"]);
+      });
+      
       div.innerHTML = `
         <img src="img/${j["Escudo"]}" alt="Escudo ${j["Club Actual"]}" class="escudo-club" />
         <h3>${j["Jugador"]}</h3>
@@ -276,7 +352,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>📅 Próximo Partido:</strong> <span style="color: #3498db; font-weight: bold;">${convertirFechaProximoPartido(j["Próximo Partido"])}</span></p>
         </div>
       `;
-
+      
+      // Agregar el botón de favorito al div
+      div.insertBefore(btnFav, div.firstChild);
       contenedor.appendChild(div);
     });
 
@@ -363,37 +441,38 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function aplicarFiltros() {
-    const texto = document.getElementById("buscador").value.toLowerCase();
-    const posicion = document.getElementById("filtro-posicion").value;
+    // Recargar favoritos desde localStorage para asegurar sincronización
+    recargarFavoritos();
+    
+    const busqueda = document.getElementById("buscador").value.toLowerCase();
+    const posicionSeleccionada = document.getElementById("filtro-posicion").value;
     const orden = document.getElementById("orden").value;
 
-    jugadoresFiltrados = jugadores.filter(j =>
-      j["Jugador"].toLowerCase().includes(texto) &&
-      (posicion === "" || j["Posición"] === posicion)
-    );
-
-    jugadoresFiltrados.sort((a, b) => {
-      const nombreA = a["Jugador"].toLowerCase();
-      const nombreB = b["Jugador"].toLowerCase();
-      return orden === "az" ? nombreA.localeCompare(nombreB) : nombreB.localeCompare(nombreA);
+    jugadoresFiltrados = jugadores.filter(jugador => {
+      const coincideBusqueda = jugador["Jugador"].toLowerCase().includes(busqueda);
+      const coincidePosicion = !posicionSeleccionada || jugador["Posición"] === posicionSeleccionada;
+      
+      // Si está activado el filtro de favoritos, solo mostrar favoritos
+      if (mostrandoSoloFavoritos) {
+        const esFavorito = favoritos.includes(jugador["Jugador"]);
+        return coincideBusqueda && coincidePosicion && esFavorito;
+      }
+      
+      return coincideBusqueda && coincidePosicion;
     });
 
-    // Agregar clase cuando hay filtros activos
-    const infoResultados = document.getElementById("info-resultados");
-    const hayFiltros = texto !== "" || posicion !== "";
-    
-    if (hayFiltros) {
-      infoResultados.parentElement.classList.add("has-filters");
-    } else {
-      infoResultados.parentElement.classList.remove("has-filters");
+    // Ordenar
+    if (orden === "az") {
+      jugadoresFiltrados.sort((a, b) => a["Jugador"].localeCompare(b["Jugador"]));
+    } else if (orden === "za") {
+      jugadoresFiltrados.sort((a, b) => b["Jugador"].localeCompare(a["Jugador"]));
     }
 
-    // Resetear a la primera página cuando se aplican filtros
     paginaActual = 1;
     aplicarPaginacion();
   }
 
-  fetch('data.json?v=20250801v5')
+  fetch('data.json?v=20250807v2')
     .then(response => response.json())
     .then(data => {
       jugadores = data;
@@ -443,6 +522,19 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("buscador").addEventListener("input", aplicarFiltros);
       filtroPosicion.addEventListener("change", aplicarFiltros);
       document.getElementById("orden").addEventListener("change", aplicarFiltros);
+
+      // Event listener para el botón de favoritos
+      const btnFavoritos = document.getElementById("filtro-favoritos");
+      btnFavoritos.addEventListener("click", () => {
+        mostrandoSoloFavoritos = !mostrandoSoloFavoritos;
+        btnFavoritos.classList.toggle('active', mostrandoSoloFavoritos);
+        actualizarBotonFavoritos();
+        aplicarFiltros();
+      });
+
+      // Actualizar contador inicial
+      actualizarContadorFavoritos();
+      actualizarBotonFavoritos();
     })
     .catch(err => {
       console.error("Error al cargar data.json:", err);

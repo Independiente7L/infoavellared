@@ -1,5 +1,47 @@
 /* Estilos para la página de resumen */
 
+/* Modo oscuro para resumen */
+[data-theme="dark"] .resumen-seccion {
+  background: rgba(45, 45, 45, 0.95);
+  color: #ffffff;
+  border-color: rgba(179, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .seccion-titulo {
+  color: #ff6b6b;
+}
+
+[data-theme="dark"] .stat-card {
+  background: linear-gradient(135deg, #b30000, #d32f2f);
+  color: white;
+}
+
+[data-theme="dark"] .posicion-card,
+[data-theme="dark"] .rendimiento-categoria,
+[data-theme="dark"] .vencimiento-card,
+[data-theme="dark"] .compra-card,
+[data-theme="dark"] .pais-card {
+  background: #3a3a3a;
+  color: #ffffff;
+  border-color: #555;
+}
+
+[data-theme="dark"] .top-jugador {
+  background: #2d2d2d;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .timeline-content {
+  background: #3a3a3a;
+  color: #ffffff;
+  border-color: #b30000;
+}
+
+[data-theme="dark"] .jugador-chip {
+  background: #b30000;
+  color: white;
+}
+
 .resumen-seccion {
   margin-bottom: 25px;
   background: rgba(255, 255, 255, 0.95);
