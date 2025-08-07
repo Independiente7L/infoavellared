@@ -50,13 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // "mañana, 8:00 p.m." -> "Mañana a las 20:00"
     if (valor.toLowerCase().includes("mañana")) {
       const hora = extraerYConvertirHora(valor);
-      return `⚡ Mañana${hora ? ` a las ${hora}` : ''}`;
+      return `Mañana${hora ? ` a las ${hora}` : ''}`;
     }
 
     // "hoy, 8:30 p.m." -> "Hoy a las 20:30"
     if (valor.toLowerCase().includes("hoy")) {
       const hora = extraerYConvertirHora(valor);
-      return `🔥 Hoy${hora ? ` a las ${hora}` : ''}`;
+      return `Hoy${hora ? ` a las ${hora}` : ''}`;
     }
 
     // "23/8, Por definirse" -> "23 de agosto (hora por definir)"
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (matchFechaSinHora) {
       const [, dia, mes] = matchFechaSinHora;
       const mesNombre = convertirMesNumero(parseInt(mes));
-      return `📅 ${parseInt(dia)} de ${mesNombre} (hora por definir)`;
+      return `${parseInt(dia)} de ${mesNombre} (hora por definir)`;
     }
 
     // "dom, 10/8, 8:00 p.m." -> "Domingo 10 de agosto a las 20:00"
@@ -75,13 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const mesNombre = convertirMesNumero(parseInt(mes));
       const hora = extraerYConvertirHora(horaParte);
       
-      return `📅 ${diaNombre} ${parseInt(dia)} de ${mesNombre}${hora ? ` a las ${hora}` : ''}`;
+      return `${diaNombre} ${parseInt(dia)} de ${mesNombre}${hora ? ` a las ${hora}` : ''}`;
     }
 
     // Si contiene solo hora, asumir que es hoy
     if (valor.match(/^\d{1,2}:\d{2}/)) {
       const hora = extraerYConvertirHora(valor);
-      return `🔥 Hoy${hora ? ` a las ${hora}` : ''}`;
+      return `Hoy${hora ? ` a las ${hora}` : ''}`;
     }
 
     const fechaActual = new Date();
@@ -140,11 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Formato estético según cercanía
     if (diferenciaDias === 0) {
-      return "🔥 HOY";
+      return "HOY";
     } else if (diferenciaDias === 1) {
-      return "⚡ MAÑANA";
+      return "MAÑANA";
     } else if (diferenciaDias <= 7) {
-      return `📅 En ${diferenciaDias} días`;
+      return `En ${diferenciaDias} días`;
     } else {
       return fechaPartido.toLocaleDateString("es-AR", {
         day: "2-digit", 

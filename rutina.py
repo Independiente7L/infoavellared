@@ -7,7 +7,7 @@ import time
 subprocess.run([sys.executable, "actualizar_tm.py"], check=True)
 
 # 2. Ejecutar clubes_tm.py
-subprocess.run([sys.executable, "clubes_tm.py"], check=True)
+subprocess.run([sys.executable, "scrap_prox_part.py"], check=True)
 
 # 3. Actualizar datos en Excel (requiere Excel instalado)
 import win32com.client

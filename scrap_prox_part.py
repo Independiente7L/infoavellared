@@ -240,7 +240,7 @@ class FootballScraperSelenium:
             logging.error(f"❌ Error procesando {url}: {str(e)}")
             team_searched = self.extract_team_from_url(url)
             return {
-                'equipo_buscado': team_searched,
+                'Club Actual': team_searched,
                 'equipo_local': 'Error en extracción',
                 'equipo_visitante': 'Error en extracción',
                 'Próximo Partido': 'Error',
@@ -275,7 +275,7 @@ class FootballScraperSelenium:
             
             # Reordenar columnas según especificaciones
             column_order = [
-                'equipo_buscado', 'Próximo Rival', 'Próximo Partido',
+                'Club Actual', 'Próximo Rival', 'Próximo Partido',
                 'equipo_local', 'equipo_visitante', 'competicion', 
                 'fase_jornada', 'jornada_numero', 'estado'
             ]
@@ -291,12 +291,12 @@ class FootballScraperSelenium:
                     
                     # Actualizar los datos existentes o agregar nuevos
                     for _, new_row in df_new.iterrows():
-                        equipo = new_row['equipo_buscado']
+                        equipo = new_row['Club Actual']
                         
                         # Buscar si el equipo ya existe
-                        if equipo in df_existing['equipo_buscado'].values:
+                        if equipo in df_existing['Club Actual'].values:
                             # Actualizar la fila existente
-                            idx = df_existing[df_existing['equipo_buscado'] == equipo].index[0]
+                            idx = df_existing[df_existing['Club Actual'] == equipo].index[0]
                             for col in df_new.columns:
                                 df_existing.loc[idx, col] = new_row[col]
                             logging.info(f"🔄 Actualizado: {equipo}")
@@ -368,7 +368,7 @@ class FootballScraperSelenium:
         print("="*100)
         
         for i, result in enumerate(self.results, 1):
-            print(f"\n{i}. 🔍 EQUIPO: {result['equipo_buscado']}")
+            print(f"\n{i}. 🔍 EQUIPO: {result['Club Actual']}")
             print(f"   ⚡ Próximo Rival: {result['Próximo Rival']}")
             print(f"   📅 Próximo Partido: {result['Próximo Partido']}")
             print(f"   🏆 Competición: {result['competicion']}")

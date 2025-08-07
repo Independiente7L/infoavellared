@@ -15,7 +15,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Pasto",
-    "Próximo Partido":"mañana, 8:00 p.m.",
+    "Próximo Partido":"hoy, 8:00 p.m.",
     "Escudo":"ad_union_magdalena.png"
   },
   {
@@ -91,7 +91,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Torque",
-    "Próximo Partido":"vie, 8\/8, 7:00 p.m.",
+    "Próximo Partido":"mañana, 7:00 p.m.",
     "Escudo":"ca_boston_river.png"
   },
   {
@@ -110,7 +110,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Defensores Unidos",
-    "Próximo Partido":"sáb, 9\/8, 1:15 p.m.",
+    "Próximo Partido":"sáb, 9\/8, 2:10 p.m.",
     "Escudo":"ca_chacarita_juniors.png"
   },
   {
@@ -262,7 +262,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Huracán",
-    "Próximo Partido":"vie, 8\/8, 7:00 p.m.",
+    "Próximo Partido":"mañana, 7:00 p.m.",
     "Escudo":"ca_tigre.png"
   },
   {
@@ -281,7 +281,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Argentino de Merlo",
-    "Próximo Partido":"sáb, 16\/8, 11:00 a.m.",
+    "Próximo Partido":"dom, 10\/8, 3:30 p.m.",
     "Escudo":"cs_dock_sud.png"
   },
   {
@@ -356,8 +356,8 @@
     "Asistencias":0,
     "Goles en Contra":1,
     "Imbatido":2,
-    "Próximo Rival":"Porongos",
-    "Próximo Partido":"hoy, 8:30 p.m.",
+    "Próximo Rival":"Rentistas",
+    "Próximo Partido":"sáb, 9\/8, 7:00 p.m.",
     "Escudo":"club_deportivo_maldonado.png"
   },
   {
@@ -395,7 +395,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Guillermo Brown",
-    "Próximo Partido":"dom, 10\/8, 11:00 a.m.",
+    "Próximo Partido":"dom, 10\/8, 3:00 p.m.",
     "Escudo":"círculo_deportivo.png"
   },
   {
@@ -414,7 +414,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Durazno",
-    "Próximo Partido":"mañana, 3:00 p.m.",
+    "Próximo Partido":"hoy, 3:00 p.m.",
     "Escudo":"liverpool_fc_montevideo.png"
   },
   {
@@ -433,7 +433,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Acassuso",
-    "Próximo Partido":"sáb, 16\/8, 11:00 a.m.",
+    "Próximo Partido":"mañana, 3:30 p.m.",
     "Escudo":"real_pilar_fc.png"
   },
   {

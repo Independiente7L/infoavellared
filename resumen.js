@@ -31,10 +31,16 @@ function mostrarJugadoresModal(tipo, titulo) {
       jugadoresFiltrados = jugadores.filter(j => j["Repesca"] === "SI");
       break;
     case 'cargo-con':
-      jugadoresFiltrados = jugadores.filter(j => j["Cargo"] && j["Cargo"] !== "NO" && !isNaN(Number(j["Cargo"])));
+      jugadoresFiltrados = jugadores.filter(j => {
+        const cargo = j["Cargo"];
+        return cargo && cargo !== "NO" && cargo !== "" && !isNaN(Number(cargo)) && Number(cargo) > 0;
+      });
       break;
     case 'cargo-sin':
-      jugadoresFiltrados = jugadores.filter(j => !j["Cargo"] || j["Cargo"] === "NO");
+      jugadoresFiltrados = jugadores.filter(j => {
+        const cargo = j["Cargo"];
+        return !cargo || cargo === "NO" || cargo === "" || isNaN(Number(cargo)) || Number(cargo) <= 0;
+      });
       break;
     default:
       jugadoresFiltrados = jugadores;
@@ -101,6 +107,23 @@ function mostrarJugadoresModal(tipo, titulo) {
   document.getElementById("modal-jugadores").style.display = "block";
 }
 
+// Función global para formatear cargos
+function formatearCargo(cargo) {
+  // Si es "NO" o string no numérico, retornar tal como está
+  if (!cargo || cargo === "NO" || isNaN(Number(cargo))) {
+    return cargo;
+  }
+
+  // Si es numérico, formatear como pesos argentinos
+  const numero = Number(cargo);
+  if (numero === 0) {
+    return "NO";
+  }
+
+  // Formatear con separador de miles
+  return `$ ${numero.toLocaleString('es-AR')}`;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
   function convertirFecha(valor) {
@@ -128,22 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     return new Date(valor);
-  }
-
-  function formatearCargo(cargo) {
-    // Si es "NO" o string no numérico, retornar tal como está
-    if (!cargo || cargo === "NO" || isNaN(Number(cargo))) {
-      return cargo;
-    }
-
-    // Si es numérico, formatear como pesos argentinos
-    const numero = Number(cargo);
-    if (numero === 0) {
-      return "NO";
-    }
-
-    // Formatear con separador de miles
-    return `$ ${numero.toLocaleString('es-AR')}`;
   }
 
   function formatearFecha(fecha) {
@@ -540,13 +547,15 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = "";
 
     // Calcular estadísticas de cargos
-    const jugadoresConCargo = jugadores.filter(j => 
-      j["Cargo"] && j["Cargo"] !== "NO" && !isNaN(Number(j["Cargo"]))
-    );
+    const jugadoresConCargo = jugadores.filter(j => {
+      const cargo = j["Cargo"];
+      return cargo && cargo !== "NO" && cargo !== "" && !isNaN(Number(cargo)) && Number(cargo) > 0;
+    });
 
-    const jugadoresSinCargo = jugadores.filter(j => 
-      !j["Cargo"] || j["Cargo"] === "NO"
-    );
+    const jugadoresSinCargo = jugadores.filter(j => {
+      const cargo = j["Cargo"];
+      return !cargo || cargo === "NO" || cargo === "" || isNaN(Number(cargo)) || Number(cargo) <= 0;
+    });
 
     const totalCargos = jugadoresConCargo.reduce((sum, j) => sum + Number(j["Cargo"]), 0);
     const promedioCargoActivo = jugadoresConCargo.length > 0 ? totalCargos / jugadoresConCargo.length : 0;
@@ -555,34 +564,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const stats = [
       {
         icono: "💰",
-        titulo: "Total en Cargos",
+        titulo: "Total de Ingresos en Cargos",
         valor: `$ ${totalCargos.toLocaleString('es-AR')}`,
-        descripcion: "Suma de todos los cargos activos",
+        descripcion: "Dinero que recibe Independiente por préstamos",
         clase: "stat-highlight",
-        click: () => mostrarJugadoresModal('cargo-con', 'Jugadores con Cargo')
+        click: () => mostrarJugadoresModal('cargo-con', 'Clubes que Pagan Cargo a Independiente')
       },
       {
         icono: "📊",
         titulo: "Promedio de Cargo",
         valor: `$ ${Math.round(promedioCargoActivo).toLocaleString('es-AR')}`,
-        descripcion: "Promedio entre jugadores con cargo",
+        descripcion: "Promedio que pagan los clubes por jugador",
         clase: "stat-info"
       },
       {
         icono: "✅",
         titulo: "Con Cargo",
         valor: jugadoresConCargo.length,
-        descripcion: "Jugadores que pagan cargo",
+        descripcion: "Clubes que pagan cargo a Independiente",
         clase: "stat-success",
-        click: () => mostrarJugadoresModal('cargo-con', 'Jugadores con Cargo')
+        click: () => mostrarJugadoresModal('cargo-con', 'Clubes que Pagan Cargo a Independiente')
       },
       {
         icono: "❌",
         titulo: "Sin Cargo",
         valor: jugadoresSinCargo.length,
-        descripcion: "Jugadores sin cargo",
+        descripcion: "Préstamos sin costo para el club receptor",
         clase: "stat-default",
-        click: () => mostrarJugadoresModal('cargo-sin', 'Jugadores sin Cargo')
+        click: () => mostrarJugadoresModal('cargo-sin', 'Préstamos sin Costo')
       }
     ];
 
