@@ -42,6 +42,140 @@
   color: white;
 }
 
+/* Mejoras para texto en modo oscuro */
+[data-theme="dark"] .top-nombre {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .top-club {
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .jugador-modal-nombre {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .jugador-modal-club {
+  color: #e0e0e0 !important;
+}
+
+/* Estilos para modales en modo oscuro */
+[data-theme="dark"] .modal-content {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: 1px solid #555;
+}
+
+[data-theme="dark"] .modal-body {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .jugador-modal-item {
+  background: #3a3a3a;
+  border-left-color: #ff6b6b;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .jugador-modal-item:hover {
+  background: #4a4a4a;
+}
+
+[data-theme="dark"] .jugador-modal-nombre {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .jugador-modal-club {
+  color: #cccccc !important;
+}
+
+[data-theme="dark"] .jugador-modal-posicion {
+  color: #ff6b6b !important;
+}
+
+[data-theme="dark"] .jugador-modal-stats {
+  color: #cccccc !important;
+}
+
+/* Reglas específicas para elementos de texto en cards de modo oscuro */
+[data-theme="dark"] .compra-jugador,
+[data-theme="dark"] .compra-jugador *,
+[data-theme="dark"] .compra-titulo,
+[data-theme="dark"] .pais-nombre,
+[data-theme="dark"] .vencimiento-item,
+[data-theme="dark"] .vencimiento-item *,
+[data-theme="dark"] .timeline-content,
+[data-theme="dark"] .timeline-content *,
+[data-theme="dark"] .top-jugador,
+[data-theme="dark"] .top-jugador * {
+  color: #ffffff !important;
+}
+
+/* Asegurar que todos los textos en cards sean visibles */
+[data-theme="dark"] .compra-card *,
+[data-theme="dark"] .vencimiento-card *,
+[data-theme="dark"] .pais-card *,
+[data-theme="dark"] .posicion-card *,
+[data-theme="dark"] .rendimiento-categoria * {
+  color: #ffffff !important;
+}
+
+/* Mejoras específicas para tarjetas de países en modo oscuro */
+[data-theme="dark"] .pais-card {
+  background: linear-gradient(135deg, #2d2d2d, #3a3a3a) !important;
+  border-color: #ff6b6b !important;
+  box-shadow: 0 3px 12px rgba(255, 107, 107, 0.2) !important;
+}
+
+[data-theme="dark"] .pais-nombre {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pais-contador {
+  color: #ff6b6b !important;
+}
+
+[data-theme="dark"] .pais-jugador {
+  background: #4a4a4a !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pais-jugador * {
+  color: #ffffff !important;
+}
+
+/* Tarjetas para modo oscuro */
+[data-theme="dark"] .compra-jugador {
+  background: #2d2d2d !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+[data-theme="dark"] .compra-jugador * {
+  color: #ffffff !important;
+}
+
+/* Elementos de cronología para modo oscuro */
+[data-theme="dark"] .timeline-item {
+  background: #2d2d2d !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+[data-theme="dark"] .timeline-item * {
+  color: #ffffff !important;
+}
+
+/* Excepciones para elementos que deben mantener su color específico */
+[data-theme="dark"] .jugador-chip {
+  background: #b30000 !important;
+  color: white !important;
+}
+
+[data-theme="dark"] .stat-card * {
+  color: white !important;
+}
+
 .resumen-seccion {
   margin-bottom: 25px;
   background: rgba(255, 255, 255, 0.95);
@@ -181,6 +315,12 @@
   border: 2px solid #b30000;
 }
 
+/* Modo oscuro para categorías de rendimiento */
+[data-theme="dark"] .rendimiento-categoria {
+  background: linear-gradient(135deg, #2d2d2d, #3a3a3a) !important;
+  border: 2px solid #ff4444 !important;
+}
+
 .categoria-titulo {
   font-size: 17px;
   color: #b30000;
@@ -198,6 +338,13 @@
   border-radius: 8px;
   margin-bottom: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Modo oscuro para tarjetas de jugadores */
+[data-theme="dark"] .top-jugador {
+  background: #2d2d2d !important;
+  border: 1px solid #444 !important;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1) !important;
 }
 
 .top-jugador:last-child {
@@ -291,6 +438,14 @@
   border: 2px solid #b30000;
 }
 
+/* Modo oscuro para contenido de línea de tiempo */
+[data-theme="dark"] .timeline-content {
+  background: #2d2d2d !important;
+  color: #ffffff !important;
+  border: 2px solid #ff4444 !important;
+  box-shadow: 0 3px 12px rgba(255, 255, 255, 0.1) !important;
+}
+
 .timeline-fecha {
   position: absolute;
   left: 50%;
@@ -319,6 +474,21 @@
   margin-bottom: 5px;
 }
 
+/* Modo oscuro para jugadores de timeline */
+[data-theme="dark"] .timeline-jugador {
+  background: #2d2d2d !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+/* Textos dentro de timeline-jugador */
+[data-theme="dark"] .timeline-jugador *,
+[data-theme="dark"] .timeline-jugador span,
+[data-theme="dark"] .timeline-jugador div,
+[data-theme="dark"] .timeline-jugador p {
+  color: #ffffff !important;
+}
+
 .timeline-jugador:last-child {
   margin-bottom: 0;
 }
@@ -336,6 +506,13 @@
   padding: 16px;
   border-left: 4px solid #ff9800;
   box-shadow: 0 3px 10px rgba(255, 152, 0, 0.2);
+}
+
+/* Modo oscuro para tarjetas de vencimiento */
+[data-theme="dark"] .vencimiento-card {
+  background: linear-gradient(135deg, #2d2d2d, #3a3a3a) !important;
+  border-left: 4px solid #ffaa00 !important;
+  box-shadow: 0 3px 10px rgba(255, 170, 0, 0.3) !important;
 }
 
 .vencimiento-urgente {
@@ -403,6 +580,12 @@
   margin-bottom: 8px;
 }
 
+/* Modo oscuro para jugadores comprados */
+[data-theme="dark"] .compra-jugador {
+  background: #2d2d2d !important;
+  border: 1px solid #444 !important;
+}
+
 .compra-jugador:last-child {
   margin-bottom: 0;
 }
@@ -455,6 +638,12 @@
   border-radius: 6px;
   margin-bottom: 5px;
   font-size: 14px;
+}
+
+/* Modo oscuro para jugadores por país */
+[data-theme="dark"] .pais-jugador {
+  background: #2d2d2d !important;
+  border: 1px solid #444 !important;
 }
 
 .pais-jugador:last-child {
@@ -854,4 +1043,135 @@
   .jugador-modal-stats {
     text-align: center;
   }
+}
+
+/* ===============================================
+   CORRECCIONES ADICIONALES PARA MODO OSCURO
+   =============================================== */
+
+/* Corregir contraste en modales de modo oscuro */
+[data-theme="dark"] .modal {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Asegurar que todo el texto del modal sea legible */
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .modal-content *:not(.modal-close) {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #555 !important;
+}
+
+/* Asegurar que las tarjetas de jugadores en modales sean legibles */
+[data-theme="dark"] .jugador-modal-item,
+[data-theme="dark"] .jugador-modal-item * {
+  background: #3a3a3a !important;
+  color: #ffffff !important;
+  border-left-color: #ff6b6b !important;
+}
+
+[data-theme="dark"] .jugador-modal-item:hover {
+  background: #4a4a4a !important;
+}
+
+/* Corregir todas las tarjetas de distribución por países */
+[data-theme="dark"] .paises-container .pais-card {
+  background: linear-gradient(135deg, #2d2d2d, #3a3a3a) !important;
+  border: 2px solid #ff6b6b !important;
+  box-shadow: 0 3px 12px rgba(255, 107, 107, 0.2) !important;
+}
+
+[data-theme="dark"] .paises-container .pais-card .pais-bandera {
+  filter: brightness(1.2);
+}
+
+[data-theme="dark"] .paises-container .pais-card .pais-nombre {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+[data-theme="dark"] .paises-container .pais-card .pais-contador {
+  color: #ff6b6b !important;
+  font-weight: bold;
+}
+
+[data-theme="dark"] .paises-container .pais-card .pais-jugador {
+  background: #4a4a4a !important;
+  color: #ffffff !important;
+  border: 1px solid #555 !important;
+}
+
+/* CORRECCIONES ADICIONALES PARA MODO OSCURO */
+
+/* Asegurar que todas las tarjetas en modales tengan fondo oscuro */
+[data-theme="dark"] .modal-content .compra-jugador,
+[data-theme="dark"] .modal-content .timeline-item,
+[data-theme="dark"] .modal-content .timeline-content,
+[data-theme="dark"] .modal-content .top-jugador,
+[data-theme="dark"] .modal-content .pais-jugador,
+[data-theme="dark"] .modal-content .rendimiento-categoria,
+[data-theme="dark"] .modal-content .vencimiento-card {
+  background: #2d2d2d !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+/* Específicamente para elementos con fondo blanco forzado */
+[data-theme="dark"] .modal-content [style*="background: white"],
+[data-theme="dark"] .modal-content [style*="background:white"],
+[data-theme="dark"] .modal-content [style*="background:#fff"],
+[data-theme="dark"] .modal-content [style*="background: #fff"] {
+  background: #2d2d2d !important;
+  color: #ffffff !important;
+}
+
+/* Textos en tarjetas de modo oscuro */
+[data-theme="dark"] .modal-content .compra-jugador *,
+[data-theme="dark"] .modal-content .timeline-item *,
+[data-theme="dark"] .modal-content .timeline-content *,
+[data-theme="dark"] .modal-content .top-jugador *,
+[data-theme="dark"] .modal-content .pais-jugador *,
+[data-theme="dark"] .modal-content .rendimiento-categoria *,
+[data-theme="dark"] .modal-content .vencimiento-card * {
+  color: #ffffff !important;
+}
+
+/* Asegurar contraste en todas las tarjetas principales */
+[data-theme="dark"] .posicion-card,
+[data-theme="dark"] .rendimiento-categoria,
+[data-theme="dark"] .vencimiento-card,
+[data-theme="dark"] .compra-card {
+  background: #3a3a3a !important;
+  color: #ffffff !important;
+  border: 1px solid #555 !important;
+}
+
+/* Mejorar contraste en elementos específicos */
+[data-theme="dark"] .top-jugador {
+  background: #3a3a3a !important;
+  color: #ffffff !important;
+  border: 1px solid #555 !important;
+}
+
+[data-theme="dark"] .timeline-content {
+  background: #3a3a3a !important;
+  color: #ffffff !important;
+  border-color: #ff6b6b !important;
+}
+
+/* Asegurar que todos los textos sean legibles con !important */
+[data-theme="dark"] .modal-content h3,
+[data-theme="dark"] .modal-content p,
+[data-theme="dark"] .modal-content span,
+[data-theme="dark"] .modal-content div,
+[data-theme="dark"] .jugador-modal-nombre,
+[data-theme="dark"] .jugador-modal-club,
+[data-theme="dark"] .jugador-modal-posicion,
+[data-theme="dark"] .jugador-modal-stats {
+  color: #ffffff !important;
+}
+
+/* Hacer que la posición tenga un color destacado en modo oscuro */
+[data-theme="dark"] .jugador-modal-posicion {
+  color: #ff6b6b !important;
 }

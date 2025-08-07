@@ -17,6 +17,42 @@
   --color-border: #444;
 }
 
+/* Reglas específicas para elementos que necesitan texto blanco en modo oscuro */
+[data-theme="dark"] body,
+[data-theme="dark"] .resumen-seccion,
+[data-theme="dark"] .seccion-titulo,
+[data-theme="dark"] .match-card,
+[data-theme="dark"] .partido-card,
+[data-theme="dark"] .jugador {
+  color: #ffffff !important;
+}
+
+/* Excepciones: elementos con fondo claro mantienen texto oscuro */
+[data-theme="dark"] .compra-jugador,
+[data-theme="dark"] .compra-jugador *,
+[data-theme="dark"] .timeline-item,
+[data-theme="dark"] .timeline-item *,
+[data-theme="dark"] .nav-menu,
+[data-theme="dark"] .nav-menu *,
+[data-theme="dark"] .dropdown-menu,
+[data-theme="dark"] .dropdown-menu *,
+[data-theme="dark"] .menu-dropdown,
+[data-theme="dark"] .menu-dropdown *,
+[data-theme="dark"] .menu-item,
+[data-theme="dark"] .menu-item * {
+  color: #333333 !important;
+}
+
+/* Excepciones para elementos que necesitan colores específicos */
+[data-theme="dark"] .btn-favoritos,
+[data-theme="dark"] .btn-favoritos *,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .stat-card *,
+[data-theme="dark"] .jugador-chip,
+[data-theme="dark"] .jugador-chip * {
+  color: white !important;
+}
+
 /* Botón de tema */
 .theme-toggle {
   background: rgba(255, 255, 255, 0.2);
@@ -258,9 +294,15 @@ body {
 /* Estilos modo oscuro para próximos partidos */
 [data-theme="dark"] .partido-card,
 [data-theme="dark"] .match-card {
-  background: #3a3a3a;
-  color: #ffffff;
-  border-color: #555;
+  background: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #555 !important;
+}
+
+/* Especificidad extra para tarjetas destacadas */
+[data-theme="dark"] .match-card.match-destacado {
+  background: linear-gradient(90deg, #2d2d2d 0%, #3a3a3a 100%) !important;
+  border-left: 4px solid #ffaa00 !important;
 }
 
 [data-theme="dark"] .match-header {
@@ -289,6 +331,59 @@ body {
 
 [data-theme="dark"] .vs-text {
   color: #ffffff;
+}
+
+/* Mejoras adicionales para contraste de texto en modo oscuro */
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .modal-content h2,
+[data-theme="dark"] .modal-content h3,
+[data-theme="dark"] .modal-content p,
+[data-theme="dark"] .modal-content strong {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .modal-content {
+  background: #2d2d2d !important;
+}
+
+[data-theme="dark"] .loading-text,
+[data-theme="dark"] .error-message {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .partido-info,
+[data-theme="dark"] .partido-info h4,
+[data-theme="dark"] .partido-info p {
+  color: #ffffff !important;
+}
+
+/* Reglas específicas para todos los elementos de texto en modo oscuro */
+[data-theme="dark"] .match-card *,
+[data-theme="dark"] .partido-card *,
+[data-theme="dark"] .jugador *,
+[data-theme="dark"] .contador-info *,
+[data-theme="dark"] .filtros-section *,
+[data-theme="dark"] .team-name,
+[data-theme="dark"] .date-text,
+[data-theme="dark"] .jugador-nombre-mini {
+  color: #ffffff !important;
+}
+
+/* Asegurar legibilidad en placeholders y inputs */
+[data-theme="dark"] input,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  color: #ffffff !important;
+  background: #3a3a3a !important;
+}
+
+/* Textos específicos de partidos */
+[data-theme="dark"] .partido-header,
+[data-theme="dark"] .partido-header *,
+[data-theme="dark"] .match-header,
+[data-theme="dark"] .match-header * {
+  color: #ffffff !important;
 }
 
 #contenido-principal {
@@ -2534,4 +2629,50 @@ html, body {
   .date-text {
     font-size: 8px;
   }
+}
+
+/* ========================================
+   CORRECCIONES ADICIONALES MODO OSCURO
+   ======================================== */
+
+/* Refuerzo específico para tarjetas de partidos en modo oscuro */
+[data-theme="dark"] .match-card,
+[data-theme="dark"] .partido-card {
+  background: #2d2d2d !important;
+  border: 1px solid #444 !important;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Contenido interno de las tarjetas */
+[data-theme="dark"] .match-content,
+[data-theme="dark"] .partido-content,
+[data-theme="dark"] .match-header,
+[data-theme="dark"] .partido-header {
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+/* Todas las divisiones dentro de tarjetas */
+[data-theme="dark"] .match-card div,
+[data-theme="dark"] .partido-card div,
+[data-theme="dark"] .match-card span,
+[data-theme="dark"] .partido-card span,
+[data-theme="dark"] .match-card p,
+[data-theme="dark"] .partido-card p,
+[data-theme="dark"] .match-card h1,
+[data-theme="dark"] .partido-card h1,
+[data-theme="dark"] .match-card h2,
+[data-theme="dark"] .partido-card h2,
+[data-theme="dark"] .match-card h3,
+[data-theme="dark"] .partido-card h3,
+[data-theme="dark"] .match-card h4,
+[data-theme="dark"] .partido-card h4 {
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+/* Específico para elementos con fondo inline */
+[data-theme="dark"] .match-card [style*="background"],
+[data-theme="dark"] .partido-card [style*="background"] {
+  background: #2d2d2d !important;
 }
