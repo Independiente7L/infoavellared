@@ -241,70 +241,73 @@ function crearTarjetaPartido(jugador, index) {
   const esProximo = index === 0;
   const diasHasta = obtenerDiasHastaPartido(jugador["Próximo Partido"]);
   
-  // Formato estético para la fecha
-  let etiquetaTiempo = '';
-  if (diasHasta === 0) {
-    if (horaPartido === "por definir") {
-      etiquetaTiempo = `🔥 HOY (hora por definir)`;
-    } else {
-      etiquetaTiempo = `🔥 HOY${horaPartido ? ` - ${horaPartido}` : ''}`;
-    }
-  } else if (diasHasta === 1) {
-    if (horaPartido === "por definir") {
-      etiquetaTiempo = `⚡ MAÑANA (hora por definir)`;
-    } else {
-      etiquetaTiempo = `⚡ MAÑANA${horaPartido ? ` - ${horaPartido}` : ''}`;
-    }
-  } else if (diasHasta <= 7) {
-    if (horaPartido === "por definir") {
-      etiquetaTiempo = `📅 En ${diasHasta} días (hora por definir)`;
-    } else {
-      etiquetaTiempo = `📅 En ${diasHasta} días${horaPartido ? ` - ${horaPartido}` : ''}`;
-    }
-  } else {
-    // Para fechas más lejanas, mostrar fecha bonita
-    const fechaFormateada = formatearFechaBonita(jugador["Próximo Partido"]);
-    if (horaPartido === "por definir") {
-      etiquetaTiempo = `📆 ${fechaFormateada}`;
-    } else {
-      etiquetaTiempo = `📆 ${fechaFormateada}${horaPartido ? ` - ${horaPartido}` : ''}`;
-    }
+  // Obtener la hora formateada para mostrar
+  let horaDisplay = horaPartido;
+  if (horaPartido === "por definir") {
+    horaDisplay = "Por definirse";
   }
-
+  
+  // Obtener información del jugador y equipos
   const iniciales = generarIniciales(jugador["Jugador"]);
   const clubActual = jugador["Club Actual"] || 'Club Desconocido';
   const proximoRival = jugador["Próximo Rival"] || 'Rival por definir';
   const posicion = jugador["Posición"] || 'Posición';
+  
+  // Formatear fecha como en Promiedos
+  let fechaDisplay = '';
+  let horaClass = '';
+  
+  if (diasHasta === 0) {
+    fechaDisplay = 'HOY';
+    horaClass = 'hora-hoy';
+  } else if (diasHasta === 1) {
+    fechaDisplay = 'MAÑANA';
+    horaClass = 'hora-manana';
+  } else {
+    const fechaFormateada = formatearFechaBonita(jugador["Próximo Partido"]);
+    fechaDisplay = fechaFormateada;
+    horaClass = 'hora-normal';
+  }
 
   return `
-    <div class="partido-card ${esProximo ? 'partido-destacado' : ''}">
-      <div class="partido-header">
-        <div class="jugador-avatar">${iniciales}</div>
-        <div class="jugador-info">
-          <h3>${jugador["Jugador"]}</h3>
-          <div class="jugador-posicion">${posicion}</div>
+    <div class="match-card ${esProximo ? 'match-destacado' : ''}">
+      <div class="match-header">
+        <div class="jugador-info-mini">
+          <div class="jugador-avatar-mini">${iniciales}</div>
+          <span class="jugador-nombre-mini">${jugador["Jugador"]}</span>
+          <span class="jugador-posicion-mini">(${posicion})</span>
         </div>
       </div>
       
-      <div class="partido-info">
-        <div class="fecha-partido">
-          ${etiquetaTiempo}
+      <div class="match-content">
+        <div class="match-time ${horaClass}">
+          <div class="time-icon">⏰</div>
+          <div class="time-value">${horaDisplay}</div>
         </div>
         
-        <div class="equipos-container">
-          <div class="equipo-info">
-            <div class="equipo-nombre">${clubActual}</div>
-            <div class="equipo-logo">
-              <img src="img/${jugador["Escudo"]}" alt="Escudo ${clubActual}" style="width: 100%; height: 100%; object-fit: contain;">
+        <div class="match-teams">
+          <div class="team-home">
+            <div class="team-logo">
+              <img src="img/${jugador["Escudo"]}" alt="Escudo ${clubActual}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="logo-fallback" style="display: none;">🛡️</div>
             </div>
+            <div class="team-name">${clubActual}</div>
           </div>
           
-          <div class="vs-separator">VS</div>
-          
-          <div class="equipo-info">
-            <div class="equipo-nombre">${proximoRival}</div>
-            <div class="equipo-logo">⚽</div>
+          <div class="match-vs">
+            <span class="vs-text">VS</span>
           </div>
+          
+          <div class="team-away">
+            <div class="team-logo">
+              <div class="logo-fallback">⚽</div>
+            </div>
+            <div class="team-name">${proximoRival}</div>
+          </div>
+        </div>
+        
+        <div class="match-date">
+          <span class="date-text">${fechaDisplay}</span>
         </div>
       </div>
     </div>

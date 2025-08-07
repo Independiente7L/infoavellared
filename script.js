@@ -354,6 +354,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const jugadoresPaginados = jugadoresFiltrados.slice(inicio, fin);
     
     renderizar(jugadoresPaginados);
+    
+    // Hacer scroll hacia arriba cuando se cambia de página
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   function aplicarFiltros() {
