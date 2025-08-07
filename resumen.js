@@ -558,7 +558,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const totalCargos = jugadoresConCargo.reduce((sum, j) => sum + Number(j["Cargo"]), 0);
-    const promedioCargoActivo = jugadoresConCargo.length > 0 ? totalCargos / jugadoresConCargo.length : 0;
+    const promedioCargoActivo = totalCargos / 24;
     
     // Crear estadísticas cards
     const stats = [
@@ -574,7 +574,7 @@ document.addEventListener("DOMContentLoaded", () => {
         icono: "📊",
         titulo: "Promedio de Cargo",
         valor: `$ ${Math.round(promedioCargoActivo).toLocaleString('es-AR')}`,
-        descripcion: "Promedio que pagan los clubes por jugador",
+        descripcion: "Promedio de cargo dividido entre los 24 jugadores",
         clase: "stat-info"
       },
       {
