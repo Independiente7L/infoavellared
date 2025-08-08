@@ -1,3 +1,6 @@
+// Debug: Verificar que el script se está cargando
+console.log('🚀 resumen.js iniciado - timestamp:', new Date().toISOString());
+
 // Variable global para los jugadores
 let jugadores = [];
 
@@ -131,6 +134,7 @@ function formatearCargo(cargo) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log('📄 DOM cargado, iniciando script de resumen...');
 
   function convertirFecha(valor) {
     const numero = Number(valor);
@@ -224,6 +228,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function generarEstadisticasGenerales() {
+    console.log('📈 Iniciando generación de estadísticas con', jugadores.length, 'jugadores');
+    
     const totalJugadores = jugadores.length;
     const totalPartidos = jugadores.reduce((sum, j) => sum + Number(j["Partidos Jugados"] || 0), 0);
     const totalGoles = jugadores.reduce((sum, j) => sum + Number(j["Goles"] || 0), 0);
@@ -233,6 +239,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const jugadoresInactivos = jugadores.filter(j => Number(j["Partidos Jugados"]) === 0).length;
     const conOpcionCompra = jugadores.filter(j => j["Opción de Compra"] && j["Opción de Compra"] !== "NO" && j["Opción de Compra"] !== "-").length;
     const enRepesca = jugadores.filter(j => j["Repesca"] === "SI").length;
+
+    console.log('📊 Estadísticas calculadas:', {
+      total: totalJugadores,
+      activos: jugadoresActivos, 
+      inactivos: jugadoresInactivos,
+      partidos: totalPartidos,
+      goles: totalGoles
+    });
 
     const statsGrid = document.getElementById("stats-grid");
     statsGrid.innerHTML = `
@@ -668,16 +682,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Cargar datos y generar todas las secciones
-  fetch('data.json?v=20250807v2')
+  const dataTimestamp = new Date().getTime();
+  console.log('📊 Iniciando carga de datos con timestamp:', dataTimestamp);
+  
+  fetch(`data.json?v=${dataTimestamp}`)
     .then(response => {
+      console.log('📦 Respuesta recibida, status:', response.status);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
     .then(data => {
+      console.log('✅ Datos cargados exitosamente:', data.length, 'jugadores');
       jugadores = data;
       
+      console.log('🎯 Generando estadísticas generales...');
       generarEstadisticasGenerales();
       generarJugadoresPorPosicion();
       generarMejoresRendimientos();

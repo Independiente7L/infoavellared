@@ -158,11 +158,32 @@
   </div>
 
   <script>
-    // Generar timestamp dinámico para evitar cache
+    // Approach híbrido: Cargar con timestamp dinámico + fallback
     const jsTimestamp = new Date().getTime();
-    const script = document.createElement('script');
-    script.src = `resumen.js?v=${jsTimestamp}`;
-    document.head.appendChild(script);
+    
+    function cargarScript(src) {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    }
+    
+    // Intentar cargar con timestamp dinámico
+    cargarScript(`resumen.js?v=${jsTimestamp}`)
+      .then(() => {
+        console.log('resumen.js cargado correctamente con timestamp:', jsTimestamp);
+      })
+      .catch(() => {
+        console.warn('Fallo carga con timestamp, intentando fallback...');
+        // Fallback: cargar sin cache busting
+        return cargarScript('resumen.js');
+      })
+      .catch(() => {
+        console.error('Error crítico: No se pudo cargar resumen.js');
+      });
   </script>
   
   <!-- Script para mostrar la página cuando esté completamente cargada -->
