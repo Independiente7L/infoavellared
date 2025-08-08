@@ -16,7 +16,7 @@
   <meta http-equiv="Expires" content="0" />
   <title>INFO AVELLARED - Próximos Partidos y Calendario</title>
   <link rel="icon" type="image/png" href="img/diablo_logo_pag.png" />
-  <link rel="stylesheet" href="estilos.css?v=20250807v3" />
+  <link rel="stylesheet" href="estilos.css?v=20250808v1" />
   
   <!-- CSS crítico inline para evitar FOUC (Flash of Unstyled Content) -->
   <style>
@@ -28,6 +28,71 @@
     }
     body.loaded { 
       opacity: 1; 
+    }
+    
+    /* Mejoras específicas para móvil 400x554 */
+    @media screen and (max-width: 450px) {
+      .match-card {
+        margin-bottom: 25px !important;
+        padding: 15px !important;
+        min-height: 120px !important;
+        overflow: hidden !important;
+      }
+      
+      .jugador-nombre-mini {
+        font-size: 16px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 8px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+      }
+      
+      .team-name {
+        font-size: 12px !important;
+        line-height: 1.2 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        max-width: 100% !important;
+        white-space: normal !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+      }
+      
+      .time-value {
+        font-size: 14px !important;
+        margin: 5px 0 !important;
+      }
+      
+      .match-date {
+        font-size: 13px !important;
+        margin-top: 8px !important;
+      }
+      
+      .match-teams {
+        margin: 12px 0 !important;
+        overflow: hidden !important;
+      }
+      
+      .team-home, .team-away {
+        margin: 8px 0 !important;
+        overflow: hidden !important;
+        word-wrap: break-word !important;
+      }
+      
+      .vs-text {
+        font-size: 14px !important;
+        margin: 5px 0 !important;
+      }
+      
+      /* Específico para nombres largos de equipos */
+      .team-name:contains("Gimnasia"),
+      .team-name:contains("Barracas"),
+      .team-name:contains("Mendoza") {
+        font-size: 11px !important;
+        line-height: 1.1 !important;
+      }
     }
   </style>
   

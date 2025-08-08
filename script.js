@@ -548,6 +548,23 @@ document.addEventListener("DOMContentLoaded", () => {
       // Actualizar contador inicial
       actualizarContadorFavoritos();
       actualizarBotonFavoritos();
+
+      // Crear footer mejorado dinámicamente
+      const footer = document.createElement('footer');
+      footer.className = 'footer-creditos';
+      footer.innerHTML = `
+        <div class="footer-contenido">
+          <div class="footer-texto">
+            <span class="footer-icono">👨‍💻</span>
+            <span>Desarrollado por</span>
+            <strong>Nacho Greco & Thiago Coria</strong>
+          </div>
+          <div class="footer-año">© 2025 Info AvellaRED</div>
+        </div>
+      `;
+      
+      // Agregar footer al final del body
+      document.body.appendChild(footer);
     })
     .catch(err => {
       console.error("Error al cargar data.json:", err);
