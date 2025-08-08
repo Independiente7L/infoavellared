@@ -55,12 +55,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
     
+    // Guardar la página actual antes de actualizar
+    const paginaAnterior = paginaActual;
     // Siempre re-renderizar para actualizar la interfaz inmediatamente
     aplicarFiltros();
-    
+    // Restaurar la página anterior después de filtrar
+    paginaActual = paginaAnterior;
+    aplicarPaginacion();
     // Forzar un segundo renderizado para asegurar que la UI se actualice
     setTimeout(() => {
-      aplicarFiltros();
+      paginaActual = paginaAnterior;
+      aplicarPaginacion();
     }, 10);
   }
 
@@ -389,6 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnAnterior.addEventListener('click', () => {
       if (paginaActual > 1) {
         paginaActual--;
+        aplicarPaginacion.scrollAlSubir = true;
         aplicarPaginacion();
       }
     });
@@ -406,8 +412,9 @@ document.addEventListener("DOMContentLoaded", () => {
         btnNumero.classList.add('activo');
       }
       btnNumero.addEventListener('click', () => {
-        paginaActual = i;
-        aplicarPaginacion();
+  paginaActual = i;
+  aplicarPaginacion.scrollAlSubir = true;
+  aplicarPaginacion();
       });
       contenedorPaginacion.appendChild(btnNumero);
     }
@@ -420,6 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnSiguiente.addEventListener('click', () => {
       if (paginaActual < totalPaginas) {
         paginaActual++;
+        aplicarPaginacion.scrollAlSubir = true;
         aplicarPaginacion();
       }
     });
@@ -432,12 +440,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const jugadoresPaginados = jugadoresFiltrados.slice(inicio, fin);
     
     renderizar(jugadoresPaginados);
-    
-    // Hacer scroll hacia arriba cuando se cambia de página
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    // Solo hacer scroll si realmente se cambió de página por navegación
+    if (aplicarPaginacion.scrollAlSubir) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      aplicarPaginacion.scrollAlSubir = false;
+    }
+  // ...existing code...
+  // Evitar scroll al agregar/quitar favorito
+  aplicarPaginacion.scrollAlSubir = false;
   }
 
   function aplicarFiltros() {
