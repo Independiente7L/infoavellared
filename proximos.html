@@ -193,7 +193,7 @@
   </script>
   
   <script>
-    // JavaScript mejorado para el menú hamburguesa y funcionalidad
+    // JavaScript para el menú hamburguesa y funcionalidad básica
     document.addEventListener('DOMContentLoaded', function() {
       // Menú hamburguesa
       const menuToggle = document.getElementById('menu-toggle');
@@ -238,72 +238,7 @@
           localStorage.setItem('theme', 'dark');
         }
       });
-
-      // Funcionalidad de filtros
-      const buscador = document.getElementById('buscador-proximos');
-      const filtroDias = document.getElementById('filtro-dias');
-      const ordenFecha = document.getElementById('orden-fecha');
-
-      // Event listeners para filtros
-      if (buscador) {
-        buscador.addEventListener('input', function() {
-          if (typeof window.aplicarFiltrosJS === 'function') {
-            window.aplicarFiltrosJS();
-          }
-        });
-      }
-      if (filtroDias) {
-        filtroDias.addEventListener('change', function() {
-          if (typeof window.aplicarFiltrosJS === 'function') {
-            window.aplicarFiltrosJS();
-          }
-        });
-      }
-      if (ordenFecha) {
-        ordenFecha.addEventListener('change', function() {
-          if (typeof window.aplicarFiltrosJS === 'function') {
-            window.aplicarFiltrosJS();
-          }
-        });
-      }
     });
-
-    // Función para aplicar todos los filtros
-    function aplicarFiltros() {
-      // NO llamar a filtrarPartidos para evitar recursión
-      console.log('aplicarFiltros llamada desde HTML');
-    }
-
-    // Función para mostrar loading
-    function mostrarLoading(mostrar = true) {
-      const loading = document.getElementById('loading-proximos');
-      const contenido = document.getElementById('lista-proximos');
-      
-      if (loading && contenido) {
-        loading.style.display = mostrar ? 'flex' : 'none';
-        contenido.style.display = mostrar ? 'none' : 'block';
-      }
-    }
-
-    // Función para actualizar contador
-    function actualizarContador(cantidad) {
-      const contador = document.getElementById('total-partidos');
-      if (contador) {
-        contador.textContent = cantidad;
-      }
-    }
   </script>
-
-  <!-- Footer con créditos -->
-  <footer class="footer-creditos">
-    <div class="footer-contenido">
-      <div class="footer-texto">
-        <span class="footer-icono">👨‍💻</span>
-        <span>Desarrollado por</span>
-        <strong>Nacho Greco & Thiago Coria</strong>
-      </div>
-      <div class="footer-año">© 2025 Info AvellaRED</div>
-    </div>
-  </footer>
 </body>
 </html>

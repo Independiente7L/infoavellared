@@ -12,6 +12,9 @@ function mostrarJugadoresModal(tipo, titulo) {
     case 'activos':
       jugadoresFiltrados = jugadores.filter(j => Number(j["Partidos Jugados"]) > 0);
       break;
+    case 'inactivos':
+      jugadoresFiltrados = jugadores.filter(j => Number(j["Partidos Jugados"]) === 0);
+      break;
     case 'partidos':
       jugadoresFiltrados = jugadores.filter(j => Number(j["Partidos Jugados"]) > 0);
       break;
@@ -68,6 +71,9 @@ function mostrarJugadoresModal(tipo, titulo) {
         break;
       case 'partidos':
         statsText = `${jugador["Partidos Jugados"]} PJ`;
+        break;
+      case 'inactivos':
+        statsText = "Sin partidos jugados";
         break;
       case 'minutos':
         statsText = `${jugador["Minutos Jugados"]} min`;
@@ -224,6 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalAsistencias = jugadores.reduce((sum, j) => sum + Number(j["Asistencias"] || 0), 0);
     const totalMinutos = jugadores.reduce((sum, j) => sum + Number(j["Minutos Jugados"] || 0), 0);
     const jugadoresActivos = jugadores.filter(j => Number(j["Partidos Jugados"]) > 0).length;
+    const jugadoresInactivos = jugadores.filter(j => Number(j["Partidos Jugados"]) === 0).length;
     const conOpcionCompra = jugadores.filter(j => j["Opción de Compra"] && j["Opción de Compra"] !== "NO" && j["Opción de Compra"] !== "-").length;
     const enRepesca = jugadores.filter(j => j["Repesca"] === "SI").length;
 
@@ -238,6 +245,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="stat-icon">🏃‍♂️</span>
         <div class="stat-number">${jugadoresActivos}</div>
         <div class="stat-label">Jugadores Activos</div>
+      </div>
+      <div class="stat-card" onclick="mostrarJugadoresModal('inactivos', 'Jugadores Inactivos')">
+        <span class="stat-icon">⚪</span>
+        <div class="stat-number">${jugadoresInactivos}</div>
+        <div class="stat-label">Jugadores Inactivos</div>
       </div>
       <div class="stat-card" onclick="mostrarJugadoresModal('partidos', 'Jugadores con Partidos')">
         <span class="stat-icon">⚽</span>

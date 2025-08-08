@@ -60,10 +60,20 @@
 }
 
 /* Estilos para modales en modo oscuro */
+[data-theme="dark"] .modal {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 [data-theme="dark"] .modal-content {
   background-color: #2d2d2d;
   color: #ffffff;
   border: 1px solid #555;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .modal-header {
+  background: linear-gradient(135deg, #b30000, #d32f2f);
+  border-bottom: 1px solid #555;
 }
 
 [data-theme="dark"] .modal-body {
@@ -75,10 +85,12 @@
   background: #3a3a3a;
   border-left-color: #ff6b6b;
   color: #ffffff;
+  border: 1px solid #4a4a4a;
 }
 
 [data-theme="dark"] .jugador-modal-item:hover {
   background: #4a4a4a;
+  border-color: #ff6b6b;
 }
 
 [data-theme="dark"] .jugador-modal-nombre {
@@ -95,6 +107,30 @@
 
 [data-theme="dark"] .jugador-modal-stats {
   color: #cccccc !important;
+}
+
+[data-theme="dark"] .jugador-modal-escudo {
+  border-color: #ff6b6b;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+}
+
+/* Asegurar que el scrollbar también se vea bien en modo oscuro */
+[data-theme="dark"] .modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+[data-theme="dark"] .modal-body::-webkit-scrollbar-track {
+  background: #3a3a3a;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .modal-body::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .modal-body::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
 
 /* Reglas específicas para elementos de texto en cards de modo oscuro */
