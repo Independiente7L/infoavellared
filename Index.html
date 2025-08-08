@@ -20,9 +20,17 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="InfoAvellaRED" />
   <link rel="apple-touch-icon" href="img/diablo_logo_pag.png" />
-  <link rel="stylesheet" href="estilos.css?v=20250808" />
-  <link rel="stylesheet" href="responsive.css?v=20250808" />
-  <link rel="stylesheet" href="ux-improvements.css?v=20250808" />
+  <script>
+    // Cargar CSS con timestamp dinámico para evitar cache
+    const cssTimestamp = new Date().getTime();
+    const cssFiles = ['estilos.css', 'responsive.css', 'ux-improvements.css'];
+    cssFiles.forEach(file => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = `${file}?v=${cssTimestamp}`;
+      document.head.appendChild(link);
+    });
+  </script>
   
   <!-- CSS crítico inline para evitar FOUC (Flash of Unstyled Content) -->
   <style>
@@ -109,7 +117,13 @@
       <!-- Se llena con JavaScript -->
     </nav>
   </main>
-  <script src="script.js?v=20250808"></script>
+  <script>
+    // Generar timestamp dinámico para evitar cache
+    const jsTimestamp = new Date().getTime();
+    const script = document.createElement('script');
+    script.src = `script.js?v=${jsTimestamp}`;
+    document.head.appendChild(script);
+  </script>
   <script src="cache-manager.js"></script>
   
   <!-- Scripts de inicialización consolidados -->
