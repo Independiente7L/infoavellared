@@ -1,24 +1,17 @@
-// Forzar recarga completa sin caché
+// Gestión optimizada de caché y recarga
 (function() {
-  // Detectar recarga con F5
-  if (performance.navigation.type === 1) {
-    // Es una recarga - forzar limpieza total
-    
-    // Limpiar localStorage temporal (excepto configuraciones importantes)
+  const navigationEntry = performance.getEntriesByType('navigation')[0];
+  const isReload = navigationEntry && navigationEntry.type === 'reload';
+  
+  if (isReload) {
+    // Preservar configuraciones importantes
     const tema = localStorage.getItem('theme');
     const favoritos = localStorage.getItem('favoritos');
     
-    // Limpiar todo el caché
+    // Limpiar caché de manera eficiente
     if ('caches' in window) {
       caches.keys().then(names => {
         names.forEach(name => caches.delete(name));
-      });
-    }
-    
-    // Desregistrar service workers
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(registrations => {
-        registrations.forEach(registration => registration.unregister());
       });
     }
     
@@ -29,11 +22,10 @@
       link.href = `${href}?bust=${Date.now()}`;
     });
     
-    // Operación silenciosa - sin notificaciones
+    // Restaurar configuraciones después de la limpieza
     setTimeout(() => {
-      // Restaurar configuraciones
       if (tema) localStorage.setItem('theme', tema);
       if (favoritos) localStorage.setItem('favoritos', favoritos);
-    }, 1000);
+    }, 100);
   }
 })();

@@ -2,11 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let jugadores = [];
   let jugadoresFiltrados = [];
   let paginaActual = 1;
-  let jugadoresPorPagina = 12; // Sincronizado con la opción seleccionada por defecto
+  let jugadoresPorPagina = 12;
   let favoritos = JSON.parse(localStorage.getItem('favoritos') || '[]');
   let mostrandoSoloFavoritos = false;
 
-  // Actualizar contador de favoritos
   function actualizarContadorFavoritos() {
     const contadorElement = document.getElementById('contador-favoritos');
     if (contadorElement) {
@@ -14,12 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Recargar favoritos desde localStorage
   function recargarFavoritos() {
     favoritos = JSON.parse(localStorage.getItem('favoritos') || '[]');
   }
 
-  // Actualizar el texto del botón de favoritos
   function actualizarBotonFavoritos() {
     const btnFavoritos = document.getElementById("filtro-favoritos");
     if (btnFavoritos) {
@@ -29,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Agregar/quitar de favoritos
   function toggleFavorito(jugadorNombre) {
     const index = favoritos.indexOf(jugadorNombre);
     
@@ -41,11 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
     actualizarContadorFavoritos();
-    
-    // Actualizar el texto del botón de favoritos
     actualizarBotonFavoritos();
     
-    // Si estamos mostrando solo favoritos y ya no hay favoritos, cambiar a todos
     if (mostrandoSoloFavoritos && favoritos.length === 0) {
       mostrandoSoloFavoritos = false;
       const btnFavoritos = document.getElementById("filtro-favoritos");
@@ -55,18 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
     
-    // Guardar la página actual antes de actualizar
     const paginaAnterior = paginaActual;
-    // Siempre re-renderizar para actualizar la interfaz inmediatamente
     aplicarFiltros();
-    // Restaurar la página anterior después de filtrar
     paginaActual = paginaAnterior;
     aplicarPaginacion();
-    // Forzar un segundo renderizado para asegurar que la UI se actualice
-    setTimeout(() => {
-      paginaActual = paginaAnterior;
-      aplicarPaginacion();
-    }, 10);
   }
 
   function convertirFecha(valor) {

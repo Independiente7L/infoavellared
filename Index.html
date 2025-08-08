@@ -11,9 +11,7 @@
   <meta property="og:description" content="Portal de información sobre préstamos de jugadores de Independiente" />
   <meta property="og:image" content="img/diablo_logo_pag.png" />
   <meta property="og:type" content="website" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
   <title>INFO AVELLARED - Préstamos de Jugadores | Estadísticas e Información</title>
   <link rel="icon" type="image/png" href="img/diablo_logo_pag.png" />
   <link rel="manifest" href="manifest.json" />
@@ -22,7 +20,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="InfoAvellaRED" />
   <link rel="apple-touch-icon" href="img/diablo_logo_pag.png" />
-  <link rel="stylesheet" href="estilos.css?v=20250807v2" />
+  <link rel="stylesheet" href="estilos.css?v=20250808" />
+  <link rel="stylesheet" href="responsive.css?v=20250808" />
+  <link rel="stylesheet" href="ux-improvements.css?v=20250808" />
   
   <!-- CSS crítico inline para evitar FOUC (Flash of Unstyled Content) -->
   <style>
@@ -109,37 +109,31 @@
       <!-- Se llena con JavaScript -->
     </nav>
   </main>
-  <script src="script.js?v=20250807v4"></script>
-  <script src="force-reload.js"></script>
-  <script src="auto-update.js?v=20250807v2"></script>
+  <script src="script.js?v=20250808"></script>
+  <script src="cache-manager.js"></script>
   
-  <!-- Script para mostrar la página cuando esté completamente cargada -->
+  <!-- Scripts de inicialización consolidados -->
   <script>
-    window.addEventListener('load', function() {
-      document.body.classList.add('loaded');
-    });
-  </script>
-  
-  <script>
-    // JavaScript para el menú hamburguesa
+    // Mostrar página cuando esté cargada y configurar funcionalidades
     document.addEventListener('DOMContentLoaded', function() {
+      // Menú hamburguesa
       const menuToggle = document.getElementById('menu-toggle');
       const menuDropdown = document.getElementById('menu-dropdown');
       
-      menuToggle.addEventListener('click', function() {
+      menuToggle.addEventListener('click', () => {
         menuDropdown.classList.toggle('active');
         menuToggle.classList.toggle('active');
       });
       
       // Cerrar menú al hacer clic fuera
-      document.addEventListener('click', function(event) {
+      document.addEventListener('click', (event) => {
         if (!menuToggle.contains(event.target) && !menuDropdown.contains(event.target)) {
           menuDropdown.classList.remove('active');
           menuToggle.classList.remove('active');
         }
       });
 
-      // Funcionalidad del botón de tema
+      // Funcionalidad del tema
       const themeToggle = document.getElementById('theme-toggle');
       const themeIcon = document.querySelector('.theme-icon');
       const currentTheme = localStorage.getItem('theme') || 'light';
@@ -150,7 +144,7 @@
         themeIcon.textContent = '☀️';
       }
       
-      themeToggle.addEventListener('click', function() {
+      themeToggle.addEventListener('click', () => {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         
         if (isDark) {
@@ -164,19 +158,18 @@
         }
       });
     });
-  </script>
 
-  <!-- Registro del Service Worker para PWA -->
-  <script>
+    // Mostrar página cuando esté completamente cargada
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+
+    // Registro del Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')
-          .then(registration => {
-            console.log('SW registrado: ', registration);
-          })
-          .catch(registrationError => {
-            console.log('SW registro falló: ', registrationError);
-          });
+          .then(registration => console.log('SW registrado'))
+          .catch(error => console.log('SW registro falló:', error));
       });
     }
   </script>
