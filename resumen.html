@@ -16,17 +16,9 @@
   <meta http-equiv="Expires" content="0" />
   <title>INFO AVELLARED - Resumen y Estadísticas de Jugadores</title>
   <link rel="icon" type="image/png" href="img/diablo_logo_pag.png" />
-  <script>
-    // Cargar CSS con timestamp dinámico para evitar cache
-    const cssTimestamp = new Date().getTime();
-    const cssFiles = ['estilos.css', 'resumen.css', 'responsive.css'];
-    cssFiles.forEach(file => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = `${file}?v=${cssTimestamp}`;
-      document.head.appendChild(link);
-    });
-  </script>
+  <link rel="stylesheet" href="estilos.css?v=20250808" />
+  <link rel="stylesheet" href="resumen.css?v=20250808" />
+  <link rel="stylesheet" href="responsive.css?v=20250808" />
   
   <!-- CSS crítico inline para evitar FOUC (Flash of Unstyled Content) -->
   <style>
@@ -157,34 +149,7 @@
     </div>
   </div>
 
-  <script>
-    // Approach híbrido: Cargar con timestamp dinámico + fallback
-    const jsTimestamp = new Date().getTime();
-    
-    function cargarScript(src) {
-      return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-      });
-    }
-    
-    // Intentar cargar con timestamp dinámico
-    cargarScript(`resumen.js?v=${jsTimestamp}`)
-      .then(() => {
-        console.log('resumen.js cargado correctamente con timestamp:', jsTimestamp);
-      })
-      .catch(() => {
-        console.warn('Fallo carga con timestamp, intentando fallback...');
-        // Fallback: cargar sin cache busting
-        return cargarScript('resumen.js');
-      })
-      .catch(() => {
-        console.error('Error crítico: No se pudo cargar resumen.js');
-      });
-  </script>
+  <script src="resumen.js?v=20250808123610"></script>
   
   <!-- Script para mostrar la página cuando esté completamente cargada -->
   <script>
