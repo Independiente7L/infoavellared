@@ -34,22 +34,29 @@ self.addEventListener('fetch', event => {
         }
         
         // Sino, hacer fetch a la red
-        return fetch(event.request).then(response => {
-          // No cachear si la respuesta no es válida
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-          
-          // Clonar la respuesta
-          const responseToCache = response.clone();
-          
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(event.request, responseToCache);
+          return fetch(event.request)
+            .then(response => {
+              // No cachear si la respuesta no es válida
+              if (!response || response.status !== 200 || response.type !== 'basic') {
+                return response;
+              }
+              // Clonar la respuesta
+              const responseToCache = response.clone();
+              caches.open(CACHE_NAME)
+                .then(cache => {
+                  cache.put(event.request, responseToCache);
+                });
+              return response;
+            })
+            .catch(error => {
+              // Si falla la red, puedes devolver una página offline o simplemente nada
+              // return caches.match('/offline.html'); // Si tienes una página offline
+              return new Response('Sin conexión a internet', {
+                status: 503,
+                statusText: 'Service Unavailable',
+                headers: { 'Content-Type': 'text/plain' }
+              });
             });
-          
-          return response;
-        });
       })
   );
 });

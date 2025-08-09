@@ -945,7 +945,7 @@ h1 {
 }
 
 /* Estilos específicos para pantallas muy pequeñas */
-@media (max-width: 480px) {
+@media (max-width: 900px) {
   #barra-superior {
     padding: 8px 10px;
     height: 55px;
@@ -1076,6 +1076,7 @@ h1 {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   
   .btn-icon {
     font-size: 1.2em;
@@ -2400,3 +2401,34 @@ html, body {
     padding: 6px 12px;
   }
 }
+  /* Mejoras para header en móvil */
+  @media screen and (max-width: 450px) {
+    #barra-superior {
+      padding: 8px 0 !important;
+      min-height: 48px !important;
+    }
+    .logo-club {
+      width: 36px !important;
+      height: 36px !important;
+    }
+    .header-titulo-botones h1 {
+      font-size: 16px !important;
+      margin: 0 !important;
+    }
+    .nav-menu {
+      gap: 8px !important;
+    }
+    .theme-toggle, .menu-hamburger {
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 18px !important;
+    }
+    .menu-dropdown {
+      top: 48px !important;
+      right: 8px !important;
+    }
+    #contenido-principal {
+      margin-top: 0 !important;
+      padding-top: 8px !important;
+    }
+  }

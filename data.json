@@ -34,7 +34,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Ferro",
-    "Próximo Partido":"dom, 10\/8, 8:00 p.m.",
+    "Próximo Partido":"mañana, 8:00 p.m.",
     "Escudo":"arsenal_fc.png"
   },
   {
@@ -53,7 +53,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"El Nacional",
-    "Próximo Partido":"dom, 10\/8, 8:00 p.m.",
+    "Próximo Partido":"mañana, 8:00 p.m.",
     "Escudo":"barcelona_sc_guayaquil.png"
   },
   {
@@ -72,7 +72,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Aldosivi",
-    "Próximo Partido":"dom, 10\/8, 3:00 p.m.",
+    "Próximo Partido":"mañana, 3:00 p.m.",
     "Escudo":"ca_barracas_central.png"
   },
   {
@@ -84,14 +84,14 @@
     "Cargo":"NO",
     "Opción de Compra":"$ 800.000 x el 50%",
     "Repesca":"NO",
-    "Partidos Jugados":24,
-    "Minutos Jugados":1541,
+    "Partidos Jugados":25,
+    "Minutos Jugados":1613,
     "Goles":2,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Torque",
-    "Próximo Partido":"hoy, 7:00 p.m.",
+    "Próximo Rival":"Peñarol",
+    "Próximo Partido":"vie, 15\/8, 8:00 p.m.",
     "Escudo":"ca_boston_river.png"
   },
   {
@@ -110,7 +110,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Defensores Unidos",
-    "Próximo Partido":"mañana, 2:10 p.m.",
+    "Próximo Partido":"hoy, 2:10 p.m.",
     "Escudo":"ca_chacarita_juniors.png"
   },
   {
@@ -129,7 +129,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Chaco For Ever",
-    "Próximo Partido":"dom, 10\/8, 4:30 p.m.",
+    "Próximo Partido":"mañana, 4:30 p.m.",
     "Escudo":"ca_gimnasia_y_esgrima_mendoza.png"
   },
   {
@@ -148,7 +148,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Gimnasia y Tiro de Salta",
-    "Próximo Partido":"dom, 10\/8, 5:00 p.m.",
+    "Próximo Partido":"mañana, 5:00 p.m.",
     "Escudo":"ca_los_andes.png"
   },
   {
@@ -167,7 +167,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Talleres Remedios",
-    "Próximo Partido":"mañana, 3:30 p.m.",
+    "Próximo Partido":"hoy, 3:30 p.m.",
     "Escudo":"ca_nueva_chicago.png"
   },
   {
@@ -186,7 +186,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Instituto",
-    "Próximo Partido":"dom, 10\/8, 5:00 p.m.",
+    "Próximo Partido":"mañana, 5:00 p.m.",
     "Escudo":"ca_platense.png"
   },
   {
@@ -205,7 +205,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Atlético Tucumán",
-    "Próximo Partido":"mañana, 8:45 p.m.",
+    "Próximo Partido":"hoy, 8:45 p.m.",
     "Escudo":"ca_rosario_central.png"
   },
   {
@@ -224,7 +224,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Sarmiento",
-    "Próximo Partido":"mañana, 2:30 p.m.",
+    "Próximo Partido":"hoy, 2:30 p.m.",
     "Escudo":"ca_san_martín_san_juan.png"
   },
   {
@@ -243,7 +243,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Sarmiento",
-    "Próximo Partido":"mañana, 2:30 p.m.",
+    "Próximo Partido":"hoy, 2:30 p.m.",
     "Escudo":"ca_san_martín_san_juan.png"
   },
   {
@@ -255,14 +255,14 @@
     "Cargo":"NO",
     "Opción de Compra":"NO",
     "Repesca":"SI",
-    "Partidos Jugados":3,
-    "Minutos Jugados":112,
+    "Partidos Jugados":4,
+    "Minutos Jugados":175,
     "Goles":0,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Huracán",
-    "Próximo Partido":"hoy, 7:00 p.m.",
+    "Próximo Rival":"Racing",
+    "Próximo Partido":"vie, 15\/8, 9:00 p.m.",
     "Escudo":"ca_tigre.png"
   },
   {
@@ -281,7 +281,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Argentino de Merlo",
-    "Próximo Partido":"dom, 10\/8, 3:30 p.m.",
+    "Próximo Partido":"mañana, 3:30 p.m.",
     "Escudo":"cs_dock_sud.png"
   },
   {
@@ -300,7 +300,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Deportivo Maipú",
-    "Próximo Partido":"mañana, 3:30 p.m.",
+    "Próximo Partido":"hoy, 3:30 p.m.",
     "Escudo":"csd_tristán_suárez.png"
   },
   {
@@ -319,7 +319,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Rosario Central",
-    "Próximo Partido":"mañana, 8:45 p.m.",
+    "Próximo Partido":"hoy, 8:45 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -338,7 +338,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Rosario Central",
-    "Próximo Partido":"mañana, 8:45 p.m.",
+    "Próximo Partido":"hoy, 8:45 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -357,7 +357,7 @@
     "Goles en Contra":1,
     "Imbatido":2,
     "Próximo Rival":"Rentistas",
-    "Próximo Partido":"mañana, 7:00 p.m.",
+    "Próximo Partido":"hoy, 7:00 p.m.",
     "Escudo":"club_deportivo_maldonado.png"
   },
   {
@@ -375,8 +375,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Tigres",
-    "Próximo Partido":"mañana, 12:00 a.m.",
+    "Próximo Rival":"Atl. San Luis",
+    "Próximo Partido":"vie, 15\/8, 10:00 p.m.",
     "Escudo":"club_puebla.png"
   },
   {
@@ -395,7 +395,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Guillermo Brown",
-    "Próximo Partido":"dom, 10\/8, 3:00 p.m.",
+    "Próximo Partido":"mañana, 3:00 p.m.",
     "Escudo":"círculo_deportivo.png"
   },
   {
@@ -414,7 +414,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Miramar Misiones",
-    "Próximo Partido":"dom, 10\/8, 6:30 p.m.",
+    "Próximo Partido":"mañana, 6:30 p.m.",
     "Escudo":"liverpool_fc_montevideo.png"
   },
   {
@@ -432,8 +432,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Acassuso",
-    "Próximo Partido":"hoy, 3:30 p.m.",
+    "Próximo Rival":"Excursionistas",
+    "Próximo Partido":"sáb, 23\/8, 11:00 a.m.",
     "Escudo":"real_pilar_fc.png"
   },
   {
@@ -452,7 +452,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Panserraikos",
-    "Próximo Partido":"dom, 10\/8, 3:00 p.m.",
+    "Próximo Partido":"mañana, 3:00 p.m.",
     "Escudo":"volos_nps.png"
   }
 ]
