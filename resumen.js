@@ -167,8 +167,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function detectarPais(club) {
     const paisesMap = {
-      'argentina': ['CA ', 'Club Atlético', 'Círculo Deportivo', 'CSD ', 'CS ', 'Real Pilar'],
-      'uruguay': ['Boston River', 'Liverpool FC Montevideo', 'Club Deportivo Maldonado'],
+      'argentina': ['Club Atlético', 'Círculo Deportivo', 'CSD ', 'CS ', 'Real Pilar'],
+      'uruguay': ['CA Boston River', 'Liverpool FC Montevideo', 'Club Deportivo Maldonado'],
       'ecuador': ['Barcelona SC Guayaquil'],
       'mexico': ['Club Puebla'],
       'colombia': ['AD Union Magdalena', 'AD Unión Magdalena'],

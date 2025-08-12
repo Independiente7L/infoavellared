@@ -15,7 +15,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Deportivo Cali",
-    "Próximo Partido":"mié, 13\/8, 9:30 p.m.",
+    "Próximo Partido":"mañana, 9:30 p.m.",
     "Escudo":"ad_union_magdalena.png"
   },
   {
@@ -27,8 +27,8 @@
     "Cargo":"NO",
     "Opción de Compra":"NO",
     "Repesca":"SI",
-    "Partidos Jugados":4,
-    "Minutos Jugados":103,
+    "Partidos Jugados":5,
+    "Minutos Jugados":117,
     "Goles":0,
     "Asistencias":0,
     "Goles en Contra":0,
@@ -319,7 +319,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Newell's",
-    "Próximo Partido":"mié, 13\/8, 7:30 p.m.",
+    "Próximo Partido":"mañana, 7:30 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -338,7 +338,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Newell's",
-    "Próximo Partido":"mié, 13\/8, 7:30 p.m.",
+    "Próximo Partido":"mañana, 7:30 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -350,11 +350,11 @@
     "Cargo":"NO",
     "Opción de Compra":"$ 800.000 x el 50%",
     "Repesca":"NO",
-    "Partidos Jugados":3,
-    "Minutos Jugados":270,
+    "Partidos Jugados":4,
+    "Minutos Jugados":360,
     "Goles":0,
     "Asistencias":0,
-    "Goles en Contra":1,
+    "Goles en Contra":4,
     "Imbatido":2,
     "Próximo Rival":"Porongos",
     "Próximo Partido":"No encontrada",
@@ -451,8 +451,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Aris",
-    "Próximo Partido":"sáb, 23\/8, Por definirse",
+    "Próximo Rival":"Levadiakos",
+    "Próximo Partido":"hoy, 3:00 p.m.",
     "Escudo":"volos_nps.png"
   }
 ]
