@@ -15,7 +15,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Deportivo Cali",
-    "Próximo Partido":"mañana, 9:30 p.m.",
+    "Próximo Partido":"hoy, 9:30 p.m.",
     "Escudo":"ad_union_magdalena.png"
   },
   {
@@ -319,7 +319,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Newell's",
-    "Próximo Partido":"mañana, 7:30 p.m.",
+    "Próximo Partido":"hoy, 7:30 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -338,7 +338,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Newell's",
-    "Próximo Partido":"mañana, 7:30 p.m.",
+    "Próximo Partido":"hoy, 7:30 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -356,8 +356,8 @@
     "Asistencias":0,
     "Goles en Contra":4,
     "Imbatido":2,
-    "Próximo Rival":"Porongos",
-    "Próximo Partido":"No encontrada",
+    "Próximo Rival":"Tacuarembó",
+    "Próximo Partido":"vie, 15\/8, 6:00 p.m.",
     "Escudo":"club_deportivo_maldonado.png"
   },
   {
@@ -451,8 +451,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Levadiakos",
-    "Próximo Partido":"hoy, 3:00 p.m.",
+    "Próximo Rival":"Giannina",
+    "Próximo Partido":"mar, 19\/8, 11:00 a.m.",
     "Escudo":"volos_nps.png"
   }
 ]
