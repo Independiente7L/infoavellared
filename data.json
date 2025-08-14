@@ -14,8 +14,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Deportivo Cali",
-    "Próximo Partido":"hoy, 9:30 p.m.",
+    "Próximo Rival":"Millonarios",
+    "Próximo Partido":"mié, 20\/8, 9:30 p.m.",
     "Escudo":"ad_union_magdalena.png"
   },
   {
@@ -91,7 +91,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Peñarol",
-    "Próximo Partido":"vie, 15\/8, 8:00 p.m.",
+    "Próximo Partido":"mañana, 8:00 p.m.",
     "Escudo":"ca_boston_river.png"
   },
   {
@@ -262,7 +262,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Racing",
-    "Próximo Partido":"vie, 15\/8, 9:00 p.m.",
+    "Próximo Partido":"mañana, 9:00 p.m.",
     "Escudo":"ca_tigre.png"
   },
   {
@@ -312,14 +312,14 @@
     "Cargo":"NO",
     "Opción de Compra":"1.500.000 x el 80%",
     "Repesca":"NO",
-    "Partidos Jugados":0,
-    "Minutos Jugados":0,
+    "Partidos Jugados":1,
+    "Minutos Jugados":14,
     "Goles":0,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Newell's",
-    "Próximo Partido":"hoy, 7:30 p.m.",
+    "Próximo Rival":"Sarmiento",
+    "Próximo Partido":"lun, 18\/8, 7:00 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -337,8 +337,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Newell's",
-    "Próximo Partido":"hoy, 7:30 p.m.",
+    "Próximo Rival":"Sarmiento",
+    "Próximo Partido":"lun, 18\/8, 7:00 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -357,7 +357,7 @@
     "Goles en Contra":4,
     "Imbatido":2,
     "Próximo Rival":"Tacuarembó",
-    "Próximo Partido":"vie, 15\/8, 6:00 p.m.",
+    "Próximo Partido":"mañana, 6:00 p.m.",
     "Escudo":"club_deportivo_maldonado.png"
   },
   {
@@ -376,7 +376,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Atl. San Luis",
-    "Próximo Partido":"vie, 15\/8, 10:00 p.m.",
+    "Próximo Partido":"mañana, 10:00 p.m.",
     "Escudo":"club_puebla.png"
   },
   {
@@ -395,7 +395,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Huracán Las Heras",
-    "Próximo Partido":"dom, 17\/8, 11:00 a.m.",
+    "Próximo Partido":"dom, 17\/8, 3:30 p.m.",
     "Escudo":"círculo_deportivo.png"
   },
   {
@@ -451,8 +451,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Giannina",
-    "Próximo Partido":"mar, 19\/8, 11:00 a.m.",
+    "Próximo Rival":"Aris",
+    "Próximo Partido":"sáb, 23\/8, 2:00 p.m.",
     "Escudo":"volos_nps.png"
   }
 ]
