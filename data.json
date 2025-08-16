@@ -34,7 +34,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Patronato",
-    "Próximo Partido":"dom, 17\/8, 4:00 p.m.",
+    "Próximo Partido":"mañana, 4:00 p.m.",
     "Escudo":"arsenal_fc.png"
   },
   {
@@ -53,7 +53,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Macará",
-    "Próximo Partido":"dom, 17\/8, 8:00 p.m.",
+    "Próximo Partido":"mañana, 8:00 p.m.",
     "Escudo":"barcelona_sc_guayaquil.png"
   },
   {
@@ -72,7 +72,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Barracas Central",
-    "Próximo Partido":"dom, 17\/8, 4:15 p.m.",
+    "Próximo Partido":"mañana, 4:15 p.m.",
     "Escudo":"ca_barracas_central.png"
   },
   {
@@ -84,14 +84,14 @@
     "Cargo":"NO",
     "Opción de Compra":"$ 800.000 x el 50%",
     "Repesca":"NO",
-    "Partidos Jugados":25,
-    "Minutos Jugados":1613,
+    "Partidos Jugados":26,
+    "Minutos Jugados":1688,
     "Goles":2,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Peñarol",
-    "Próximo Partido":"mañana, 8:00 p.m.",
+    "Próximo Rival":"Nacional",
+    "Próximo Partido":"sáb, 23\/8, 6:00 p.m.",
     "Escudo":"ca_boston_river.png"
   },
   {
@@ -110,7 +110,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Temperley",
-    "Próximo Partido":"sáb, 16\/8, 3:10 p.m.",
+    "Próximo Partido":"hoy, 2:05 p.m.",
     "Escudo":"ca_chacarita_juniors.png"
   },
   {
@@ -129,7 +129,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Almirante Brown",
-    "Próximo Partido":"sáb, 16\/8, 5:15 p.m.",
+    "Próximo Partido":"hoy, 4:10 p.m.",
     "Escudo":"ca_gimnasia_y_esgrima_mendoza.png"
   },
   {
@@ -148,7 +148,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Quilmes",
-    "Próximo Partido":"sáb, 16\/8, 7:10 p.m.",
+    "Próximo Partido":"hoy, 6:15 p.m.",
     "Escudo":"ca_los_andes.png"
   },
   {
@@ -167,7 +167,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Central Norte",
-    "Próximo Partido":"lun, 18\/8, 5:00 p.m.",
+    "Próximo Partido":"lun, 18\/8, 3:30 p.m.",
     "Escudo":"ca_nueva_chicago.png"
   },
   {
@@ -186,7 +186,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"San Lorenzo",
-    "Próximo Partido":"sáb, 16\/8, 2:15 p.m.",
+    "Próximo Partido":"hoy, 2:15 p.m.",
     "Escudo":"ca_platense.png"
   },
   {
@@ -205,7 +205,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Deportivo Riestra",
-    "Próximo Partido":"sáb, 16\/8, 6:30 p.m.",
+    "Próximo Partido":"hoy, 6:30 p.m.",
     "Escudo":"ca_rosario_central.png"
   },
   {
@@ -255,14 +255,14 @@
     "Cargo":"NO",
     "Opción de Compra":"NO",
     "Repesca":"SI",
-    "Partidos Jugados":4,
-    "Minutos Jugados":175,
-    "Goles":0,
-    "Asistencias":0,
+    "Partidos Jugados":5,
+    "Minutos Jugados":188,
+    "Goles":1,
+    "Asistencias":1,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Racing",
-    "Próximo Partido":"mañana, 9:00 p.m.",
+    "Próximo Rival":"Independiente",
+    "Próximo Partido":"vie, 22\/8, 8:00 p.m.",
     "Escudo":"ca_tigre.png"
   },
   {
@@ -274,14 +274,14 @@
     "Cargo":"NO",
     "Opción de Compra":"NO",
     "Repesca":"NO",
-    "Partidos Jugados":27,
-    "Minutos Jugados":1277,
+    "Partidos Jugados":28,
+    "Minutos Jugados":1296,
     "Goles":4,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Brown",
-    "Próximo Partido":"sáb, 23\/8, 11:00 a.m.",
+    "Próximo Partido":"mañana, 3:30 p.m.",
     "Escudo":"cs_dock_sud.png"
   },
   {
@@ -300,7 +300,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Deportivo Madryn",
-    "Próximo Partido":"sáb, 16\/8, 3:00 p.m.",
+    "Próximo Partido":"hoy, 3:00 p.m.",
     "Escudo":"csd_tristán_suárez.png"
   },
   {
@@ -356,8 +356,8 @@
     "Asistencias":0,
     "Goles en Contra":4,
     "Imbatido":2,
-    "Próximo Rival":"Tacuarembó",
-    "Próximo Partido":"mañana, 6:00 p.m.",
+    "Próximo Rival":"Central",
+    "Próximo Partido":"mar, 19\/8, 3:00 p.m.",
     "Escudo":"club_deportivo_maldonado.png"
   },
   {
@@ -375,8 +375,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Atl. San Luis",
-    "Próximo Partido":"mañana, 10:00 p.m.",
+    "Próximo Rival":"Seattle Sounders",
+    "Próximo Partido":"jue, 21\/8, 12:00 a.m.",
     "Escudo":"club_puebla.png"
   },
   {
@@ -388,14 +388,14 @@
     "Cargo":"NO",
     "Opción de Compra":"NO",
     "Repesca":"NO",
-    "Partidos Jugados":18,
-    "Minutos Jugados":1480,
+    "Partidos Jugados":19,
+    "Minutos Jugados":1570,
     "Goles":0,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Huracán Las Heras",
-    "Próximo Partido":"dom, 17\/8, 3:30 p.m.",
+    "Próximo Partido":"mañana, 3:30 p.m.",
     "Escudo":"círculo_deportivo.png"
   },
   {
@@ -414,7 +414,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Wanderers",
-    "Próximo Partido":"sáb, 16\/8, 3:30 p.m.",
+    "Próximo Partido":"hoy, 3:30 p.m.",
     "Escudo":"liverpool_fc_montevideo.png"
   },
   {
@@ -433,7 +433,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Excursionistas",
-    "Próximo Partido":"sáb, 23\/8, 11:00 a.m.",
+    "Próximo Partido":"hoy, 3:30 p.m.",
     "Escudo":"real_pilar_fc.png"
   },
   {
@@ -451,8 +451,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Aris",
-    "Próximo Partido":"sáb, 23\/8, 2:00 p.m.",
+    "Próximo Rival":"Giannina",
+    "Próximo Partido":"mar, 19\/8, 11:00 a.m.",
     "Escudo":"volos_nps.png"
   }
 ]
