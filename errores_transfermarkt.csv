@@ -1,5 +1,8 @@
 ﻿URL,Error
-https://www.transfermarkt.com.ar/ignacio-maestro-puch/leistungsdatenverein/spieler/853278,No se encontró la tabla
-https://www.transfermarkt.com.ar/juan-fedorco/leistungsdatenverein/spieler/997070,No responde (requests): HTTP 502
+https://www.transfermarkt.com.ar/sergio-ortiz/leistungsdatenverein/spieler/1034081,No responde (requests): HTTP 502
+https://www.transfermarkt.com.ar/patricio-ostachuk/leistungsdatenverein/spieler/842911,"No responde (requests): HTTPSConnectionPool(host='www.transfermarkt.com.ar', port=443): Read timed out. (read timeout=20)"
 https://www.transfermarkt.com.ar/nicolas-vallejo/leistungsdatenverein/spieler/1040204,No responde (requests): HTTP 502
-https://www.transfermarkt.com.ar/javier-ruiz/leistungsdatenverein/spieler/1160106,No se encontró la tabla
+https://www.transfermarkt.com.ar/javier-ruiz/leistungsdatenverein/spieler/1160106,"No responde (requests): HTTPSConnectionPool(host='www.transfermarkt.com.ar', port=443): Read timed out. (read timeout=20)"
+https://www.transfermarkt.com.ar/santiago-lopez/leistungsdatenverein/spieler/1000687,"No responde (requests): HTTPSConnectionPool(host='www.transfermarkt.com.ar', port=443): Read timed out. (read timeout=20)"
+https://www.transfermarkt.com.ar/joel-gonzalez/leistungsdatenverein/spieler/1141729,No responde (requests): HTTP 502
+https://www.transfermarkt.com.ar/manuel-tasso/leistungsdatenverein/spieler/1103405,"No responde (requests): HTTPSConnectionPool(host='www.transfermarkt.com.ar', port=443): Read timed out. (read timeout=20)"
