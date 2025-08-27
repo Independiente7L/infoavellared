@@ -53,7 +53,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Cuenca Juniors",
-    "Próximo Partido":"jue, 28\/8, 9:00 p.m.",
+    "Próximo Partido":"mañana, 9:00 p.m.",
     "Escudo":"barcelona_sc_guayaquil.png"
   },
   {
@@ -91,7 +91,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Paso de la Arena",
-    "Próximo Partido":"mié, 27\/8, 8:30 p.m.",
+    "Próximo Partido":"hoy, 8:30 p.m.",
     "Escudo":"ca_boston_river.png"
   },
   {
@@ -129,7 +129,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Deportivo Morón",
-    "Próximo Partido":"mié, 27\/8, 9:10 p.m.",
+    "Próximo Partido":"hoy, 9:10 p.m.",
     "Escudo":"ca_gimnasia_y_esgrima_mendoza.png"
   },
   {
@@ -148,7 +148,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"San Miguel",
-    "Próximo Partido":"dom, 31\/8, 4:50 p.m.",
+    "Próximo Partido":"dom, 31\/8, 7:00 p.m.",
     "Escudo":"ca_los_andes.png"
   },
   {
@@ -281,7 +281,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Excursionistas",
-    "Próximo Partido":"sáb, 6\/9, 11:00 a.m.",
+    "Próximo Partido":"vie, 29\/8, 3:30 p.m.",
     "Escudo":"cs_dock_sud.png"
   },
   {
@@ -356,8 +356,8 @@
     "Asistencias":0,
     "Goles en Contra":5,
     "Imbatido":3,
-    "Próximo Rival":"Atenas",
-    "Próximo Partido":"sáb, 23\/8, 6:00 p.m.",
+    "Próximo Rival":"Rampla",
+    "Próximo Partido":"dom, 31\/8, 12:00 p.m.",
     "Escudo":"club_deportivo_maldonado.png"
   },
   {
@@ -369,8 +369,8 @@
     "Cargo":"NO",
     "Opción de Compra":"$ 1.400.000 x el 100%",
     "Repesca":"NO",
-    "Partidos Jugados":19,
-    "Minutos Jugados":1482,
+    "Partidos Jugados":20,
+    "Minutos Jugados":1572,
     "Goles":1,
     "Asistencias":0,
     "Goles en Contra":0,
@@ -433,7 +433,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Sportivo Italiano",
-    "Próximo Partido":"sáb, 6\/9, 11:00 a.m.",
+    "Próximo Partido":"sáb, 30\/8, 7:10 p.m.",
     "Escudo":"real_pilar_fc.png"
   },
   {
