@@ -110,7 +110,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Chaco For Ever",
-    "Próximo Partido":"dom, 7\/9, 5:00 p.m.",
+    "Próximo Partido":"dom, 7\/9, 7:00 p.m.",
     "Escudo":"ca_chacarita_juniors.png"
   },
   {
@@ -128,8 +128,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Nueva Chicago",
-    "Próximo Partido":"hoy, 5:10 p.m.",
+    "Próximo Rival":"Gimnasia Jujuy",
+    "Próximo Partido":"dom, 7\/9, 2:15 p.m.",
     "Escudo":"ca_gimnasia_y_esgrima_mendoza.png"
   },
   {
@@ -148,7 +148,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Deportivo Madryn",
-    "Próximo Partido":"dom, 7\/9, 4:00 p.m.",
+    "Próximo Partido":"dom, 7\/9, 4:15 p.m.",
     "Escudo":"ca_los_andes.png"
   },
   {
@@ -160,14 +160,14 @@
     "Cargo":"NO",
     "Opción de Compra":"$ 800.000 x el 50%",
     "Repesca":"SI",
-    "Partidos Jugados":7,
-    "Minutos Jugados":440,
+    "Partidos Jugados":8,
+    "Minutos Jugados":530,
     "Goles":0,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Gimnasia y Esgrima",
-    "Próximo Partido":"hoy, 5:10 p.m.",
+    "Próximo Rival":"Estudiantes",
+    "Próximo Partido":"mañana, 8:05 p.m.",
     "Escudo":"ca_nueva_chicago.png"
   },
   {
@@ -185,8 +185,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Godoy Cruz",
-    "Próximo Partido":"hoy, 7:15 p.m.",
+    "Próximo Rival":"Defensa y Justicia",
+    "Próximo Partido":"dom, 14\/9, 8:00 p.m.",
     "Escudo":"ca_platense.png"
   },
   {
@@ -262,7 +262,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Independiente",
-    "Próximo Partido":"vie, 5\/9, 9:10 p.m.",
+    "Próximo Partido":"mañana, 9:10 p.m.",
     "Escudo":"ca_tigre.png"
   },
   {
@@ -281,7 +281,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"Midland",
-    "Próximo Partido":"sáb, 13\/9, 11:00 a.m.",
+    "Próximo Partido":"lun, 8\/9, 8:00 p.m.",
     "Escudo":"cs_dock_sud.png"
   },
   {
@@ -318,8 +318,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Gimnasia",
-    "Próximo Partido":"hoy, 5:00 p.m.",
+    "Próximo Rival":"Newell's",
+    "Próximo Partido":"vie, 12\/9, 9:15 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -331,14 +331,14 @@
     "Cargo":"NO",
     "Opción de Compra":"$ 800.000 x el 50%",
     "Repesca":"NO",
-    "Partidos Jugados":13,
-    "Minutos Jugados":601,
+    "Partidos Jugados":14,
+    "Minutos Jugados":620,
     "Goles":0,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Gimnasia",
-    "Próximo Partido":"hoy, 5:00 p.m.",
+    "Próximo Rival":"Newell's",
+    "Próximo Partido":"vie, 12\/9, 9:15 p.m.",
     "Escudo":"club_atlético_tucumán.png"
   },
   {
@@ -356,8 +356,8 @@
     "Asistencias":0,
     "Goles en Contra":7,
     "Imbatido":3,
-    "Próximo Rival":"Rampla",
-    "Próximo Partido":"ayer, 12:00 p.m.",
+    "Próximo Rival":"Fénix",
+    "Próximo Partido":"dom, 7\/9, 11:00 a.m.",
     "Escudo":"club_deportivo_maldonado.png"
   },
   {
@@ -388,14 +388,14 @@
     "Cargo":"NO",
     "Opción de Compra":"NO",
     "Repesca":"NO",
-    "Partidos Jugados":19,
-    "Minutos Jugados":1570,
+    "Partidos Jugados":20,
+    "Minutos Jugados":1660,
     "Goles":0,
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Gutiérrez",
-    "Próximo Partido":"hoy, 4:00 p.m.",
+    "Próximo Rival":"Sol de Mayo",
+    "Próximo Partido":"mañana, 3:30 p.m.",
     "Escudo":"círculo_deportivo.png"
   },
   {
@@ -433,7 +433,7 @@
     "Goles en Contra":0,
     "Imbatido":0,
     "Próximo Rival":"UAI Urquiza",
-    "Próximo Partido":"sáb, 13\/9, 11:00 a.m.",
+    "Próximo Partido":"lun, 8\/9, 3:30 p.m.",
     "Escudo":"real_pilar_fc.png"
   },
   {
@@ -451,8 +451,8 @@
     "Asistencias":0,
     "Goles en Contra":0,
     "Imbatido":0,
-    "Próximo Rival":"Panetolikos",
-    "Próximo Partido":"sáb, 13\/9, Por definirse",
+    "Próximo Rival":"Anagennisi Karditsa",
+    "Próximo Partido":"sáb, 6\/9, 11:30 a.m.",
     "Escudo":"volos_nps.png"
   }
 ]
